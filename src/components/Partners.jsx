@@ -16,7 +16,6 @@ import partner10 from '../assets/partners/partner10.png';
 import partner11 from '../assets/partners/partner11.png';
 import partner12 from '../assets/partners/partner12.png';
 
-
 const partnersArr = [
   {
     id: 1,
@@ -101,6 +100,7 @@ const Partners = () => {
           }}
           modules={[Navigation]}
           breakpoints={{
+            0: { slidesPerView: 2 },
             480: { slidesPerView: 2 },
             640: { slidesPerView: 3 },
             768: { slidesPerView: 4 },
@@ -109,7 +109,7 @@ const Partners = () => {
           }}
           className=" block lg:hidden mt-[36px]"
         >
-          {partnersArr.slice(0,6).map((item) => (
+          {partnersArr.slice(0, 6).map((item) => (
             <SwiperSlide key={item.id}>
               <div
                 style={{ fontFamily: 'SF Pro Display Medium' }}
@@ -136,6 +136,7 @@ const Partners = () => {
           }}
           modules={[Navigation]}
           breakpoints={{
+            0: { slidesPerView: 2 },
             480: { slidesPerView: 2 },
             640: { slidesPerView: 3 },
             768: { slidesPerView: 4 },
