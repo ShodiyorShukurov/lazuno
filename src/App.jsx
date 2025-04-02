@@ -1,12 +1,10 @@
 import React from 'react'
-import Navbar from './components/Navbar'
-import HeroPage from './pages/Hero/HeroPage'
+import MainPage from './pages/Main/MainPage'
 
 const App = () => {
   return (
     <>
-      <Navbar/>
-      <HeroPage/>
+      <MainPage/>
     </>
   )
 }

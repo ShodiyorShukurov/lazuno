@@ -82,8 +82,8 @@ body {
   flex-direction: column;
   height: 100%;
   margin: 0;
-  font-family: 'ClashDisplay-Regular';
-  font-weight: 400;
+  font-family: 'ClashDisplay-Medium';
+  font-weight: 500;
   background-color: #ffffff;
   overflow-x: hidden;
 }
@@ -113,4 +113,28 @@ img {
   margin-left: auto;
   padding-right: 40px;
   padding-left: 40px;
+}
+
+
+@media screen and (max-width: 1536px) {
+  .container{
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .container{
+    padding-left: 40px;
+    padding-right: 40px;
+    max-width: 100%;
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .container{
+    padding: 0 20px;
+    max-width: 100%;
+  }
 }
