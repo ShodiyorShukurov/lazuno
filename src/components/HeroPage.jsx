@@ -60,6 +60,7 @@ const HeroPage = () => {
         autoPlay
         loop
         muted
+        playsInline
       />
 
       <div className="container relative z-10 h-full flex flex-col justify-end pb-[60px]">

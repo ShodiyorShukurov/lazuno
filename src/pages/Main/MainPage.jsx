@@ -8,6 +8,7 @@ import InfoCard from '../../components/InfoCard';
 import Testimonials from '../../components/Testimonials';
 import About from '../../components/About';
 import Footer from '../../components/footer';
+import Collection from '../../components/Collection';
 
 const MainPage = () => {
   return (
@@ -17,6 +18,7 @@ const MainPage = () => {
       <main>
         <Partners />
         <StatisticCard />
+        {/* <Collection/> */}
         <ProductList />
         <InfoCard />
         <Testimonials/>
