@@ -55,7 +55,7 @@ const Footer = () => {
           </div>
 
           {/* Center Section */}
-          <div className="text-center col-span-2 border-y-2 border-dashed md:border-x  border-[#414141] py-[56px] md:py-0 md:px-[10px] lg:p-0">
+          <div className="text-center col-span-2 border-y-2 md:border-y-0 border-dashed md:border-solid md:border-x  border-[#414141] py-[56px] md:py-0 md:px-[10px] lg:p-0">
             <h4 className="text-[36px] leading-[130%] mb-2">
               Let's Get In Touch!
             </h4>

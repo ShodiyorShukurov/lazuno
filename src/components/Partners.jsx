@@ -90,78 +90,80 @@ const Partners = () => {
           ))}
         </div>
 
-        <Swiper
-          slidesPerView={1}
-          spaceBetween={20}
-          loop={true}
-          navigation={{
-            nextEl: '.swiper-button-next-custom',
-            prevEl: '.swiper-button-prev-custom',
-          }}
-          modules={[Navigation]}
-          breakpoints={{
-            0: { slidesPerView: 2 },
-            480: { slidesPerView: 2 },
-            640: { slidesPerView: 3 },
-            768: { slidesPerView: 4 },
-            1024: { slidesPerView: 4 },
-            1280: { slidesPerView: 4 },
-          }}
-          className=" block lg:hidden mt-[36px]"
-        >
-          {partnersArr.slice(0, 6).map((item) => (
-            <SwiperSlide key={item.id}>
-              <div
-                style={{ fontFamily: 'SF Pro Display Medium' }}
-                className="overflow-hidden cursor-pointer flex justify-center items-center"
-                onClick={() => navigate('/news/' + item.id)}
-              >
-                <img
-                  src={item.img}
-                  alt={item.id}
-                  className={`w-[160px] h-[45px] object-cover`}
-                />
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-
-        <Swiper
-          slidesPerView={1}
-          spaceBetween={20}
-          loop={true}
-          navigation={{
-            nextEl: '.swiper-button-next-custom',
-            prevEl: '.swiper-button-prev-custom',
-          }}
-          modules={[Navigation]}
-          breakpoints={{
-            0: { slidesPerView: 2 },
-            480: { slidesPerView: 2 },
-            640: { slidesPerView: 3 },
-            768: { slidesPerView: 4 },
-            1024: { slidesPerView: 4 },
-            1280: { slidesPerView: 4 },
-          }}
-          className=" block lg:hidden mt-[32px]"
-        >
-          {partnersArr.slice(6).map((item) => (
-            <SwiperSlide key={item.id}>
-              <div
-                style={{ fontFamily: 'SF Pro Display Medium' }}
-                className="overflow-hidden cursor-pointer flex justify-center items-center"
-                onClick={() => navigate('/news/' + item.id)}
-              >
-                <img
-                  src={item.img}
-                  alt={item.id}
-                  className={`w-[160px] h-[45px] object-cover`}
-                />
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-
+        <div className="block lg:hidden">
+          <Swiper
+            slidesPerView={1}
+            spaceBetween={20}
+            loop={true}
+            navigation={{
+              nextEl: '.swiper-button-next-custom',
+              prevEl: '.swiper-button-prev-custom',
+            }}
+            modules={[Navigation]}
+            breakpoints={{
+              0: { slidesPerView: 2 },
+              480: { slidesPerView: 2 },
+              640: { slidesPerView: 3 },
+              768: { slidesPerView: 4 },
+              1024: { slidesPerView: 4 },
+              1280: { slidesPerView: 4 },
+            }}
+            className="mt-[36px]"
+          >
+            {partnersArr.slice(0, 6).map((item) => (
+              <SwiperSlide key={item.id}>
+                <div
+                  style={{ fontFamily: 'SF Pro Display Medium' }}
+                  className="overflow-hidden cursor-pointer flex justify-center items-center"
+                  onClick={() => navigate('/news/' + item.id)}
+                >
+                  <img
+                    src={item.img}
+                    alt={item.id}
+                    className={`w-[160px] h-[45px] object-cover`}
+                  />
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+        <div className="block lg:hidden">
+          <Swiper
+            slidesPerView={1}
+            spaceBetween={20}
+            loop={true}
+            navigation={{
+              nextEl: '.swiper-button-next-custom',
+              prevEl: '.swiper-button-prev-custom',
+            }}
+            modules={[Navigation]}
+            breakpoints={{
+              0: { slidesPerView: 2 },
+              480: { slidesPerView: 2 },
+              640: { slidesPerView: 3 },
+              768: { slidesPerView: 4 },
+              1024: { slidesPerView: 4 },
+              1280: { slidesPerView: 4 },
+            }}
+            className=" block lg:hidden mt-[32px]"
+          >
+            {partnersArr.slice(6).map((item) => (
+              <SwiperSlide key={item.id}>
+                <div
+                  style={{ fontFamily: 'SF Pro Display Medium' }}
+                  className="overflow-hidden cursor-pointer flex justify-center items-center"
+                  onClick={() => navigate('/news/' + item.id)}
+                >
+                  <img
+                    src={item.img}
+                    alt={item.id}
+                    className={`w-[160px] h-[45px] object-cover`}
+                  />
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
         <p className="hidden md:block text-[56px] leading-[140%] mt-[64px] text-[#15181E]">
           Lazuno Uz faqat mebel yaratmaydi—biz hissiyotlarni shakllantiramiz.
           Har bir buyum o‘z hikoyasiga ega bo‘lib, har qanday makonni iliq
