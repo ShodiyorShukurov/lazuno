@@ -130,9 +130,9 @@ const ProductCard = () => {
               <path
                 d="M12.714 7.57141L16.1426 11M16.1426 11L12.714 14.4286M16.1426 11L5.85686 11"
                 stroke="#000000"
-                stroke-width="0.857143"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="0.857143"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </svg>
           </span>

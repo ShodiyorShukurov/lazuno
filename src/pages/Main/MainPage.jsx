@@ -6,6 +6,8 @@ import StatisticCard from '../../components/StatisticCard';
 import ProductList from '../../components/ProductCard';
 import InfoCard from '../../components/InfoCard';
 import Testimonials from '../../components/Testimonials';
+import About from '../../components/About';
+import Footer from '../../components/footer';
 
 const MainPage = () => {
   return (
@@ -18,7 +20,9 @@ const MainPage = () => {
         <ProductList />
         <InfoCard />
         <Testimonials/>
+        <About/>
       </main>
+      <Footer/>
     </>
   );
 };
