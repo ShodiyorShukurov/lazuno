@@ -2,25 +2,30 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import logo from '../assets/logo/desktop_logo.svg';
 import mobileLogo from '../assets/logo/mobile-logo.svg';
-import search from '../assets/logo/search 01.svg';
 import shop from '../assets/logo/shopping bag.svg';
 import usd from '../assets/logo/usd.svg';
 import chevron from '../assets/logo/Chevron down.svg';
 import usa from '../assets/logo/USA.svg';
 import burgerMenuIcon from '../assets/logo/burger-menu.svg';
 import close from '../assets/logo/close.svg';
+import uzb from '../assets/logo/Uzbekistan.svg';
+import rus from '../assets/logo/Russia.svg';
+import rubl from '../assets/logo/rubl.svg';
+import euro from '../assets/logo/euro.svg';
+import uzs from '../assets/logo/uzs.svg';
 
 const Navbar = () => {
   const languages = [
     { code: 'eng', name: 'English', flag: usa },
-    { code: 'ru', name: 'Русский', flag: 'https://flagcdn.com/w40/ru.png' },
-    { code: 'uz', name: 'O‘zbek', flag: 'https://flagcdn.com/w40/uz.png' },
+    { code: 'ru', name: 'Russian', flag: rus },
+    { code: 'uz', name: 'Uzbek', flag: uzb },
   ];
 
   const money = [
     { code: 'USD', name: 'English', flag: usd },
-    { code: 'ru', name: 'Русский', flag: 'https://flagcdn.com/w40/ru.png' },
-    { code: 'uz', name: 'O‘zbek', flag: 'https://flagcdn.com/w40/uz.png' },
+    { code: 'EURO', name: 'O‘zbek', flag: euro },
+    { code: 'RUBLE', name: 'Русский', flag: rubl },
+    { code: 'UZS', name: 'Русский', flag: uzs },
   ];
 
   const [selectedLanguage, setSelectedLanguage] = React.useState(languages[0]);
@@ -40,7 +45,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className='relative'>
+    <div className="relative">
       <header className="fixed top-0 left-0 z-50 bg-[#0000001F] py-[20px] backdrop-blur-[24px] border-b-[3px] border-[#FFFFFF33] w-full">
         <div className="container">
           <div className="flex items-center justify-between w-full">
@@ -117,7 +122,14 @@ const Navbar = () => {
 
               <div className="hidden lg:block relative">
                 <button
-                  onClick={() => setIsOpen(!isOpen)}
+                  onClick={() => {
+                    setIsOpen(!isOpen);
+                    setIsOpenMoney(false);
+                  }}
+                  style={{
+                    backdropFilter: 'blur(56px)',
+                    WebkitBackdropFilter: 'blur(56px)',
+                  }}
                   className="flex items-center gap-2 px-[12px] py-[14px] bg-[#FFFFFF1F] text-white rounded-full border-[3px] border-[#FFFFFF33] transition cursor-pointer"
                 >
                   <span className="text-[14px] leading-[150%] capitalize font-semibold">
@@ -138,28 +150,38 @@ const Navbar = () => {
                 </button>
 
                 {isOpen && (
-                  <div className="absolute mt-2 w-full bg-[#FFFFFF1F]  border-[#FFFFFF4D] border-x-2 border-b-2 overflow-hidden rounded-[24px] px-[12px] py-[16px] backdrop-blur-[56px]">
-                    {languages.map((lang) => (
-                      <button
-                        key={lang.code}
-                        onClick={() => handleSelectLanguage(lang)}
-                        className="flex items-center gap-2 w-full px-4 py-2 hover:bg-gray-700 text-white transition capitalize"
-                      >
-                        <img
-                          src={lang.flag}
-                          alt={lang.name}
-                          className="w-[25px] h-[20px] object-cover"
-                        />
-                        {lang.name}
-                      </button>
-                    ))}
+                  <div
+                    style={{ backdropFilter: 'blur(56px)' }}
+                    className="absolute mt-2 -left-4 w-full min-w-[150px] bg-[#FFFFFF1F]  border-[#FFFFFF4D] border-x-2 border-b-2 overflow-hidden rounded-[24px] px-[12px] py-[16px]"
+                  >
+                    {languages.map((lang) =>
+                      lang.code == selectedLanguage.code ? (
+                        ''
+                      ) : (
+                        <button
+                          key={lang.code}
+                          onClick={() => handleSelectLanguage(lang)}
+                          className="flex items-center gap-2 w-full px-[20px] py-[12px] bg-[#FFFFFF1F] text-white transition capitalize mb-2 rounded-2xl border-2 border-[#FFFFFF33] cursor-pointer"
+                        >
+                          <img
+                            src={lang.flag}
+                            alt={lang.name}
+                            className="w-[25px] h-[20px] object-cover"
+                          />
+                          {lang.name}
+                        </button>
+                      )
+                    )}
                   </div>
                 )}
               </div>
 
               <div className="hidden lg:block relative">
                 <button
-                  onClick={() => setIsOpenMoney(!isOpenMoney)}
+                  onClick={() => {
+                    setIsOpenMoney(!isOpenMoney);
+                    setIsOpen(false);
+                  }}
                   className="flex items-center gap-2 px-[12px] py-[14px] bg-[#FFFFFF1F] text-white rounded-full border-[3px] border-[#FFFFFF33] transition cursor-pointer"
                 >
                   <img
@@ -180,21 +202,25 @@ const Navbar = () => {
                 </button>
 
                 {isOpenMoney && (
-                  <div className="absolute mt-2 w-full bg-gray-800 border border-gray-700 rounded-lg shadow-lg">
-                    {money.map((lang) => (
-                      <button
-                        key={lang.code}
-                        onClick={() => handleSelectMoney(lang)}
-                        className="flex items-center gap-2 w-full px-4 py-2 hover:bg-gray-700 text-white transition capitalize"
-                      >
-                        <img
-                          src={lang.flag}
-                          alt={lang.name}
-                          className="w-[25px] h-[20px] object-cover"
-                        />
-                        {lang.code}
-                      </button>
-                    ))}
+                  <div className="absolute mt-2 -left-4 w-full min-w-[150px] bg-[#FFFFFF1F]  border-[#FFFFFF4D] border-x-2 border-b-2 overflow-hidden rounded-[24px] px-[12px] py-[16px] backdrop-blur-[56px]">
+                    {money.map((lang) =>
+                      lang.code == selectedMoney.code ? (
+                        ''
+                      ) : (
+                        <button
+                          key={lang.code}
+                          onClick={() => handleSelectMoney(lang)}
+                          className="flex items-center gap-2 w-full px-[20px] py-[12px] bg-[#FFFFFF1F] text-white transition capitalize mb-2 rounded-2xl border-2 border-[#FFFFFF33] cursor-pointer"
+                        >
+                          <img
+                            src={lang.flag}
+                            alt={lang.name}
+                            className="w-[25px] h-[20px] object-cover"
+                          />
+                          {lang.code}
+                        </button>
+                      )
+                    )}
                   </div>
                 )}
               </div>
@@ -239,9 +265,15 @@ const Navbar = () => {
 
           <div className="relative mb-[8px]">
             <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="flex items-center justify-center gap-2 px-[12px] py-[14px] bg-[#FFFFFF1F] text-white rounded-full border-[3px] border-[#FFFFFF33] transition cursor-pointer w-full"
+              onClick={() => {
+                setIsOpen(!isOpen);
+                setIsOpenMoney(false);
+              }}
+              className="flex items-center w-full justify-center gap-2 px-[12px] py-[14px] bg-[#FFFFFF1F] text-white rounded-full border-[3px] border-[#FFFFFF33] transition cursor-pointer"
             >
+              <span className="text-[14px] leading-[150%] capitalize font-semibold">
+                {selectedLanguage.code}
+              </span>
               <img
                 src={selectedLanguage.flag}
                 alt="Flag"
@@ -257,30 +289,42 @@ const Navbar = () => {
             </button>
 
             {isOpen && (
-              <div className="absolute mt-2 w-full bg-gray-800 border border-gray-700 rounded-lg shadow-lg z-50">
-                {languages.map((lang) => (
-                  <button
-                    key={lang.code}
-                    onClick={() => handleSelectLanguage(lang)}
-                    className="flex items-center gap-2 w-full px-4 py-2 hover:bg-gray-700 text-white transition capitalize"
-                  >
-                    <img
-                      src={lang.flag}
-                      alt={lang.name}
-                      className="w-[25px] h-[20px] object-cover"
-                    />
-                    {lang.code}
-                  </button>
-                ))}
+              <div className="absolute mt-2 w-full min-w-[150px] bg-[#FFFFFF1F]  border-[#FFFFFF4D] border-x-2 border-b-2 overflow-hidden rounded-[24px] px-[12px] py-[16px] backdrop-blur-[56px] z-40">
+                {languages.map((lang) =>
+                  lang.code == selectedLanguage.code ? (
+                    ''
+                  ) : (
+                    <button
+                      key={lang.code}
+                      onClick={() => handleSelectLanguage(lang)}
+                      className="flex items-center gap-2 w-full px-[20px] py-[12px] bg-[#FFFFFF1F] text-white transition capitalize mb-2 rounded-2xl border-2 border-[#FFFFFF33] cursor-pointer"
+                    >
+                      <img
+                        src={lang.flag}
+                        alt={lang.name}
+                        className="w-[25px] h-[20px] object-cover"
+                      />
+                      {lang.name}
+                    </button>
+                  )
+                )}
               </div>
             )}
           </div>
 
           <div className="relative">
             <button
-              onClick={() => setIsOpenMoney(!isOpenMoney)}
-              className="flex items-center justify-center gap-2 px-[12px] py-[14px] bg-[#FFFFFF1F] text-white rounded-full border-[3px] border-[#FFFFFF33] transition cursor-pointer w-full"
+              onClick={() => {
+                setIsOpenMoney(!isOpenMoney);
+                setIsOpen(false);
+              }}
+              className="flex items-center gap-2 justify-center w-full px-[12px] py-[14px] bg-[#FFFFFF1F] text-white rounded-full border-[3px] border-[#FFFFFF33] transition cursor-pointer"
             >
+              <img
+                src={selectedMoney.flag}
+                alt="Flag"
+                className="w-[25px] h-[20px] object-cover"
+              />
               <span className="text-[14px] leading-[150%] capitalize font-semibold">
                 {selectedMoney.code}
               </span>
@@ -294,21 +338,25 @@ const Navbar = () => {
             </button>
 
             {isOpenMoney && (
-              <div className="absolute mt-2 w-full bg-gray-800 border border-gray-700 rounded-lg shadow-lg">
-                {money.map((lang) => (
-                  <button
-                    key={lang.code}
-                    onClick={() => handleSelectMoney(lang)}
-                    className="flex items-center gap-2 w-full px-4 py-2 hover:bg-gray-700 text-white transition capitalize"
-                  >
-                    <img
-                      src={lang.flag}
-                      alt={lang.name}
-                      className="w-[25px] h-[20px] object-cover"
-                    />
-                    {lang.code}
-                  </button>
-                ))}
+              <div className="absolute mt-2 w-full min-w-[150px] bg-[#FFFFFF1F]  border-[#FFFFFF4D] border-x-2 border-b-2 overflow-hidden rounded-[24px] px-[12px] py-[16px] backdrop-blur-[56px]">
+                {money.map((lang) =>
+                  lang.code == selectedMoney.code ? (
+                    ''
+                  ) : (
+                    <button
+                      key={lang.code}
+                      onClick={() => handleSelectMoney(lang)}
+                      className="flex items-center gap-2 w-full px-[20px] py-[12px] bg-[#FFFFFF1F] text-white transition capitalize mb-2 rounded-2xl border-2 border-[#FFFFFF33] cursor-pointer"
+                    >
+                      <img
+                        src={lang.flag}
+                        alt={lang.name}
+                        className="w-[25px] h-[20px] object-cover"
+                      />
+                      {lang.code}
+                    </button>
+                  )
+                )}
               </div>
             )}
           </div>
