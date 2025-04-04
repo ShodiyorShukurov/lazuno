@@ -15,6 +15,7 @@ import partner9 from '../assets/partners/partner9.png';
 import partner10 from '../assets/partners/partner10.png';
 import partner11 from '../assets/partners/partner11.png';
 import partner12 from '../assets/partners/partner12.png';
+import { useTranslation } from 'react-i18next';
 
 const partnersArr = [
   {
@@ -68,11 +69,14 @@ const partnersArr = [
 ];
 
 const Partners = () => {
+
+  const {t} =useTranslation()
+  const location = window.location.pathname;
   return (
     <section className="pt-[64px]">
       <div className="container">
         <h2 className="font-medium text-[48px] leading-[126%] text-center">
-          Our primary suppliers and partners.
+          {t('partner.title')}
         </h2>
         <div className="hidden lg:flex gap-8 items-center justify-center flex-wrap mt-[36px]">
           {partnersArr?.slice(0, 6).map((item) => (
@@ -164,13 +168,11 @@ const Partners = () => {
             ))}
           </Swiper>
         </div>
+      {
+        location == '/about-us' ?  "":
         <p className="hidden md:block text-[56px] leading-[140%] mt-[64px] text-[#15181E]">
-          Lazuno Uz faqat mebel yaratmaydi—biz hissiyotlarni shakllantiramiz.
-          Har bir buyum o‘z hikoyasiga ega bo‘lib, har qanday makonni iliq
-          xotiralarga boyitadi. 1 500+ dizayn bilan uslub, qulaylik va
-          mustahkamlikni taqdim etamiz. Sizning orzuingizdagi makon shu yerdan
-          boshlanadi.
-        </p>
+          {t('partner.text')}
+        </p>}
       </div>
     </section>
   );

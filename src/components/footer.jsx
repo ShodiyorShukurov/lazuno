@@ -13,6 +13,7 @@ import payme from '../assets/logo/payme.svg';
 import visa from '../assets/logo/visa.svg';
 import mastercard from '../assets/logo/mastercard.svg';
 import uzb from '../assets/logo/Uzbekistan.svg';
+import { useTranslation } from 'react-i18next';
 
 const peymentArr = [
   { id: 1, img: uzcard, title: 'uzcard' },
@@ -25,7 +26,7 @@ const peymentArr = [
 
 const Footer = () => {
   const [phone, setPhone] = React.useState('');
-
+  const { t } = useTranslation();
   const handleChange = (e) => {
     const value = e.target.value.replace(/\D/g, '').slice(0, 9);
     setPhone(value);
@@ -37,7 +38,7 @@ const Footer = () => {
           <div className="flex items-center flex-row md:flex-col gap-4 sm:gap-6 justify-center md:justify-baseline mb-[24px] md:mb-0">
             <div>
               <h4 className="text-[16px] leading-[150%] font-[ClashDisplay-Regular] mb-[8px] text-center w-full max-w-[150px]">
-                Phone Number
+                {t('footer.phone_number')}
               </h4>
               <a
                 href="tel:+998 97 442 23 21"
@@ -48,19 +49,21 @@ const Footer = () => {
             </div>
             <div>
               <h4 className="text-[16px] leading-[150%] font-[ClashDisplay-Regular] mb-[8px] text-center w-full max-w-[150px]">
-                Office Location
+                {t('footer.location_text')}
               </h4>
-              <p className="text-[16px] leading-[150%]">Nurafshon Street 117</p>
+              <p className="text-[16px] leading-[150%]">
+                {t('footer.location')}
+              </p>
             </div>
           </div>
 
           {/* Center Section */}
           <div className="text-center col-span-2 border-y-2 md:border-y-0 border-dashed md:border-solid md:border-x  border-[#414141] py-[56px] md:py-0 md:px-[10px] lg:p-0">
             <h4 className="text-[36px] leading-[130%] mb-2">
-              Let's Get In Touch!
+              {t('footer.footer_title')}
             </h4>
             <p className="mb-12 text-[16px] leading-[150%] text-[#A8B3C4]">
-              What's inside? Exclusive sales, new arrivals & much more.
+              {t('footer.footer_text')}
             </p>
             <div className="flex items-center justify-center bg-[#1A1D23] rounded-full w-fit border border-[#2C303A] mx-auto">
               <div className="flex items-center px-3 py-[16px]">
@@ -82,7 +85,12 @@ const Footer = () => {
               />
               <button className="w-fit pl-[12px] lg:pl-[24px] p-[4px] flex items-center gap-4 lg:gap-6 bg-[#FFFFFF] rounded-[48px] text-[16px] text-[#15181E] leading-[150%] cursor-pointer">
                 <span className="py-[12px]">
-                  Contact <span className="hidden lg:inline">Us</span>
+                  {t('footer.button')}{' '}
+                  {localStorage.getItem('lng') == 'en' ? (
+                    <span className="hidden lg:inline">{t('footer.us')}</span>
+                  ) : (
+                    ''
+                  )}
                 </span>
                 <span className="bg-[#15181E] w-[48px] h-[48px] flex justify-center items-center rounded-full">
                   <svg
@@ -108,7 +116,7 @@ const Footer = () => {
           {/* Right Section */}
           <div className="flex items-center justify-end flex-col mt-[24px] md:mt-0">
             <h4 className="text-[16px] leading-[150%] font-[ClashDisplay-Regular] mb-4">
-              Social Media
+              {t('footer.social')}
             </h4>
             <div className="flex space-x-4">
               <a href="#" className="hover:text-gray-400">
@@ -139,47 +147,47 @@ const Footer = () => {
 
           <ul className="hidden lg:flex gap-6 text-[16px] leading-[150%] font-[ClashDisplay-Regular]">
             <li>
-              <NavLink to="/">Home</NavLink>
+              <NavLink to="/">{t('footer.home')}</NavLink>
             </li>
             <li>
-              <NavLink to="/about-us">About Us</NavLink>
+              <NavLink to="/about-us">{t('footer.about')}</NavLink>
             </li>
             <li>
-              <NavLink to="/product">Product Catalog</NavLink>
+              <NavLink to="/product">{t('footer.product')}</NavLink>
             </li>
             <li>
-              <NavLink to="/contact">Contact Us</NavLink>
+              <NavLink to="/contact">{t('footer.contact')}</NavLink>
             </li>
           </ul>
 
           <ul className="hidden lg:flex gap-6 text-[16px] leading-[150%] font-[ClashDisplay-Regular]">
             <li>
-              <NavLink to="/">Terms & Conditions</NavLink>
+              <NavLink to="/">{t('footer.link1')}</NavLink>
             </li>
             <li>
-              <NavLink to="/about-us">Privacy Policy</NavLink>
+              <NavLink to="/about-us">{t('footer.link2')}</NavLink>
             </li>
           </ul>
 
           <div className="mt-[24px] lg:hidden">
             <ul className="grid grid-cols-2 md:flex  justify-between md:justify-center text-center gap-6 text-[16px] leading-[150%] font-[ClashDisplay-Regular]">
               <li>
-                <NavLink to="/">Home</NavLink>
+                <NavLink to="/">{t('footer.home')}</NavLink>
               </li>
               <li>
-                <NavLink to="/about-us">About Us</NavLink>
+                <NavLink to="/about-us">{t('footer.about')}</NavLink>
               </li>
               <li>
-                <NavLink to="/product">Product Catalog</NavLink>
+                <NavLink to="/product">{t('footer.product')}</NavLink>
               </li>
               <li>
-                <NavLink to="/contact">Contact Us</NavLink>
+                <NavLink to="/contact">{t('footer.contact')}</NavLink>
               </li>
               <li>
-                <NavLink to="/">Terms & Conditions</NavLink>
+                <NavLink to="/">{t('footer.link1')}</NavLink>
               </li>
               <li>
-                <NavLink to="/about-us">Privacy Policy</NavLink>
+                <NavLink to="/about-us">{t('footer.link2')}</NavLink>
               </li>
             </ul>
           </div>
@@ -188,7 +196,7 @@ const Footer = () => {
         <div className="py-[19px]">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-[16px] leading-[150%] font-[ClashDisplay-Regular]">
-              &copy; Lazuno Co. 2025. All Rights Reserved.
+              {t('footer.all')}
             </p>
             <div className="flex space-x-4 mt-4 md:mt-0">
               {peymentArr.map((item) => (

@@ -1,0 +1,60 @@
+{
+    "navbar": {
+        "home": "Home",
+        "about": "About Us",
+        "product": "Product Catalog",
+        "contact": "Contact Us"
+    },
+    "hero": {
+        "title": "Lazuno – For True Admirers of Quality",
+        "subtitle": "Discover high-quality, stylish furniture to suit every room and every taste. Comfort and elegance for your dream home",
+        "button": "Shop Now"
+    },
+    "partner": {
+        "title": "Our primary suppliers and partners.",
+        "text": "At Lazuno Uz, we don’t just make furniture—we craft experiences. Every piece tells a story, turning spaces into places where memories are made. With 1,500+ designs, we bring style, comfort, and durability to every home. Your dream space starts here."
+    },
+    "statistic": {
+        "card1_title": "We take pride in delivering comfort and style to thousands of homes.",
+        "card2_title": "Explore our wide range of furniture, crafted to suit every taste.",
+        "card3_title": "A decade of expertise in furniture design and innovation.",
+        "card3_subtitle": "7 + Years"
+    },
+    "about-us": {
+        "card1_title": "Lazuno Uz: Crafting Comfort & Style Since 2016",
+        "card1_text": "For nearly a decade, <strong>Lazuno</strong> has been redefining furniture craftsmanship in Uzbekistan. With <strong>over 1,500 unique designs</strong>, we offer a diverse selection that blends aesthetics with durability. Our commitment to innovation and quality ensures that every piece we create is not just furniture but a statement of style and functionality.  Each product is meticulously handcrafted by skilled artisans using premium materials, combining traditional weaving techniques with modern technology. Based in Tashkent, we take pride in producing furniture that enhances spaces and enriches lifestyles—whether it’s a cozy garden retreat or a stylish indoor setup.  At <strong>Lazuno</strong>  we don’t just make furniture—we create experiences.",
+        "card2_title": "Quality. Craftsmanship. Innovation.",
+        "card2_text": "Since <strong>2016</strong>, <strong>Lazuno</strong>  has been the go-to name for furniture that merges elegance with resilience. Our collection of <strong>over 1,500 options</strong> ensures that there’s a perfect fit for every taste and space.   We believe furniture should be more than just functional—it should inspire. That’s why we use carefully selected artificial rattan and other premium materials, expertly woven by artisans who bring years of craftsmanship to every piece. From timeless classics to contemporary designs, our furniture is built to stand the test of time.   Whether you're looking to transform your home, garden, or commercial space, <strong>Lazuno</strong> delivers excellence—one handcrafted piece at a time."
+    },
+    "about": {
+        "title": "Don’t miss out—enjoy up to 40% off on selected items!",
+        "button": "Shop Now"
+    },
+    "info_card": {
+        "card1_title": "Free Shipping",
+        "card1_text": "You will love at great low prices",
+        "card2_title": "15 Days Returns",
+        "card2_text": "Within 15 days for an exchange",
+        "card3_title": "Customer Support",
+        "card3_text": "24 hours a day, 7 days a week",
+        "card4_title": "Flexible Payment",
+        "card4_text": "Pay with multiple credit cards"
+    },
+    "footer": {
+        "phone_number": "Phone Number",
+        "location_text": "Office Location",
+        "location": "Nurafshon Street 117",
+        "footer_title": "Let's Get In Touch!",
+        "footer_text": "What's inside? Exclusive sales, new arrivals & much more.",
+        "button": "Contact",
+        "us": "Us",
+        "social": "Social Media",
+        "home": "Home",
+        "about": "About Us",
+        "product": "Product Catalog",
+        "contact": "Contact Us",
+        "link1": "Terms & Conditions",
+        "link2": "Privacy Policy",
+        "all": "© Lazuno Co. 2025. All Rights Reserved."
+    }
+}

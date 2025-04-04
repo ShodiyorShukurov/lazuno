@@ -9,24 +9,18 @@ const testArr = [
     title: '“Great Delivery Service, I love It.”',
     subtitle:
       'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.',
-    name: 'Cameron Williamson',
-    img: test1,
   },
   {
     id: 2,
     title: '“Quality of The Sofa is Truly Amazing”',
     subtitle:
       'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.',
-    name: 'Leslie Alexander',
-    img: test1,
   },
   {
     id: 3,
     title: '“Quality of The Sofa is Truly Amazing”',
     subtitle:
       'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.',
-    name: 'Leslie Alexander',
-    img: test1,
   },
 ];
 
@@ -49,21 +43,10 @@ const Testimonials = () => {
                   <p className="text-[16px] leading-[150%] text-[#384252] mt-[16px] font-[ClashDisplay-Regular] w-full max-w-[580px]">
                     {item.subtitle}
                   </p>
-                  <div className="flex items-center gap-3 mt-[16px]">
-                    <img
-                      src={item.img}
-                      alt={item.name}
-                      width={40}
-                      height={40}
-                    />
-                    <h5 className="text-[18px] leading-[150%] text-[#15181E]">
-                      {item.name}
-                    </h5>
-                  </div>
                 </li>
               ))}
             </ul>
-            <button className="w-fit pl-[24px] p-[3px] flex items-center gap-6 bg-[#037C6A] rounded-[48px] text-[16px] text-[#ffffff] leading-[150%] cursor-pointer mt-[24px] md:my-[32px]">
+            <button className="w-fit pl-[24px] p-[3px] flex items-center gap-6 bg-[#037C6A] rounded-[48px] text-[16px] text-[#ffffff] leading-[150%] cursor-pointer mt-[32px]">
               View All Reviews
               <span className="bg-[#FFFFFF] w-[40px] h-[40px] flex justify-center items-center rounded-full">
                 <svg
@@ -103,17 +86,6 @@ const Testimonials = () => {
                   <p className="text-[16px] leading-[150%] text-[#384252] mt-[16px] font-[ClashDisplay-Regular] w-full max-w-[580px]">
                     {item.subtitle}
                   </p>
-                  <div className="flex items-center gap-3 mt-[16px]">
-                    <img
-                      src={item.img}
-                      alt={item.name}
-                      width={40}
-                      height={40}
-                    />
-                    <h5 className="text-[18px] leading-[150%] text-[#15181E]">
-                      {item.name}
-                    </h5>
-                  </div>
                 </li>
               ))}
             </ul>

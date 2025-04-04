@@ -1,21 +1,23 @@
 import React from 'react';
 import bg1 from '../assets/about-bg.png';
 import bg from '../assets/about-bg2.png';
+import { useTranslation } from 'react-i18next';
 
 const About = () => {
+  const {t} =useTranslation()
   return (
     <section className="pt-[160px]  h-full ">
       <div className='relative'>
         <div className="container">
           <div
             style={{ backgroundImage: `url(${bg})` }}
-            className="bg-no-repeat  flex justify-center items-center flex-col bg-cover bg-center h-[600px] w-full rounded-[36px]  z-50"
+            className="bg-no-repeat  flex justify-center items-center flex-col bg-cover bg-left md:bg-center h-[600px] w-full rounded-[36px]  z-50"
           >
             <h2 className="text-white text-[40px] px-[20px] md:text-[64px] leading-[120%] text-center w-full max-w-[940px] font-[ClashDisplay-Semibold]">
-              Don’t miss out—enjoy up to 40% off on selected items!
+             {t('about.title')}
             </h2>
             <button className="w-fit pl-[24px] p-[3px] flex items-center gap-6 bg-[#037C6A] rounded-[48px] text-[16px] text-[#ffffff] leading-[150%] cursor-pointer mt-[24px]">
-              Shop Now
+            {t('about.button')}
               <span className="bg-[#FFFFFF] w-[40px] h-[40px] flex justify-center items-center rounded-full">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

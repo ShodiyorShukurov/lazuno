@@ -1,0 +1,60 @@
+{
+    "navbar": {
+        "home": "Bosh sahifa",
+        "about": "Biz haqimizda",
+        "product": "Mahsulotlar katalogi",
+        "contact": "Aloqa"
+    },
+    "hero": {
+        "title": "Lazuno – Sifatni qadirlovchilar uchun",
+        "subtitle": "Har bir xona va didga mos keladigan yuqori sifatli, zamonaviy mebellarni kashf eting. Orzuingizdagi uy uchun qulaylik va nafislik.",
+        "button": "Hozir xarid qiling"
+    },
+    "partner": {
+        "title": "Bizning asosiy yetkazib beruvchilarimiz va hamkorlarimiz.",
+        "text": "Lazuno Uz faqat mebel yaratmaydi—biz hissiyotlarni shakllantiramiz. Har bir buyum o‘z hikoyasiga ega bo‘lib, har qanday makonni iliq xotiralarga boyitadi. 1 500+ dizayn bilan uslub, qulaylik va mustahkamlikni taqdim etamiz. Sizning orzuingizdagi makon shu yerdan boshlanadi."
+    },
+    "statistic": {
+        "card1_title": "Biz minglab uylar uchun qulaylik va uslub yetkazib berishdan faxrlanamiz.",
+        "card2_title": "Har qanday didga mos keladigan mebellar assortimentimiz bilan tanishing.",
+        "card3_title": "Mebel dizayni va innovatsiyalar sohasida o'n yillik tajriba.",
+        "card3_subtitle": "7+ yil"
+    },
+    "about-us": {
+        "card1_title": "Lazuno : 2016-yildan beri qulaylik va uslub yaratamiz",
+        "card1_text": "<strong>Lazuno</strong>  deyarli o‘n yildirki, O‘zbekistonda mebel ishlab chiqarishda yangi standartlarni belgilamoqda. <strong>1 500 dan ortiq turli xil dizaynlar</strong> bilan biz nafislik va mustahkamlikni uyg‘unlashtirgan keng assortimentni taklif qilamiz. Innovatsiya va sifatga bo‘lgan sadoqatimiz har bir mahsulotimizni shunchaki mebel emas, balki uslub va qulaylik ramziga aylantiradi.     Har bir mahsulotimiz tajribali hunarmandlar tomonidan puxta qo‘l mehnati bilan tayyorlanadi. Biz an’anaviy to‘qimachilik texnikalarini zamonaviy texnologiyalar bilan birlashtirib, eng yuqori sifatli materiallardan foydalanamiz. Toshkentda joylashgan <strong>Lazuno</strong>  sizning uyingiz yoki bog‘ingiz uchun nafis va qulay muhit yaratishga yordam beradi.    <strong>Lazuno</strong>  – biz shunchaki mebel emas, tajriba yaratamiz.",
+        "card2_title": "Sifat. Hunarmandchilik. Innovatsiya.",
+        "card2_text": "<strong>2016-yildan buyon Lazuno</strong>  nafislik va mustahkamlikni o‘zida mujassam etgan mebel ishlab chiqarish bo‘yicha yetakchi brend hisoblanadi.<strong> 1 500 dan ortiq turli xil variantlar</strong> bilan har bir mijoz o‘z xohishiga mos keladigan mebel topa oladi.    Biz uchun mebel shunchaki maishiy buyum emas – u ilhom baxsh etishi kerak. Shu sababli biz maxsus tanlangan sun’iy rattan va boshqa yuqori sifatli materiallardan foydalanamiz. Har bir mahsulot tajribali hunarmandlar tomonidan ishlab chiqilib, an’anaviy va zamonaviy dizaynni uyg‘unlashtiradi.   Agar siz uyingizni, bog‘ingizni yoki ish joyingizni o‘zgartirmoqchi bo‘lsangiz,<strong> Lazuno </strong> sizga puxta qo‘l mehnati bilan tayyorlangan eng yaxshi mebellarni taqdim etadi!"
+    },
+    "about": {
+        "title": "Fursatni qo'ldan boy bermang — tanlangan mahsulotlarga 40% gacha chegirma!",
+        "button": "Hozir xarid qiling"
+    },
+    "info_card": {
+        "card1_title": "Bepul yetkazib berish",
+        "card1_text": "Arzon narxlarda sizga yoqadi",
+        "card2_title": "15 kunlik qaytarish",
+        "card2_text": "15 kun ichida almashtirish imkoniyati",
+        "card3_title": "Mijozlarni qo'llab-quvvatlash",
+        "card3_text": "Kuniga 24 soat, haftada 7 kun",
+        "card4_title": "Moslashuvchan to‘lov",
+        "card4_text": "Bir nechta karta bilan to‘lang"
+    },
+    "footer": {
+        "phone_number": "Telefon raqami",
+        "location_text": "Ofis manzili",
+        "location": "Nurafshon ko'chasi, 117",
+        "footer_title": "Biz bilan bog'laning!",
+        "footer_text": "Ichida nima bor? Eksklyuziv chegirmalar, yangi mahsulotlar va yana ko'p narsalar.",
+        "button": "Bog‘lanish",
+        "us": "Biz haqimizda",
+        "social": "Ijtimoiy tarmoqlar",
+        "home": "Bosh sahifa",
+        "about": "Biz haqimizda",
+        "product": "Mahsulotlar katalogi",
+        "contact": "Aloqa",
+        "link1": "Foydalanish shartlari",
+        "link2": "Maxfiylik siyosati",
+        "all": "© Lazuno Co. 2025. Barcha huquqlar himoyalangan."
+    }
+}

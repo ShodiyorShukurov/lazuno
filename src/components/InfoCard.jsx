@@ -4,35 +4,40 @@ import icon1 from '../assets/logo/free.svg';
 import icon2 from '../assets/logo/return.svg';
 import icon3 from '../assets/logo/time-24.svg';
 import icon4 from '../assets/logo/master card.svg';
+import { useTranslation } from 'react-i18next';
 
-const infoArr = [
-  {
-    id: 1,
-    title: 'Free Shipping',
-    subtitle: 'You will love at great low prices',
-    icon: icon1,
-  },
-  {
-    id: 2,
-    title: '15 Days Returns',
-    subtitle: 'Within 15 days for an exchange',
-    icon: icon2,
-  },
-  {
-    id: 3,
-    title: 'Customer Support',
-    subtitle: '24 hours a day, 7 days a week',
-    icon: icon3,
-  },
-  {
-    id: 4,
-    title: 'Flexible Payment',
-    subtitle: 'Pay with multiple credit cards',
-    icon: icon4,
-  },
-];
+
 
 const InfoCard = () => {
+  const {t}=useTranslation()
+
+  const infoArr = [
+    {
+      id: 1,
+      title: t("info_card.card1_title"),
+      subtitle: t("info_card.card1_text"),
+      icon: icon1,
+    },
+    {
+      id: 2,
+      title: t("info_card.card2_title"),
+      subtitle: t("info_card.card2_text"),
+      icon: icon2,
+    },
+    {
+      id: 3,
+      title: t("info_card.card3_title"),
+      subtitle: t("info_card.card_text"),
+      icon: icon3,
+    },
+    {
+      id: 4,
+      title: t("info_card.card4_title"),
+      subtitle: t("info_card.card4_text"),
+      icon: icon4,
+    },
+  ];
+
   return (
     <section
       style={{

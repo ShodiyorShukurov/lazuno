@@ -3,63 +3,47 @@ import card1 from '../assets/card/card1.png';
 import card2 from '../assets/card/card2.png';
 import card3 from '../assets/card/card3.png';
 import card4 from '../assets/card/card4.png';
-import arrow from '../assets/logo/arrow-right.svg';
+
 
 const cardArr = [
   {
     id: 1,
     title: 'Blue Leather Sofa Chair',
-    price: '$580.00',
-    old_price: '$600.00',
     img: card1,
   },
   {
     id: 2,
     title: 'Blue Leather Sofa Chair',
-    price: '$580.00',
-    old_price: '$600.00',
     img: card2,
   },
   {
     id: 3,
     title: 'Blue Leather Sofa Chair',
-    price: '$580.00',
-    old_price: '$600.00',
     img: card3,
   },
   {
     id: 4,
     title: 'Blue Leather Sofa Chair',
-    price: '$580.00',
-    old_price: '$600.00',
     img: card4,
   },
   {
     id: 5,
     title: 'Blue Leather Sofa Chair',
-    price: '$580.00',
-    old_price: '$600.00',
     img: card1,
   },
   {
     id: 6,
     title: 'Blue Leather Sofa Chair',
-    price: '$580.00',
-    old_price: '$600.00',
     img: card2,
   },
   {
     id: 7,
     title: 'Blue Leather Sofa Chair',
-    price: '$580.00',
-    old_price: '$600.00',
     img: card3,
   },
   {
     id: 8,
     title: 'Blue Leather Sofa Chair',
-    price: '$580.00',
-    old_price: '$600.00',
     img: card4,
   },
 ];
@@ -104,15 +88,9 @@ const ProductCard = () => {
                 Buy Now
               </button>
               <div className="mt-[8px]">
-                <h3 className="text-[16px] text-[#15181E] leading-[150%]">
+                <h3 className="text-[16px] text-[#15181E] leading-[150%] pl-0.5">
                   {item.title}
                 </h3>
-                <p className="text-[16px] text-[#013A32] leading-[150%] inline-block">
-                  {item.price}
-                </p>
-                <p className="text-[16px] text-[#8292AA] leading-[150%] line-through inline-block ml-1">
-                  {item.old_price}
-                </p>
               </div>
             </div>
           ))}

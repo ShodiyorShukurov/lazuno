@@ -1,8 +1,12 @@
 import React from 'react';
 import bg from '../assets/logo/Line 8.svg';
+import { useTranslation } from 'react-i18next';
 
 
 const StatisticCard = () => {
+
+  const {t} =useTranslation()
+
   return (
     <section
       style={{
@@ -18,21 +22,21 @@ const StatisticCard = () => {
             25,000 +
           </h4>
           <p className="text-[#F1F3F6] text-[18px] leading-[26px] font-[ClashDisplay-Regular] max-w-[300px] mx-auto">
-            We take pride in delivering comfort and style to thousands of homes.
+            {t('statistic.card1_title')}
           </p>
         </div>
         <div className="text-center flex flex-col gap-4 lg:gap-6">
           <h4 className="text-[64px] lg:text-[72px] leading-[120%] text-[#ffffff]">1,500 +</h4>
           <p className="text-[#F1F3F6] text-[18px] leading-[26px] font-[ClashDisplay-Regular] max-w-[370px] mx-auto">
-            Explore our wide range of furniture, crafted to suit every taste.
+          {t('statistic.card2_title')}
           </p>
         </div>
         <div className="text-center flex flex-col gap-4 lg:gap-6">
           <h4 className="text-[64px] lg:text-[72px] leading-[120%] text-[#ffffff]">
-            7 + Years
+          {t('statistic.card3_subtitle')}
           </h4>
           <p className="text-[#F1F3F6] text-[18px] leading-[26px] font-[ClashDisplay-Regular] max-w-[350px] mx-auto">
-            A decade of expertise in furniture design and innovation.
+          {t('statistic.card3_title')}
           </p>
         </div>
       </div>
