@@ -169,7 +169,7 @@ const Partners = () => {
           </Swiper>
         </div>
       {
-        location == '/about-us' ?  "":
+        location == '/about-us' || location == "/contact" ?  "":
         <p className="hidden md:block text-[56px] leading-[140%] mt-[64px] text-[#15181E]">
           {t('partner.text')}
         </p>}
