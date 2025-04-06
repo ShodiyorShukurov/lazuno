@@ -75,7 +75,7 @@ const Partners = () => {
   return (
     <section className="pt-[64px]">
       <div className="container">
-        <h2 className="font-medium text-[48px] leading-[126%] text-center">
+        <h2 className="text-[36px] sm:text-[48px] leading-[126%] text-center">
           {t('partner.title')}
         </h2>
         <div className="hidden lg:flex gap-8 items-center justify-center flex-wrap mt-[36px]">

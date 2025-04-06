@@ -24,7 +24,7 @@ const Collection = () => {
     <section className="pt-[64px]">
       <div className="container">
         <div className="flex flex-col sm:flex-row justify-between sm:items-center mb-[48px]">
-          <h2 className="text-[48px] leading-[126%]">{t('category.title')}</h2>
+          <h2 className="text-[36px] sm:text-[48px] leading-[126%]">{t('category.title')}</h2>
           <button className="w-fit pl-[24px] p-[3px] flex items-center gap-6 bg-[#037C6A] rounded-[48px] text-[16px] text-[#ffffff] leading-[150%] cursor-pointer mt-6 sm:mt-0">
             {t('category.button_text')}
             <span className="bg-[#FFFFFF] w-[40px] h-[40px] flex justify-center items-center rounded-full">

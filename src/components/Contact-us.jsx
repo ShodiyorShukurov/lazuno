@@ -14,7 +14,7 @@ const ContactUs = () => {
   return (
     <section className="pt-[64px]">
       <div className="container">
-        <h2 className="text-[48px] leading-[126%] text-[#15181E] text-center">
+        <h2 className="text-[36px] sm:text-[48px] leading-[126%] text-[#15181E] text-center">
           {t('contact-us.title')}
         </h2>
         <p className="text-[20px] leading-[150%] text-[#15181E] font-[ClashDisplay-Regular] mt-[12px] text-center">

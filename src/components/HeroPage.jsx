@@ -68,7 +68,7 @@ const HeroPage = () => {
       />
 
       <div className="container relative z-10 h-full flex flex-col justify-end pb-[60px]">
-        <h1 className="text-white text-[48px] md:text-[72px] font-semibold text-left w-full md:max-w-[790px] leading-[120%] font-[ClashDisplay-Semibold]">
+        <h1 className="text-white text-[36px] sm:text-[48px] md:text-[72px] font-semibold text-left w-full md:max-w-[790px] leading-[120%] font-[ClashDisplay-Semibold]">
          {t('hero.title')}
         </h1>
         <p className="text-white text-[16px] md:text-[18px] font-medium text-left w-full md:max-w-[660px] leading-[26px] mt-[12px] md:mt-[24px] font-[ClashDisplay-Medium]">

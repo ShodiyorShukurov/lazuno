@@ -13,7 +13,7 @@ const AboutUsComponent = () => {
           <li className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-[56px] items-center">
             <img src={aboutImg1} alt="img" className='h-full min-h-[460px] object-cover rounded-4xl'/>
             <div>
-              <h2 className="text-[48px] leading-[126%] text-[#15181E]">
+              <h2 className="text-[36px] sm:text-[48px] leading-[126%] text-[#15181E]">
                 {t('about-us.card1_title')}
               </h2>
               <p className="text-[20px] leading-[150%] text-[#15181E] font-[ClashDisplay-Regular] mt-[16px]" dangerouslySetInnerHTML={{__html:t('about-us.card1_text')}} />
@@ -21,7 +21,7 @@ const AboutUsComponent = () => {
           </li>
           <li className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-[56px] items-center">
             <div className='row-start-2 lg:row-start-1'>
-              <h2 className="text-[48px] leading-[126%] text-[#15181E]">
+              <h2 className="text-[36px] sm:text-[48px] leading-[126%] text-[#15181E]">
               {t('about-us.card2_title')}
               </h2>
               <p className="text-[20px] leading-[150%] text-[#15181E] font-[ClashDisplay-Regular] mt-[16px]" dangerouslySetInnerHTML={{__html:t('about-us.card2_text')}} />

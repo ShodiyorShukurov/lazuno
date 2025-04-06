@@ -30,7 +30,7 @@ const Testimonials = () => {
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-[32px]">
           <div>
-            <h2 className="text-[#15181E] text-[48px] leading-[126%]">
+            <h2 className="text-[#15181E] text-[32px] sm:text-[48px] leading-[126%]">
               Testimonials
             </h2>
             <ul className="mt-[32px] flex flex-col gap-4">
