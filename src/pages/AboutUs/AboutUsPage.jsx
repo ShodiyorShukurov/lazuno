@@ -5,7 +5,7 @@ import Partners from '../../components/Partners';
 import About from '../../components/About';
 import Footer from '../../components/footer';
 import StatisticCard from '../../components/StatisticCard';
-import AboutUsComponent from '../../components/about-us';
+import AboutUsComponent from '../../components/About-us';
 
 
 const AboutUs = () => {

@@ -18,7 +18,7 @@ const MainPage = () => {
       <main>
         <Partners />
         <StatisticCard />
-        {/* <Collection/> */}
+        <Collection/>
         <ProductList />
         <InfoCard />
         <Testimonials/>

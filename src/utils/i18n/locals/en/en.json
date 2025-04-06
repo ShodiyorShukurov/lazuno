@@ -40,6 +40,20 @@
         "card4_title": "Flexible Payment",
         "card4_text": "Pay with multiple credit cards"
     },
+    "contact-us": {
+        "title": "Let’s get in touch!",
+        "subtitle": "For the past 7+ years, our company has been fully dedicated to enhancing and refining the process of crafting high-quality garden furniture in a wide range of formats, styles, and designs.",
+        "label1": "Full Name",
+        "placeholder1": "Your Name",
+        "label2": "Phone Number",
+        "label3": "Message",
+        "placeholder3": "Please enter your messege here...",
+        "button_text": "Submit your contacts!"
+    },
+    "category": {
+        "title": "Shop By Category",
+        "button_text": "View All"
+    },
     "footer": {
         "phone_number": "Phone Number",
         "location_text": "Office Location",

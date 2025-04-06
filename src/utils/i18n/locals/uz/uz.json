@@ -40,6 +40,20 @@
         "card4_title": "Moslashuvchan to‘lov",
         "card4_text": "Bir nechta karta bilan to‘lang"
     },
+    "contact-us": {
+        "title": "Keling, aloqaga chiqaylik!",
+        "subtitle": "So‘nggi 7 yildan ortiq vaqt davomida kompaniyamiz bog‘ mebellarini turli formatlar, uslublar va dizaynlarda yuqori sifatli ishlab chiqarish jarayonini takomillashtirish va yaxshilashga to‘liq bag‘ishlangan.",
+        "label1": "To‘liq ism",
+        "placeholder1": "Ismingiz",
+        "label2": "Telefon raqami",
+        "label3": "Xabar",
+        "placeholder3": "Iltimos, xabaringizni shu yerga kiriting...",
+        "button_text": "Kontaktlaringizni yuboring!"
+    },
+    "category": {
+        "title": "Kategoriya bo‘yicha xarid qilish",
+        "button_text": "Hammasini ko‘rish"
+    },
     "footer": {
         "phone_number": "Telefon raqami",
         "location_text": "Ofis manzili",
