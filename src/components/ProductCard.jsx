@@ -79,7 +79,7 @@ const ProductCard = () => {
                 width={300}
               />
               <button
-                className={`absolute bottom-14 left-1/2 transform -translate-x-1/2 bg-[#037C6A] text-white text-[16px] leading-[150%] py-[16px] transition-all duration-500 ease-in-out w-full rounded-[16px] cursor-pointer ${
+                className={`absolute bottom-8 left-1/2 transform -translate-x-1/2 bg-[#037C6A] text-white text-[16px] leading-[150%] py-[16px] transition-all duration-500 ease-in-out w-full rounded-[16px] cursor-pointer ${
                   isHovered && id === item.id
                     ? 'opacity-100 translate-y-0'
                     : 'opacity-0 translate-y-4'
