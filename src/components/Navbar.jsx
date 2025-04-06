@@ -28,9 +28,9 @@ const Navbar = () => {
   const [selectedLangObj, setSelectedLangObj] = React.useState(
     localStorage.getItem('lng') == 'en'
       ? languages[0]
-      : localStorage.getItem('lng') == 'uz'
-      ? languages[2]
-      : languages[1]
+      : localStorage.getItem('lng') == 'ру'
+      ? languages[1]
+      : languages[2]
   );
   const [isOpen, setIsOpen] = React.useState(false);
   const [burgerMenu, setBurgerMenu] = React.useState(false);
@@ -45,6 +45,7 @@ const Navbar = () => {
     setSelectedLanguage(lng.code);
     setSelectedLangObj(lng);
     setIsOpen(false);
+    setBurgerMenu(false)
   };
 
   return (
