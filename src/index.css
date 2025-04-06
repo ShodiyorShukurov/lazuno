@@ -111,19 +111,11 @@ img {
   max-width: 90%;
   margin-right: auto;
   margin-left: auto;
-  padding-right: 40px;
-  padding-left: 40px;
+  padding-right: 30px;
+  padding-left: 30px;
 }
 
-
-@media screen and (max-width: 1536px) {
-  .container{
-    padding-left: 30px;
-    padding-right: 30px;
-  }
-}
-
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 1440px) {
   .container{
     padding-left: 40px;
     padding-right: 40px;
@@ -136,5 +128,21 @@ img {
   .container{
     padding: 0 20px;
     max-width: 100%;
+  }
+}
+
+.lang-right{
+  right: calc(6% - 9px) !important;
+}
+
+@media screen and (max-width: 1440px) {
+  .lang-right{
+    right: calc(1% - 0px) !important;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .lang-right{
+    right: calc(3% - 0px) !important;
   }
 }

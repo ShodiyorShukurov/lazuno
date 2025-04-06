@@ -29,7 +29,7 @@ const CartSidebar = ({ openSidebar, setOpenSidebar }) => {
     // Overlay
     <div className="fixed inset-0 z-50 flex justify-end items-end sm:items-baseline bg-[#0000003D] backdrop-blur-[24px] transition-all duration-1000">
 
-      <div className="h-full max-h-[630px] sm:max-h-full w-full sm:max-w-md bg-white rounded-tr-[32px] sm:rounded-bl-[32px] rounded-tl-[32px] p-6 flex flex-col justify-end overflow-y-auto">
+      <div className="h-full max-h-[630px] sm:max-h-full w-full sm:max-w-md bg-white rounded-tr-[32px] sm:rounded-tr-none sm:rounded-bl-[32px] rounded-tl-[32px] p-6 flex flex-col justify-end overflow-y-auto">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-[18px] leading-[150%]">
             You have{' '}

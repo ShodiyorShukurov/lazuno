@@ -1,11 +1,18 @@
-import React from 'react'
+import React from 'react';
+import Footer from '../../components/footer';
+import ProductNavbar from '../../components/ProductNavbar';
+import ProductAllCards from '../../components/ProductAllCards';
 
-const ProductPage = () => {
+const ProductPage = ({ setOpenSidebar,  setOpen }) => {
   return (
-    <section>
-      
-    </section>
-  )
-}
+    <>
+      <ProductNavbar setOpenSidebar={setOpenSidebar}  />
+      <main>
+        <ProductAllCards setOpen={setOpen} />
+      </main>
+      <Footer />
+    </>
+  );
+};
 
-export default ProductPage
+export default ProductPage;
