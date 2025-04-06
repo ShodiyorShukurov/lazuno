@@ -143,6 +143,12 @@ img {
 
 @media screen and (max-width: 1024px) {
   .lang-right{
-    right: calc(3% - 0px) !important;
+    right: calc(5% - 0px) !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .lang-right{
+    right: calc(5% + 20px) !important;
   }
 }
