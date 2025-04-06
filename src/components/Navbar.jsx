@@ -11,7 +11,7 @@ import uzb from '../assets/logo/Uzbekistan.svg';
 import rus from '../assets/logo/Russia.svg';
 import { useTranslation } from 'react-i18next';
 
-const Navbar = () => {
+const Navbar = ({setOpenSidebar}) => {
   const languages = [
     { code: 'en', name: 'English', flag: usa },
     { code: 'ру', name: 'Russian', flag: rus },
@@ -23,7 +23,7 @@ const Navbar = () => {
   const [selectedLanguage, setSelectedLanguage] = React.useState(
     localStorage.getItem('lng')
       ? localStorage.getItem('lng')
-      : languages[0].code
+      : languages[2].code
   );
   const [selectedLangObj, setSelectedLangObj] = React.useState(
     localStorage.getItem('lng') == 'en'
@@ -45,7 +45,7 @@ const Navbar = () => {
     setSelectedLanguage(lng.code);
     setSelectedLangObj(lng);
     setIsOpen(false);
-    setBurgerMenu(false)
+    setBurgerMenu(false);
   };
 
   return (
@@ -116,7 +116,7 @@ const Navbar = () => {
             </nav>
 
             <div className="flex items-center gap-[8px]">
-              <button className="p-[12px] bg-[#FFFFFF1F] border-[3px] border-[#FFFFFF33] rounded-full cursor-pointer">
+              <button onClick={()=>setOpenSidebar(true)} className="p-[12px] bg-[#FFFFFF1F] border-[3px] border-[#FFFFFF33] rounded-full cursor-pointer">
                 <img
                   src={shop}
                   alt="shopping bag"

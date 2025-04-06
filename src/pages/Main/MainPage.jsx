@@ -10,10 +10,10 @@ import About from '../../components/About';
 import Footer from '../../components/footer';
 import Collection from '../../components/Collection';
 
-const MainPage = () => {
+const MainPage = ({setOpenSidebar}) => {
   return (
     <>
-      <Navbar />
+      <Navbar setOpenSidebar={setOpenSidebar}/>
       <HeroPage />
       <main>
         <Partners />
