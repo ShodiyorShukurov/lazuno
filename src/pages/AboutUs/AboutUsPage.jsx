@@ -8,10 +8,10 @@ import StatisticCard from '../../components/StatisticCard';
 import AboutUsComponent from '../../components/About-us';
 
 
-const AboutUs = () => {
+const AboutUs = ({setOpenSidebar}) => {
   return (
     <>
-      <Navbar />
+      <Navbar setOpenSidebar={setOpenSidebar}/>
       <HeroPage />
       <main>
         <Partners />

@@ -7,10 +7,10 @@ import ContactUs from '../../components/Contact-us';
 
 
 
-const ContactPage = () => {
+const ContactPage = ({setOpenSidebar}) => {
   return (
     <>
-      <Navbar />
+      <Navbar setOpenSidebar={setOpenSidebar} />
       <HeroPage />
       <main>
         <ContactUs/>

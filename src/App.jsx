@@ -16,8 +16,8 @@ const App = () => {
           path="/"
           element={<MainPage setOpenSidebar={setOpenSidebar} />}
         />
-        <Route path="/about-us" element={<AboutUs />} />
-        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/about-us" element={<AboutUs setOpenSidebar={setOpenSidebar}/>} />
+        <Route path="/contact" element={<ContactPage setOpenSidebar={setOpenSidebar}/>} />
       </Routes>
 
       <CartSidebar openSidebar={openSidebar} setOpenSidebar={setOpenSidebar} />
