@@ -6,6 +6,7 @@ import item2 from '../assets/carousel/item2.png';
 import item3 from '../assets/carousel/item3.png';
 import item4 from '../assets/carousel/item3.png';
 import { useTranslation } from 'react-i18next';
+import Pagination from './Pagniation';
 
 const items = [
   { id: 1, name: 'Isabella Chair', img: item1 },
@@ -49,6 +50,8 @@ const ProductAllCards = ({setOpen}) => {
             </div>
           ))}
         </div>
+
+        <Pagination/>
       </div>
     </section>
   );
