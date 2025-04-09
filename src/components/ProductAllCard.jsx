@@ -1,9 +1,13 @@
-import { useState } from 'react';
+import React from 'react';
+import right from '../assets/logo/direction-right 2.svg';
 import card1 from '../assets/card/card1.png';
 import card2 from '../assets/card/card2.png';
 import card3 from '../assets/card/card3.png';
 import card4 from '../assets/card/card4.png';
-
+import { useTranslation } from 'react-i18next';
+import Pagination from './Pagniation';
+import ProductComponents from './ProductComponents';
+import { useNavigate } from 'react-router-dom';
 
 const cardArr = [
   {
@@ -47,18 +51,21 @@ const cardArr = [
     img: card4,
   },
 ];
-
-const ProductCard = () => {
-  const [isHovered, setIsHovered] = useState(false);
-  const [id, setId] = useState('');
+const ProductAllCards = ({setOpen}) => {
+  const { t } = useTranslation();
+    const [isHovered, setIsHovered] = React.useState(false);
+    const [id, setId] = React.useState('');
+    const navigate = useNavigate()
 
   return (
-    <section className="pt-[80px]">
+    <section className="pt-[120px]">
       <div className="container">
-        <h2 className="text-[32px] sm:text-[48px] leading-[126%] mb-[36px] md:mb-[48px]">
-          Latest Collections
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
+        <h5 className="hidden sm:flex  text-[14px] leading-[140%] text-[#15181E] font-[ClashDisplay-Regular]">
+          Home <img src={right} alt="right" /> Product
+        </h5>
+        <ProductComponents setOpen={setOpen}/>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 mt-[48px]">
           {cardArr?.map((item) => (
             <div
               key={item.id}
@@ -71,6 +78,7 @@ const ProductCard = () => {
                 setId('');
                 setIsHovered(false);
               }}
+              onClick={()=>navigate('/product/1')}
             >
               <img
                 src={item.img}
@@ -95,29 +103,11 @@ const ProductCard = () => {
             </div>
           ))}
         </div>
-        <button className="w-fit pl-[24px] p-[3px] flex items-center gap-6 bg-[#037C6A] rounded-[48px] text-[16px] text-[#ffffff] leading-[150%] mx-auto cursor-pointer mt-[24px] md:my-[48px]">
-          View All
-          <span className="bg-[#FFFFFF] w-[40px] h-[40px] flex justify-center items-center rounded-full">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 22 22"
-              fill="none"
-            >
-              <path
-                d="M12.714 7.57141L16.1426 11M16.1426 11L12.714 14.4286M16.1426 11L5.85686 11"
-                stroke="#000000"
-                strokeWidth="0.857143"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </span>
-        </button>
+
+        <Pagination/>
       </div>
     </section>
   );
 };
 
-export default ProductCard;
+export default ProductAllCards;

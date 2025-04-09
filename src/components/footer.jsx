@@ -15,15 +15,6 @@ import mastercard from '../assets/logo/mastercard.svg';
 import uzb from '../assets/logo/Uzbekistan.svg';
 import { useTranslation } from 'react-i18next';
 
-const peymentArr = [
-  { id: 1, img: uzcard, title: 'uzcard' },
-  { id: 2, img: humo, title: 'humo' },
-  { id: 3, img: click, title: 'click' },
-  { id: 4, img: payme, title: 'payme' },
-  { id: 5, img: visa, title: 'visa' },
-  { id: 6, img: mastercard, title: 'mastercard' },
-];
-
 const Footer = () => {
   const [phone, setPhone] = React.useState('');
   const { t } = useTranslation();
@@ -153,7 +144,7 @@ const Footer = () => {
               <NavLink to="/about-us">{t('footer.about')}</NavLink>
             </li>
             <li>
-              <NavLink to="/product">{t('footer.product')}</NavLink>
+              <NavLink to="/category">{t('footer.product')}</NavLink>
             </li>
             <li>
               <NavLink to="/contact">{t('footer.contact')}</NavLink>
@@ -194,22 +185,9 @@ const Footer = () => {
         </div>
 
         <div className="py-[19px]">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-[16px] leading-[150%] font-[ClashDisplay-Regular]">
-              {t('footer.all')}
-            </p>
-            <div className="flex space-x-4 mt-4 md:mt-0">
-              {peymentArr.map((item) => (
-                <a href="#" key={item.id}>
-                  <img
-                    src={item.img}
-                    alt={item.title}
-                    className="h-[30px] w-[45px]"
-                  />
-                </a>
-              ))}
-            </div>
-          </div>
+          <p className="text-[16px] leading-[150%] font-[ClashDisplay-Regular]">
+            {t('footer.all')}
+          </p>
         </div>
       </div>
     </footer>

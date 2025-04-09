@@ -7,6 +7,8 @@ import item2 from '../assets/carousel/item2.png';
 import item3 from '../assets/carousel/item3.png';
 import item4 from '../assets/carousel/item3.png';
 import { useTranslation } from 'react-i18next';
+import { Autoplay } from 'swiper/modules';
+import { useNavigate } from 'react-router-dom';
 
 const items = [
   { id: 1, name: 'Isabella Chair', img: item1 },
@@ -19,6 +21,7 @@ const items = [
 
 const Collection = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate()
 
   return (
     <section className="pt-[64px]">
@@ -55,6 +58,11 @@ const Collection = () => {
             slidesPerView={4}
             spaceBetween={20}
             loop={true}
+            autoplay={{
+              delay: 1500,
+              disableOnInteraction: true,
+            }}
+            modules={[Autoplay]}
             breakpoints={{
               480: { slidesPerView: 1 },
               640: { slidesPerView: 2 },
@@ -68,6 +76,7 @@ const Collection = () => {
               <SwiperSlide
                 key={item.id}
                 className="h-[550px] flex flex-col items-center bg-white rounded-[32px] overflow-hidden"
+                onClick={()=>navigate('/product')}
               >
                 <div
                   className="relative bg-cover bg-center rounded-[16px] overflow-hidden sm:h-auto project-card cursor-pointer"

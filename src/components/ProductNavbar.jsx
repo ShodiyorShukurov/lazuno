@@ -49,7 +49,7 @@ const ProductNavbar = ({ setOpenSidebar }) => {
 
   return (
     <div className="relative">
-      <header className="z-50  py-[20px] w-full  border-b-2 border-[#F1F3F6]  lg:border-none">
+      <header className="fixed z-50 py-[20px] w-full  border-b-2 bg-white border-[#F1F3F6] ">
         <div className="container">
           <div className="flex items-center justify-between w-full">
             <a href="/">
@@ -177,32 +177,6 @@ const ProductNavbar = ({ setOpenSidebar }) => {
                     />
                   </svg>
                 </button>
-
-                {isOpen && (
-                  <div
-                    style={{ backdropFilter: 'blur(56px)' }}
-                    className="absolute mt-2 -left-4 w-full min-w-[150px] bg-[#FFFFFF1F]  border-[#F1F3F6] border-x-2 border-b-2 overflow-hidden rounded-[24px] px-[12px] py-[16px]"
-                  >
-                    {languages.map((lang) =>
-                      lang.code == selectedLangObj.code ? (
-                        ''
-                      ) : (
-                        <button
-                          key={lang.code}
-                          onClick={() => changeValues(lang)}
-                          className="flex items-center gap-2 w-full px-[20px] py-[12px] bg-[#FFFFFF1F] text-[#15181E] transition capitalize mb-2 rounded-2xl border-2 border-[#F1F3F6] cursor-pointer"
-                        >
-                          <img
-                            src={lang.flag}
-                            alt={lang.name}
-                            className="w-[25px] h-[20px] object-cover"
-                          />
-                          {lang.name}
-                        </button>
-                      )
-                    )}
-                  </div>
-                )}
               </div>
 
               <button
@@ -211,7 +185,7 @@ const ProductNavbar = ({ setOpenSidebar }) => {
               >
                 {burgerMenu ? (
                   <svg
-                  className="w-[32px] md:w-[54px] h-[32px] md:h-[54px]"
+                    className="w-[32px] md:w-[54px] h-[32px] md:h-[54px]"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 32 32"
                     fill="none"
@@ -256,7 +230,7 @@ const ProductNavbar = ({ setOpenSidebar }) => {
             {[
               { to: '/', label: t('navbar.home') },
               { to: '/about-us', label: t('navbar.about') },
-              { to: '/product', label: t('navbar.product') },
+              { to: '/category', label: t('navbar.product') },
               { to: '/contact', label: t('navbar.contact') },
             ].map(({ to, label }) => (
               <NavLink
@@ -296,31 +270,34 @@ const ProductNavbar = ({ setOpenSidebar }) => {
                 alt="chevron"
               />
             </button>
-
-            {isOpen && (
-              <div className="absolute mt-2 w-full min-w-[150px] bg-[#FFFFFF1F]  border-[#FFFFFF4D] border-x-2 border-b-2 overflow-hidden rounded-[24px] px-[12px] py-[16px] backdrop-blur-[56px] z-40">
-                {languages.map((lang) =>
-                  lang.code == selectedLangObj.code ? (
-                    ''
-                  ) : (
-                    <button
-                      key={lang.code}
-                      onClick={() => changeValues(lang)}
-                      className="flex items-center gap-2 w-full px-[20px] py-[12px] bg-[#FFFFFF1F] text-white transition capitalize mb-2 rounded-2xl border-2 border-[#FFFFFF33] cursor-pointer"
-                    >
-                      <img
-                        src={lang.flag}
-                        alt={lang.name}
-                        className="w-[25px] h-[20px] object-cover"
-                      />
-                      {lang.name}
-                    </button>
-                  )
-                )}
-              </div>
-            )}
           </div>
         </nav>
+      )}
+
+      {isOpen && (
+        <div
+          style={{ backdropFilter: 'blur(56px)' }}
+          className="fixed top-120 md:top-[calc(50%+15px)] lg:top-19 lang-right w-fit mt-2  min-w-[150px] bg-[#00000029]  border-[#FFFFFF4D] border-x-2 border-b-2 overflow-hidden rounded-[24px] px-[12px] py-[16px] z-50"
+        >
+          {languages.map((lang) =>
+            lang.code == selectedLangObj.code ? (
+              ''
+            ) : (
+              <button
+                key={lang.code}
+                onClick={() => changeValues(lang)}
+                className="flex items-center gap-2 w-full px-[20px] py-[12px] bg-[#0000003D] text-white transition capitalize mb-2 rounded-2xl border-2 border-[#FFFFFF33] cursor-pointer"
+              >
+                <img
+                  src={lang.flag}
+                  alt={lang.name}
+                  className="w-[25px] h-[20px] object-cover"
+                />
+                {lang.name}
+              </button>
+            )
+          )}
+        </div>
       )}
     </div>
   );

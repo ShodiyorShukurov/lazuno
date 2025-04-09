@@ -1,11 +1,11 @@
 import React from 'react';
 import filter from '../assets/logo/filter.svg';
 
-const ProductComponents = ({setOpen}) => {
+const CategoryComponents = ({setOpen}) => {
   return (
     <div className="flex justify-between sm:items-center sm:pt-[24px]">
       <h2 className="text-[24px] leading-[150%] text-[#15181E]">
-        All Product (342)
+        All Category (342)
       </h2>
       <div className="flex justify-center gap-4 items-center">
         <button className="flex gap-2 py-3 px-6 bg-[#037C6A] rounded-full text-white cursor-pointer text-[16px] leading-[150%] font-[ClashDisplay-Regular]" onClick={()=>setOpen(true)}>
@@ -17,4 +17,4 @@ const ProductComponents = ({setOpen}) => {
   );
 };
 
-export default ProductComponents;
+export default CategoryComponents;

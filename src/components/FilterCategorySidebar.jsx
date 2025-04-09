@@ -1,6 +1,6 @@
 import React from 'react';
 
-const FilterSidebar = ({ open, setOpen }) => {
+const FilterCategorySidebar = ({ open, setOpen }) => {
   if (!open) return null;
 
   const [openCategories, setOpenCategories] = React.useState(false);
@@ -153,4 +153,4 @@ const FilterSidebar = ({ open, setOpen }) => {
   );
 };
 
-export default FilterSidebar;
+export default FilterCategorySidebar;

@@ -24,7 +24,7 @@ const cartItems = [
 
 const CartSidebar = ({ openSidebar, setOpenSidebar }) => {
   if (!openSidebar) return null;
-console.log(openSidebar)
+
   return (
     // Overlay
     <div className="fixed inset-0 z-50 transition-all duration-1000">

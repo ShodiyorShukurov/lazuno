@@ -97,7 +97,7 @@ const Navbar = ({ setOpenSidebar }) => {
                     className={({ isActive }) =>
                       `${isActive ? 'border-b-[2px]' : ''} py-[12px]`
                     }
-                    to="/product"
+                    to="/category"
                   >
                     {t('navbar.product')}
                   </NavLink>
@@ -177,7 +177,7 @@ const Navbar = ({ setOpenSidebar }) => {
             {[
               { to: '/', label: t('navbar.home') },
               { to: '/about-us', label: t('navbar.about') },
-              { to: '/product', label: t('navbar.product') },
+              { to: '/category', label: t('navbar.product') },
               { to: '/contact', label: t('navbar.contact') },
             ].map(({ to, label }) => (
               <NavLink

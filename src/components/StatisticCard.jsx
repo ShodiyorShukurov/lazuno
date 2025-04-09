@@ -12,9 +12,8 @@ const StatisticCard = () => {
       style={{
         backgroundImage: `url(${bg})`,
         backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
       }}
-      className="bg-[#191D24] mt-[64px] py-[50px] xl:py-[80px] rounded-[36px]"
+      className="bg-[#191D24] bg-cover mt-[64px] py-[50px] xl:py-[80px] rounded-[36px]"
     >
       <div className="container flex items-center justify-center md:justify-between flex-wrap gap-[56px] md:gap-6">
         <div className="text-center flex flex-col gap-4 lg:gap-6">

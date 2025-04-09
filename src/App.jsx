@@ -4,10 +4,12 @@ import { Route, Routes } from 'react-router-dom';
 import AboutUs from './pages/AboutUs/AboutUsPage';
 import ContactPage from './pages/ContactUs/ContactPage';
 import CartSidebar from './components/CardSidebar';
+import CategoryPage from './pages/Category/CategoryPage';
+import FilterCategorySidebar from './components/FilterCategorySidebar'
+import ProductDetailPage from './pages/ProductDetail/ProductDetailPage';
+import useFilter from './hooks/useFilter';
 import useSidebar from './hooks/useSidebar';
 import ProductPage from './pages/Product/ProductPage';
-import FilterSidebar from './components/FilterSidebar'
-import useFilter from './hooks/useFilter';
 
 const App = () => {
   const { openSidebar, setOpenSidebar } = useSidebar();
@@ -28,11 +30,15 @@ const App = () => {
           path="/contact"
           element={<ContactPage setOpenSidebar={setOpenSidebar} />}
         />
-        <Route path="/product" element={<ProductPage setOpenSidebar={setOpenSidebar}  setOpen={setOpen}/>} />
+        <Route path="/category" element={<CategoryPage setOpenSidebar={setOpenSidebar}  setOpen={setOpen}/>} />
+        <Route path="/category/:id" element={<ProductPage setOpenSidebar={setOpenSidebar}  setOpen={setOpen}/>} />
+        <Route
+          path="/product/:id"
+          element={<ProductDetailPage setOpenSidebar={setOpenSidebar}/>}/>
       </Routes>
 
       <CartSidebar openSidebar={openSidebar} setOpenSidebar={setOpenSidebar} />
-      <FilterSidebar open={open} setOpen={setOpen}/>
+      <FilterCategorySidebar open={open} setOpen={setOpen}/>
     </div>
   );
 };
