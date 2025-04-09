@@ -28,10 +28,10 @@ const Review = () => {
   return (
     <section className="pt-[48px]">
       <div className="container">
-        <div className="flex justify-between items-center flex-">
+        <div className="flex justify-between items-center flex-wrap gap-4">
           <h2 className="text-[48px] leading-[150%]">Reviews</h2>
           <button
-            className="w-fit pl-[24px] p-[3px] flex items-center gap-6 bg-[#037C6A] rounded-[48px] text-[16px] text-[#ffffff] leading-[150%] cursor-pointer mt-[24px]"
+            className="w-fit pl-[24px] p-[3px] flex items-center gap-6 bg-[#037C6A] rounded-[48px] text-[16px] text-[#ffffff] leading-[150%] cursor-pointer"
             onClick={() => setIsModalOpen(true)}
           >
             Write a Review
@@ -54,41 +54,6 @@ const Review = () => {
             </span>
           </button>
         </div>
-{/* 
-        <div className='flex items-center gap-4 mt-6 '>
-
-        <ReactStars
-          count={5}
-          onChange={ratingChanged}
-          size={24}
-          activeColor="#ffd700"
-          emptyIcon={<svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-          >
-            <path
-              d="M12 2L14.2451 8.90983H21.5106L15.6327 13.1803L17.8779 20.0902L12 15.8197L6.12215 20.0902L8.36729 13.1803L2.48944 8.90983H9.75486L12 2Z"
-              fill="#ffff"
-            />
-          </svg>}
-          // halfIcon={<i className="fa fa-star-half-alt"></i>}
-          fullIcon={<svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-          >
-            <path
-              d="M12 2L14.2451 8.90983H21.5106L15.6327 13.1803L17.8779 20.0902L12 15.8197L6.12215 20.0902L8.36729 13.1803L2.48944 8.90983H9.75486L12 2Z"
-              fill="#037C6A"
-            />
-          </svg>}
-        />
-        </div> */}
         <ul className="flex flex-col gap-6 pt-[32px]">
           <li className="pb-4 border-b border-[#E6E9F2]">
             <h4 className="text-[16px] leading-[150%] text-[#15181E]">
