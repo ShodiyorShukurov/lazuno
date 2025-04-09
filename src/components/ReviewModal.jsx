@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 // import { FaStar } from 'react-icons/fa';
 
-const ReviewModal = ({ isOpen, onClose }) => {
+const ReviewModal = ({ isOpen, onClose, setSuccessReview }) => {
   if (!isOpen) return null;
 
   const [rating, setRating] = useState(0);
@@ -19,7 +19,8 @@ const ReviewModal = ({ isOpen, onClose }) => {
     e.preventDefault();
     const data = { rating, name, email, review };
     console.log('Submitted review:', data);
-   
+    setSuccessReview(true)
+    onClose();
     setRating(0);
     setName('');
     setEmail('');

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReviewModal from './ReviewModal';
-import ReactStars from 'react-rating-stars-component';
+import ReviewSuccessModal from './ReviewSuccessModal';
 
 const Star = () => (
   <svg
@@ -19,6 +19,8 @@ const Star = () => (
 
 const Review = () => {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
+  const [successReview, setSuccessReview]= React.useState(false)
+
   const ratingChanged = (newRating) => {
     console.log(newRating);
   };
@@ -52,7 +54,7 @@ const Review = () => {
             </span>
           </button>
         </div>
-
+{/* 
         <div className='flex items-center gap-4 mt-6 '>
 
         <ReactStars
@@ -86,7 +88,7 @@ const Review = () => {
             />
           </svg>}
         />
-        </div>
+        </div> */}
         <ul className="flex flex-col gap-6 pt-[32px]">
           <li className="pb-4 border-b border-[#E6E9F2]">
             <h4 className="text-[16px] leading-[150%] text-[#15181E]">
@@ -141,7 +143,8 @@ const Review = () => {
         </ul>
       </div>
 
-      <ReviewModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <ReviewModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} setSuccessReview={setSuccessReview}/>
+       <ReviewSuccessModal successReview={successReview} onClose={()=>setSuccessReview(false)}/>
     </section>
   );
 };

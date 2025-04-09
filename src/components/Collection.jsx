@@ -28,7 +28,7 @@ const Collection = () => {
       <div className="container">
         <div className="flex flex-col sm:flex-row justify-between sm:items-center mb-[48px]">
           <h2 className="text-[36px] sm:text-[48px] leading-[126%]">{t('category.title')}</h2>
-          <button className="w-fit pl-[24px] p-[3px] flex items-center gap-6 bg-[#037C6A] rounded-[48px] text-[16px] text-[#ffffff] leading-[150%] cursor-pointer mt-6 sm:mt-0">
+          <button className="w-fit pl-[24px] p-[3px] flex items-center gap-6 bg-[#037C6A] rounded-[48px] text-[16px] text-[#ffffff] leading-[150%] cursor-pointer mt-6 sm:mt-0" onClick={()=>navigate('/category')}>
             {t('category.button_text')}
             <span className="bg-[#FFFFFF] w-[40px] h-[40px] flex justify-center items-center rounded-full">
               <svg
@@ -76,7 +76,7 @@ const Collection = () => {
               <SwiperSlide
                 key={item.id}
                 className="h-[550px] flex flex-col items-center bg-white rounded-[32px] overflow-hidden"
-                onClick={()=>navigate('/product')}
+                onClick={()=>navigate('/category')}
               >
                 <div
                   className="relative bg-cover bg-center rounded-[16px] overflow-hidden sm:h-auto project-card cursor-pointer"
@@ -123,6 +123,7 @@ const Collection = () => {
                 backgroundImage: `url(${item.img})`,
                 height: '350px',
               }}
+              onClick={()=>navigate('/category')}
             >
               <div className="absolute inset-0 bg-[#0000000A] z-0"></div>
               <div className="absolute flex bottom-0 left-0 right-0 h-auto pl-[24px] pb-[24px] text-white">
