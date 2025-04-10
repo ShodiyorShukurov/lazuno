@@ -20,8 +20,8 @@ const ReviewModal = ({ isOpen, onClose, setSuccessReview }) => {
 
   const { t } = useTranslation();
 
-  const [rating, setRating] = useState(0);
-  const [hover, setHover] = useState(0);
+  const [rating, setRating] = useState(1);
+  const [hover, setHover] = useState(1);
 
   const phoneArr = [
     {
@@ -59,8 +59,16 @@ const ReviewModal = ({ isOpen, onClose, setSuccessReview }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const data = { rating, name, email, review };
-    console.log('Submitted review:', data);
+    const name = e.target.name.value;
+    const phoneNumber = e.target.phone.value;
+    const email = e.target.email.value;
+    if(!name && !phoneNumber) {
+      setErrorName("Ismingizni kiriting");
+      setError(t('footer.error1'));
+      setEmail("Emailingizni kiriting");
+      setReview("Xabar kamida 10ta belgidan iborat bo'lishi kerak");
+      return
+    }   
     setSuccessReview(true);
     onClose();
     setRating('');
@@ -126,7 +134,7 @@ const ReviewModal = ({ isOpen, onClose, setSuccessReview }) => {
         </div>
         {/* Form */}
         <form
-          onSubmit={handleSubmit}
+          onSubmit={(e)=>handleSubmit(e)}
           className="flex flex-col gap-4 text-[14px] leading-[140%] text-[#8292AA] font-[ClashDisplay-Regular]"
         >
           <label htmlFor="name">
