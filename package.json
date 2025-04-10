@@ -10,11 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@react-input/mask": "^2.0.4",
     "@tailwindcss/vite": "^4.0.17",
     "i18next": "^24.2.3",
     "react": "^19.0.0",
+    "react-countup": "^6.5.3",
     "react-dom": "^19.0.0",
     "react-i18next": "^15.4.1",
+    "react-input-mask": "^2.0.4",
     "react-phone-input-2": "^2.15.1",
     "react-rating-stars-component": "^2.2.0",
     "react-router-dom": "^7.4.0",

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
+import { Autoplay, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import partner1 from '../assets/partners/partner1.png';
@@ -69,8 +69,7 @@ const partnersArr = [
 ];
 
 const Partners = () => {
-
-  const {t} =useTranslation()
+  const { t } = useTranslation();
   const location = window.location.pathname;
   return (
     <section className="pt-[64px]">
@@ -103,7 +102,11 @@ const Partners = () => {
               nextEl: '.swiper-button-next-custom',
               prevEl: '.swiper-button-prev-custom',
             }}
-            modules={[Navigation]}
+            autoplay={{
+              delay: 1500,
+              disableOnInteraction: true,
+            }}
+            modules={[Navigation, Autoplay]}
             breakpoints={{
               0: { slidesPerView: 2 },
               480: { slidesPerView: 2 },
@@ -140,7 +143,12 @@ const Partners = () => {
               nextEl: '.swiper-button-next-custom',
               prevEl: '.swiper-button-prev-custom',
             }}
-            modules={[Navigation]}
+            autoplay={{
+              delay: 1500,
+              disableOnInteraction: true,
+              reverseDirection: true,
+            }}
+            modules={[Navigation, Autoplay]}
             breakpoints={{
               0: { slidesPerView: 2 },
               480: { slidesPerView: 2 },
@@ -168,11 +176,13 @@ const Partners = () => {
             ))}
           </Swiper>
         </div>
-      {
-        location == '/about-us' || location == "/contact" ?  "":
-        <p className="hidden md:block text-[56px] leading-[140%] mt-[64px] text-[#15181E]">
-          {t('partner.text')}
-        </p>}
+        {location == '/about-us' || location == '/contact' ? (
+          ''
+        ) : (
+          <p className="hidden md:block text-[56px] leading-[140%] mt-[64px] text-[#15181E]">
+            {t('partner.text')}
+          </p>
+        )}
       </div>
     </section>
   );

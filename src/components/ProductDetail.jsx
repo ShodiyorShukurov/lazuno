@@ -26,10 +26,23 @@ const Star = () => (
 const ProductDetail = () => {
   const [count, setCount] = React.useState(1);
 
+  const saveItem = (item) => {
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    const existingItem = cartItems.find((cartItem) => cartItem.id === item.id);
+
+    if (existingItem) {
+      existingItem.quantity += item.quantity;
+    } else {
+      cartItems.push(item);
+    }
+
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+  }
+
   return (
     <section className="pt-[120px]">
       <div className="container">
-        <h5 className="hidden sm:flex  text-[14px] leading-[140%] text-[#15181E] font-[ClashDisplay-Regular]">
+        <h5 className="flex  text-[14px] leading-[140%] text-[#15181E] font-[ClashDisplay-Regular]">
           Home <img src={right} alt="right" /> Product{' '}
           <img src={right} alt="right" /> Yellow Leather Sofa Chair
         </h5>
@@ -108,7 +121,7 @@ const ProductDetail = () => {
                   </button>
                 </div>
 
-                <button className="w-full pl-[24px] p-[3px] flex items-center justify-between bg-[#037C6A] rounded-[48px] text-[16px] text-[#ffffff] leading-[150%] font-[ClashDisplay-Regular] text-center cursor-pointer">
+                <button className="w-full pl-[24px] p-[3px] flex items-center justify-between bg-[#037C6A] rounded-[48px] text-[16px] text-[#ffffff] leading-[150%] font-[ClashDisplay-Regular] text-center cursor-pointer" onClick={() => saveItem({ id: 2, name: 'Yellow Leather Sofa Chair', price: 299, quantity: count })}>
                   <span className="mx-auto">Add to Cart</span>
                   <span className="bg-[#FFFFFF] w-[48px] h-[48px] flex justify-center items-center rounded-full">
                     <svg

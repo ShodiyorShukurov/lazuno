@@ -69,6 +69,9 @@
         "contact": "Contact Us",
         "link1": "Terms & Conditions",
         "link2": "Privacy Policy",
-        "all": "© Lazuno Co. 2025. All Rights Reserved."
+        "all": "© Lazuno Co. 2025. All Rights Reserved.",
+        "error1":"Please enter a phone number.",
+        "error2":"Please enter a valid Uzbekistan phone number.",
+        "error3":"Please enter a valid Russia phone number."
     }
 }

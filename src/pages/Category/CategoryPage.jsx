@@ -1,12 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Footer from '../../components/footer';
 import ProductNavbar from '../../components/ProductNavbar';
 import CategoryAllCards from '../../components/CategoryAllCards';
+import { useLocation } from 'react-router-dom';
 
-const CategoryPage = ({ setOpenSidebar,  setOpen }) => {
+const CategoryPage = ({ setOpenSidebar, setOpen }) => {
+  const location = useLocation();
+
+  useEffect(() => {
+    scrollTo(0, 0);
+  }, [location]);
+
   return (
     <>
-      <ProductNavbar setOpenSidebar={setOpenSidebar}  />
+      <ProductNavbar setOpenSidebar={setOpenSidebar} />
       <main>
         <CategoryAllCards setOpen={setOpen} />
       </main>

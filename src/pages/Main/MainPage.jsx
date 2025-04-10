@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Navbar from '../../components/Navbar';
 import HeroPage from '../../components/HeroPage';
 import Partners from '../../components/Partners';
@@ -9,22 +9,28 @@ import Testimonials from '../../components/Testimonials';
 import About from '../../components/About';
 import Footer from '../../components/footer';
 import Collection from '../../components/Collection';
+import { useLocation } from 'react-router-dom';
 
-const MainPage = ({setOpenSidebar}) => {
+const MainPage = ({ setOpenSidebar }) => {
+  const location = useLocation();
+  useEffect(() => {
+    scrollTo(0, 0);
+  }, [location]);
+
   return (
     <>
-      <Navbar setOpenSidebar={setOpenSidebar}/>
+      <Navbar setOpenSidebar={setOpenSidebar} />
       <HeroPage />
       <main>
         <Partners />
         <StatisticCard />
-        <Collection/>
+        <Collection />
         <ProductList />
         <InfoCard />
-        <Testimonials/>
-        <About/>
+        <Testimonials />
+        <About />
       </main>
-      <Footer/>
+      <Footer />
     </>
   );
 };

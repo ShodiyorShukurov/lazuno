@@ -1,5 +1,6 @@
 import React from 'react';
 import card1 from '../assets/card/card1.png';
+import { useNavigate } from 'react-router-dom';
 
 const cartItems = [
   {
@@ -23,11 +24,13 @@ const cartItems = [
 ];
 
 const CartSidebar = ({ openSidebar, setOpenSidebar }) => {
-  if (!openSidebar) return null;
+  // if (!openSidebar) return null;
+
+  const navigate = useNavigate();
 
   return (
     // Overlay
-    <div className="fixed inset-0 z-50 transition-all duration-1000">
+    <div className={`fixed inset-0 z-50 transition-all duration-1000 ${!openSidebar ? 'hidden' : ''}`}>
       <div
         onClick={() => setOpenSidebar(false)}
         className="absolute inset-0 bg-[#0000003D] backdrop-blur-[24px]"
@@ -84,9 +87,15 @@ const CartSidebar = ({ openSidebar, setOpenSidebar }) => {
           ))}
         </div>
 
-        <div className="pt-4">
-          <div className="flex flex-col sm:flex-row gap-2">
-            <button className="w-full sm:w-fit pl-[24px] p-[3px] flex items-center justify-between gap-6 bg-white rounded-[48px] text-[16px] text-[#15181E] leading-[150%] cursor-pointer mt-[24px] border border-[#E0E4EA]">
+        <div className="fixed bottom-0 right-0 w-full sm:max-w-md bg-white p-4 z-50 border-t border-[#E0E4EA]">
+          <div className="flex flex-col sm:flex-row gap-2 justify-center">
+            <button
+              className="w-full pl-[24px] p-[3px] flex items-center justify-between gap-6 bg-white rounded-[48px] text-[16px] text-[#15181E] leading-[150%] cursor-pointer border border-[#E0E4EA]"
+              onClick={() => {
+                setOpenSidebar(false);
+                navigate('/my-card');
+              }}
+            >
               View Cart
               <span className="bg-[#037C6A] w-[40px] h-[40px] flex justify-center items-center rounded-full">
                 <svg
@@ -106,7 +115,7 @@ const CartSidebar = ({ openSidebar, setOpenSidebar }) => {
                 </svg>
               </span>
             </button>
-            <button className="w-full sm:w-fit pl-[24px] p-[3px] flex items-center justify-between gap-6 bg-[#037C6A] rounded-[48px] text-[16px] text-[#ffffff] leading-[150%] cursor-pointer mt-[24px] border">
+            <button className="w-full pl-[24px] p-[3px] flex items-center justify-between gap-6 bg-[#037C6A] rounded-[48px] text-[16px] text-[#ffffff] leading-[150%] cursor-pointer border">
               Checkout
               <span className="bg-[#FFFFFF] w-[40px] h-[40px] flex justify-center items-center rounded-full">
                 <svg

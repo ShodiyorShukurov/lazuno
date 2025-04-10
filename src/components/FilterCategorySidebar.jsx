@@ -123,7 +123,8 @@ const FilterCategorySidebar = ({ open, setOpen }) => {
           </div>
         </div>
 
-        <div className="flex items-center gap-4 mt-6 font-[ClashDisplay-Regular]">
+        <div  className="fixed bottom-0 right-0 w-full sm:max-w-md bg-white p-4 z-50 border-t border-[#E0E4EA]">
+        <div className="flex items-center gap-4 font-[ClashDisplay-Regular]">
           <button className="w-full py-4 border border-[#E0E4EA] rounded-full cursor-pointer text-[16px] leading-[150%] text-[#15181E">
             Reset
           </button>
@@ -147,6 +148,7 @@ const FilterCategorySidebar = ({ open, setOpen }) => {
               </svg>
             </span>
           </button>
+        </div>
         </div>
       </div>
     </div>

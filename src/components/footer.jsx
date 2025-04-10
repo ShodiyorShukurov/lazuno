@@ -6,21 +6,60 @@ import instagram from '../assets/logo/instagram.svg';
 import facebook from '../assets/logo/facebook.svg';
 import youtube from '../assets/logo/youtube.svg';
 import footerLogo from '../assets/logo/footer-logo.svg';
-import uzcard from '../assets/logo/uzcard.svg';
-import humo from '../assets/logo/humo.svg';
-import click from '../assets/logo/click.svg';
-import payme from '../assets/logo/payme.svg';
-import visa from '../assets/logo/visa.svg';
-import mastercard from '../assets/logo/mastercard.svg';
 import uzb from '../assets/logo/Uzbekistan.svg';
+import rus from '../assets/logo/Russia.svg';
 import { useTranslation } from 'react-i18next';
+import { format, useMask } from '@react-input/mask';
+
+const options = {
+  UZB: {
+    mask: '(__) ___-__-__',
+    replacement: { _: /\d/ },
+  },
+  RUS: {
+    mask: '(___) ___-__-__',
+    replacement: { _: /\d/ },
+  },
+};
 
 const Footer = () => {
-  const [phone, setPhone] = React.useState('');
+  const phoneArr = [
+    {
+      id: 1,
+      code: '+998',
+      country: 'UZB',
+      img: uzb,
+      exaple: '77 777 77 77',
+      mask: '+998 __ ___ __ __',
+    },
+    {
+      id: 2,
+      code: '+7',
+      country: 'RUS',
+      img: rus,
+      exaple: '777 777 77 77',
+      mask: '+7 ___ ___ __ __',
+    },
+  ];
+
+  // const [phone, setPhone] = React.useState('');
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [selectPhone, setSelectPhone] = React.useState(phoneArr[0]);
+  const [error, setError] = React.useState('');
+
   const { t } = useTranslation();
-  const handleChange = (e) => {
-    const value = e.target.value.replace(/\D/g, '').slice(0, 9);
-    setPhone(value);
+  const inputRef = useMask(options[selectPhone.country]);
+  let defaultValue = format('', options[selectPhone.country]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const phoneNumber = inputRef.current.value;
+    if (!phoneNumber) {
+      setError(t('footer.error1'));
+      return;
+    }
+
+    console.log('Phone number submitted:', inputRef.current.value);
   };
   return (
     <footer className="bg-[#191D24] text-white pt-[48px]">
@@ -56,25 +95,89 @@ const Footer = () => {
             <p className="mb-12 text-[16px] leading-[150%] text-[#A8B3C4]">
               {t('footer.footer_text')}
             </p>
-            <div className="flex items-center justify-center bg-[#1A1D23] rounded-full w-fit border border-[#2C303A] mx-auto">
-              <div className="flex items-center px-3 py-[16px]">
+            <form
+              onSubmit={(e) => handleSubmit(e)}
+              className="flex items-center justify-center bg-[#1A1D23] rounded-full w-fit border border-[#2C303A] mx-auto"
+            >
+              <div
+                className="flex items-center px-3 py-[16px] cursor-pointer relative"
+                onClick={() => {
+                  setIsOpen(!isOpen);
+                  defaultValue = format('', options[selectPhone.country]);
+                }}
+                typeof="button"
+              >
                 <img
-                  src={uzb}
-                  alt="UZB"
+                  src={selectPhone.img}
+                  alt={selectPhone.country}
                   className="w-[26px] h-[20px] mr-2 object-cover"
                 />
                 <span className="text-white text-[16px] leading-[150%] border-r-2 border-white">
-                  +998
+                  {selectPhone.code}
                 </span>
+                {isOpen && (
+                  <div className="absolute top-15 w-[100px] border border-[#2C303A] rounded-full bg-[#1A1D23] p-4 left-0">
+                    {phoneArr.map(
+                      (item) =>
+                        selectPhone.id !== item.id && (
+                          <div
+                            className="flex"
+                            key={item.id}
+                            onClick={() => {
+                              setSelectPhone(item);
+                              setIsOpen(false);
+                            }}
+                          >
+                            <img
+                              src={item.img}
+                              alt={item.country}
+                              className="w-[26px] h-[20px] mr-2"
+                            />{' '}
+                            <span className="text-white text-[16px] leading-[150%]">
+                              {item.code}
+                            </span>
+                          </div>
+                        )
+                    )}
+                  </div>
+                )}
               </div>
               <input
                 type="tel"
-                value={phone}
-                onChange={handleChange}
-                placeholder="77 777 77 77"
-                className="bg-transparent text-white text-[16px] leading-[150%] pl-3 w-full max-w-[150px] focus:outline-none py-[16px]"
+                id="phone"
+                placeholder={selectPhone.exaple}
+                ref={inputRef}
+                defaultValue={defaultValue}
+                onChange={(evt) => {
+                  const value = evt.target.value;
+                  const regexUZB = /^\+998\s\(\d{2}\)\s\d{3}-\d{2}-\d{2}$/;
+                  const regexRUS = /^\+7\s\(\d{3}\)\s\d{3}-\d{2}-\d{2}$/;
+                  if (!value) {
+                    if (!phoneNumber) {
+                      setError(t('footer.error1'));
+                      return;
+                    }
+                  } else if (
+                    selectPhone.country === 'UZB' &&
+                    !regexUZB.test('+998 ' + value)
+                  ) {
+                    setError(t('footer.error2'));
+                  } else if (
+                    selectPhone.country === 'RUS' &&
+                    !regexRUS.test('+7 ' + value)
+                  ) {
+                    setError(t('footer.error3'));
+                  } else {
+                    setError('');
+                  }
+                }}
+                // required
+                className="bg-transparent text-white text-[16px] leading-[150%] pl-3 w-full max-w-[150px] outline-none focus:outline-none py-[16px]"
               />
-              <button className="w-fit pl-[12px] lg:pl-[24px] p-[4px] flex items-center gap-4 lg:gap-6 bg-[#FFFFFF] rounded-[48px] text-[16px] text-[#15181E] leading-[150%] cursor-pointer">
+              <button
+                type="submit"
+                className="w-fit pl-[12px] lg:pl-[24px] p-[4px] flex items-center gap-4 lg:gap-6 bg-[#FFFFFF] rounded-[48px] text-[16px] text-[#15181E] leading-[150%] cursor-pointer"
+              >
                 <span className="py-[12px]">
                   {t('footer.button')}{' '}
                   {localStorage.getItem('lng') == 'en' ? (
@@ -101,7 +204,8 @@ const Footer = () => {
                   </svg>
                 </span>
               </button>
-            </div>
+            </form>
+            {error.length > 0 && <p className="text-red-700 mt-1">{error}</p>}
           </div>
 
           {/* Right Section */}
@@ -113,7 +217,10 @@ const Footer = () => {
               <a href="#" className="hover:text-gray-400">
                 <img src={telegram} alt="telegram" width={24} height={24} />
               </a>
-              <a href="#" className="hover:text-gray-400">
+              <a
+                href="https://www.instagram.com/lazuno.uz/"
+                className="hover:text-gray-400"
+              >
                 <img src={instagram} alt="instagram" width={24} height={24} />
               </a>
               <a href="#" className="hover:text-gray-400">

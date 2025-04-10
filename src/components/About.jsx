@@ -2,6 +2,7 @@ import React from 'react';
 import bg1 from '../assets/about-bg.png';
 import bg from '../assets/about-bg2.png';
 import { useTranslation } from 'react-i18next';
+import { NavLink } from 'react-router-dom';
 
 const About = () => {
   const { t } = useTranslation();
@@ -16,7 +17,7 @@ const About = () => {
             <h2 className="text-white text-[40px] px-[20px] md:text-[64px] leading-[120%] text-center w-full max-w-[940px] font-[ClashDisplay-Semibold]">
               {t('about.title')}
             </h2>
-            <button className="w-fit pl-[24px] p-[3px] flex items-center gap-6 bg-[#037C6A] rounded-[48px] text-[16px] text-[#ffffff] leading-[150%] cursor-pointer mt-[24px]">
+            <NavLink to='/category' className="w-fit pl-[24px] p-[3px] flex items-center gap-6 bg-[#037C6A] rounded-[48px] text-[16px] text-[#ffffff] leading-[150%] cursor-pointer mt-[24px]">
               {t('about.button')}
               <span className="bg-[#FFFFFF] w-[40px] h-[40px] flex justify-center items-center rounded-full">
                 <svg
@@ -35,7 +36,7 @@ const About = () => {
                   />
                 </svg>
               </span>
-            </button>
+            </NavLink>
           </div>
         </div>
         <img

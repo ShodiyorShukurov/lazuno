@@ -10,6 +10,7 @@ import ProductDetailPage from './pages/ProductDetail/ProductDetailPage';
 import useFilter from './hooks/useFilter';
 import useSidebar from './hooks/useSidebar';
 import ProductPage from './pages/Product/ProductPage';
+import MyCardPage from './pages/MyCard/MyCardPage';
 
 const App = () => {
   const { openSidebar, setOpenSidebar } = useSidebar();
@@ -35,6 +36,7 @@ const App = () => {
         <Route
           path="/product/:id"
           element={<ProductDetailPage setOpenSidebar={setOpenSidebar}/>}/>
+          <Route path="/my-card" element={<MyCardPage/>} />
       </Routes>
 
       <CartSidebar openSidebar={openSidebar} setOpenSidebar={setOpenSidebar} />

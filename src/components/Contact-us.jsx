@@ -1,14 +1,72 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import contactimg from '../assets/contact-us.png';
 import uzb from '../assets/logo/Uzbekistan.svg';
+import rus from '../assets/logo/Russia.svg';
 import { useTranslation } from 'react-i18next';
+import { format, useMask } from '@react-input/mask';
+import { useLocation } from 'react-router-dom';
+
+const options = {
+  UZB: {
+    mask: '(__) ___-__-__',
+    replacement: { _: /\d/ },
+  },
+  RUS: {
+    mask: '(___) ___-__-__',
+    replacement: { _: /\d/ },
+  },
+};
 
 const ContactUs = () => {
-  const [phone, setPhone] = React.useState('');
+  const location = useLocation();
+
+  useEffect(() => {
+    scrollTo(0, 0);
+  }, [location]);
+
   const { t } = useTranslation();
-  const handleChange = (e) => {
-    const value = e.target.value.replace(/\D/g, '').slice(0, 9);
-    setPhone(value);
+  const phoneArr = [
+    {
+      id: 1,
+      code: '+998',
+      country: 'UZB',
+      img: uzb,
+      exaple: '77 777 77 77',
+      mask: '+998 __ ___ __ __',
+    },
+    {
+      id: 2,
+      code: '+7',
+      country: 'RUS',
+      img: rus,
+      exaple: '777 777 77 77',
+      mask: '+7 ___ ___ __ __',
+    },
+  ];
+
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [selectPhone, setSelectPhone] = React.useState(phoneArr[0]);
+  const [error, setError] = React.useState('');
+  const [errorName, setErrorName] = React.useState('');
+  const [errorMessage, setErrorMessage] = React.useState('');
+
+  const inputRef = useMask(options[selectPhone.country]);
+  let defaultValue = format('', options[selectPhone.country]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const phoneNumber = inputRef.current.value;
+    const name = e.target.name.value;
+    const message = e.target.message.value;
+
+    if (!phoneNumber && !name && !message) {
+      setErrorName('Ismingizni kiriting.');
+      setErrorMessage('Xabarni kiriting.');
+      setError(t('footer.error1'));
+      return;
+    }
+
+    console.log('Phone number submitted:', phoneNumber, name);
   };
 
   return (
@@ -18,7 +76,7 @@ const ContactUs = () => {
           {t('contact-us.title')}
         </h2>
         <p className="text-[20px] leading-[150%] text-[#15181E] font-[ClashDisplay-Regular] mt-[12px] text-center">
-        {t('contact-us.subtitle')}
+          {t('contact-us.subtitle')}
         </p>
         <div className="flex flex-col lg:flex-row items-center gap-[32px] mt-[36px]">
           <div className="w-full flex justify-center lg:max-w-[400px] xl:max-w-[500px]">
@@ -28,7 +86,10 @@ const ContactUs = () => {
               className="h-full max-h-[440px] rounded-[24px]"
             />
           </div>
-          <form className="flex flex-col gap-[24px] w-full">
+          <form
+            onSubmit={(e) => handleSubmit(e)}
+            className="flex flex-col gap-[24px] w-full"
+          >
             <div className="flex flex-col sm:flex-row items-center gap-3">
               <label
                 className="flex flex-col text-[20px] leading-[150%] text-[#15181E] lg:max-w-[250px] w-full xl:max-w-full"
@@ -39,9 +100,34 @@ const ContactUs = () => {
                   type="text"
                   placeholder={t('contact-us.placeholder1')}
                   id="name"
+                  onChange={(e) => {
+                    const value = e.target.value;
+
+                    const isOnlyLetters = /^[a-zA-Z]+$/.test(value);
+                    const isLongEnough = value.length >= 5;
+
+                    const hasUpper = /[A-Z]/.test(value);
+                    const hasLower = /[a-z]/.test(value);
+
+                    if (!isOnlyLetters) {
+                      setErrorName(t("Faqat harflardan iborat bo'lishi kerak"));
+                    } else if (!isLongEnough) {
+                      setErrorName(
+                        t("Kamida 5ta harfdan iborat bo'lishi kerak")
+                      );
+                    } else if (!hasUpper && !hasLower) {
+                      setErrorName(
+                        t("Kamida bitta katta yoki kichik harf bo'lishi kerak")
+                      );
+                    } else {
+                      setErrorName('');
+                    }
+                  }}
                   className="text-[20px] leading-[150%] text-[#15181E] p-4 border-transparent rounded-[24px] mt-3 bg-[#F1F3F6] placeholder:text-[#A8B3C4] focus:outline-none"
-                  required
                 />
+                {errorName.length > 0 && (
+                  <p className="text-red-700 mt-1 text-[16px]">{errorName}</p>
+                )}
               </label>
 
               <label
@@ -49,28 +135,87 @@ const ContactUs = () => {
                 className=" flex flex-col text-[20px] leading-[150%] text-[#15181E] w-full"
               >
                 {t('contact-us.label2')}
-                <div className="mt-3 flex items-center justify-center bg-[#F1F3F6] rounded-[24px] w-full border border-transparent gap-4">
-                  <div className="flex items-center pl-3 py-[16px]">
+                <div className="mt-3 flex items-center justify-center bg-[#F1F3F6] rounded-[24px] w-full border border-transparent gap-4 relative">
+                  <div
+                    className="flex items-center pl-3 py-[16px]"
+                    onClick={() => {
+                      setIsOpen(!isOpen);
+                      defaultValue = format('', options[selectPhone.country]);
+                    }}
+                  >
                     <img
-                      src={uzb}
-                      alt="UZB"
+                      src={selectPhone.img}
+                      alt={selectPhone.country}
                       className="w-[32px] h-[32px] mr-2 object-cover"
                     />
                     <span className="text-[#15181E] text-[20px] pr-2 leading-[150%] border-r-2 border-[#15181E] ">
-                      +998
+                      {selectPhone.code}
                     </span>
+                    {isOpen && (
+                      <div className="absolute top-15 w-[100px] border border-[#E0E4EA] rounded-full bg-[#fff] p-4 left-0">
+                        {phoneArr.map(
+                          (item) =>
+                            selectPhone.id !== item.id && (
+                              <div
+                                className="flex"
+                                key={item.id}
+                                onClick={() => {
+                                  setSelectPhone(item);
+                                  setIsOpen(false);
+                                }}
+                              >
+                                <img
+                                  src={item.img}
+                                  alt={item.country}
+                                  className="w-[26px] h-[20px] mr-2"
+                                />{' '}
+                                <span className="text-[#15181E]  text-[16px] leading-[150%]">
+                                  {item.code}
+                                </span>
+                              </div>
+                            )
+                        )}
+                      </div>
+                    )}
                   </div>
                   <input
                     id="phone"
                     type="tel"
-                    value={phone}
-                    onChange={handleChange}
-                    placeholder="77 777 77 77"
+                    placeholder={selectPhone.exaple}
+                    ref={inputRef}
+                    defaultValue={defaultValue}
+                    onChange={(evt) => {
+                      const value = evt.target.value;
+                      const regexUZB = /^\+998\s\(\d{2}\)\s\d{3}-\d{2}-\d{2}$/;
+                      const regexRUS = /^\+7\s\(\d{3}\)\s\d{3}-\d{2}-\d{2}$/;
+                      if (!value) {
+                        if (!phoneNumber) {
+                          setError(t('footer.error1'));
+                          return;
+                        }
+                      } else if (
+                        selectPhone.country === 'UZB' &&
+                        !regexUZB.test('+998 ' + value)
+                      ) {
+                        setError(t('footer.error2'));
+                      } else if (
+                        selectPhone.country === 'RUS' &&
+                        !regexRUS.test('+7 ' + value)
+                      ) {
+                        setError(t('footer.error3'));
+                      } else {
+                        setError('');
+                      }
+                    }}
                     className="bg-transparent text-[#15181E] text-[20px] leading-[150%] pl-6 w-full focus:outline-none py-[16px] placeholder:text-[#A8B3C4]"
                   />
                 </div>
+                {error.length > 0 && (
+                  <p className="text-red-700 mt-1 text-[16px]">{error}</p>
+                )}
               </label>
             </div>
+            
             <label
               htmlFor="message"
               className="text-[20px] leading-[150%] text-[#15181E] "
@@ -78,15 +223,33 @@ const ContactUs = () => {
               {t('contact-us.label3')}
               <textarea
                 placeholder={t('contact-us.placeholder3')}
-                className="w-full text-[20px] leading-[150%] text-[#15181E] p-4 border-transparent rounded-[24px] mt-3 bg-[#F1F3F6] placeholder:text-[#A8B3C4] focus:outline-none"
+                className="w-full max-h-[185px] text-[20px] leading-[150%] text-[#15181E] p-4 border-transparent rounded-[24px] mt-3 bg-[#F1F3F6] placeholder:text-[#A8B3C4] focus:outline-none"
                 rows="5"
-                required
+                id="message"
+                onChange={(e) => {
+                  const value = e.target.value;
+                  const isLongEnough = value.length >= 10;
+                  const hasUpper = /[A-Z]/.test(value);
+                  const hasLower = /[a-z]/.test(value);
+                  if(!isLongEnough) {
+                    setErrorMessage(t('Xabar kamida 10 ta belgidan iborat bo\'lishi kerak'));
+                  }
+                  else if (!hasUpper && !hasLower) {
+                    setErrorMessage(t('Xabarda kamida bitta katta yoki kichik harf bo\'lishi kerak'));
+                  }
+                  else {
+                    setErrorMessage('');
+                  }
+                }}
               ></textarea>
+              {errorMessage.length > 0 && (
+                <p className="text-red-700 mt-1 text-[16px]">{errorMessage}</p>
+              )}
             </label>
 
             <div className="flex flex-col sm:flex-row justify-between items-center">
               <button className="w-full pl-[24px] p-[3px] flex items-center justify-between sm:gap-6 bg-[#037C6A] rounded-[48px] text-[16px] text-[#ffffff] leading-[150%] cursor-pointer">
-              {t('contact-us.button_text')}
+                {t('contact-us.button_text')}
                 <span className="bg-[#FFFFFF] w-[40px] h-[40px] flex justify-center items-center rounded-full">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

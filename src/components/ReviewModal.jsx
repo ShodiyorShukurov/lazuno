@@ -1,27 +1,69 @@
 import React, { useState } from 'react';
+import uzb from '../assets/logo/Uzbekistan.svg';
+import rus from '../assets/logo/Russia.svg';
+import { format, useMask } from '@react-input/mask';
+import { useTranslation } from 'react-i18next';
 
-// import { FaStar } from 'react-icons/fa';
+const options = {
+  UZB: {
+    mask: '(__) ___-__-__',
+    replacement: { _: /\d/ },
+  },
+  RUS: {
+    mask: '(___) ___-__-__',
+    replacement: { _: /\d/ },
+  },
+};
 
 const ReviewModal = ({ isOpen, onClose, setSuccessReview }) => {
   if (!isOpen) return null;
 
+  const { t } = useTranslation();
+
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
+
+  const phoneArr = [
+    {
+      id: 1,
+      code: '+998',
+      country: 'UZB',
+      img: uzb,
+      exaple: '77 777 77 77',
+      mask: '+998 __ ___ __ __',
+    },
+    {
+      id: 2,
+      code: '+7',
+      country: 'RUS',
+      img: rus,
+      exaple: '777 777 77 77',
+      mask: '+7 ___ ___ __ __',
+    },
+  ];
+
+  const [isOpenPhone, setIsOpenPhone] = React.useState(false);
+  const [selectPhone, setSelectPhone] = React.useState(phoneArr[0]);
+  const [error, setError] = React.useState('');
+
+  const inputRef = useMask(options[selectPhone.country]);
+  let defaultValue = format('', options[selectPhone.country]);
 
   const handleClick = (value) => {
     setRating(value);
   };
-  const [name, setName] = useState('');
+  const [nameError, setErrorName] = useState('');
   const [email, setEmail] = useState('');
   const [review, setReview] = useState('');
+  const [reviewCount, setReviewCount] = useState(0);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = { rating, name, email, review };
     console.log('Submitted review:', data);
-    setSuccessReview(true)
+    setSuccessReview(true);
     onClose();
-    setRating(0);
+    setRating('');
     setName('');
     setEmail('');
     setReview('');
@@ -76,7 +118,7 @@ const ReviewModal = ({ isOpen, onClose, setSuccessReview }) => {
               >
                 <path
                   d="M12 2L14.2451 8.90983H21.5106L15.6327 13.1803L17.8779 20.0902L12 15.8197L6.12215 20.0902L8.36729 13.1803L2.48944 8.90983H9.75486L12 2Z"
-                  fill={isFilled ? '#037C6A' : '#e5e7eb'} 
+                  fill={isFilled ? '#037C6A' : '#e5e7eb'}
                 />
               </svg>
             );
@@ -93,34 +135,158 @@ const ReviewModal = ({ isOpen, onClose, setSuccessReview }) => {
               type="text"
               id="name"
               className="w-full border border-[#E0E4EA] rounded-[16px] text-[16px] mt-1 text-[#15181E] px-4 py-3 focus:outline-none focus:ring"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
+              onChange={(e) => {
+                const value = e.target.value;
+
+                const isOnlyLetters = /^[a-zA-Z]+$/.test(value);
+                const isLongEnough = value.length >= 5;
+
+                const hasUpper = /[A-Z]/.test(value);
+                const hasLower = /[a-z]/.test(value);
+
+                if (!isOnlyLetters) {
+                  setErrorName(t("Faqat harflardan iborat bo'lishi kerak"));
+                } else if (!isLongEnough) {
+                  setErrorName(t("Kamida 5ta harfdan iborat bo'lishi kerak"));
+                } else if (!hasUpper && !hasLower) {
+                  setErrorName(
+                    t("Kamida bitta katta yoki kichik harf bo'lishi kerak")
+                  );
+                } else {
+                  setErrorName('');
+                }
+              }}
             />
+            {nameError.length > 0 && (
+              <p className="text-red-700 mt-1 text-[14px]">{nameError}</p>
+            )}
           </label>
+
+          <label htmlFor="phone" className=" flex flex-col w-full">
+            {t('contact-us.label2')}
+            <div className="mt-3 flex items-center justify-center rounded-[24px] w-full border border-[#E0E4EA]  gap-4 relative">
+              <div
+                className="flex items-center pl-3 py-[12px]"
+                onClick={() => {
+                  setIsOpenPhone(!isOpenPhone);
+                  defaultValue = format('', options[selectPhone.country]);
+                }}
+              >
+                <img
+                  src={selectPhone.img}
+                  alt={selectPhone.country}
+                  className="w-[32px] h-[32px] mr-2 object-cover"
+                />
+                <span className="text-[#15181E] text-[16px] pr-2 leading-[150%] border-r-2 border-[#15181E] ">
+                  {selectPhone.code}
+                </span>
+                {isOpenPhone && (
+                  <div className="absolute top-15 w-[100px] border border-[#E0E4EA] rounded-[16px] bg-[#fff] p-4 left-0">
+                    {phoneArr.map(
+                      (item) =>
+                        selectPhone.id !== item.id && (
+                          <div
+                            className="flex"
+                            key={item.id}
+                            onClick={() => {
+                              setSelectPhone(item);
+                              setIsOpenPhone(false);
+                            }}
+                          >
+                            <img
+                              src={item.img}
+                              alt={item.country}
+                              className="w-[26px] h-[20px] mr-2"
+                            />{' '}
+                            <span className="text-[#15181E] text-[16px] leading-[150%]">
+                              {item.code}
+                            </span>
+                          </div>
+                        )
+                    )}
+                  </div>
+                )}
+              </div>
+              <input
+                id="phone"
+                type="tel"
+                placeholder={selectPhone.exaple}
+                ref={inputRef}
+                defaultValue={defaultValue}
+                onChange={(evt) => {
+                  const value = evt.target.value;
+                  const regexUZB = /^\+998\s\(\d{2}\)\s\d{3}-\d{2}-\d{2}$/;
+                  const regexRUS = /^\+7\s\(\d{3}\)\s\d{3}-\d{2}-\d{2}$/;
+                  if (!value) {
+                    if (!phoneNumber) {
+                      setError(t('footer.error1'));
+                      return;
+                    }
+                  } else if (
+                    selectPhone.country === 'UZB' &&
+                    !regexUZB.test('+998 ' + value)
+                  ) {
+                    setError(t('footer.error2'));
+                  } else if (
+                    selectPhone.country === 'RUS' &&
+                    !regexRUS.test('+7 ' + value)
+                  ) {
+                    setError(t('footer.error3'));
+                  } else {
+                    setError('');
+                  }
+                }}
+                className="bg-transparent text-[#15181E] text-[16px] leading-[150%] pl-6 w-full focus:outline-none py-[12px] placeholder:text-[#A8B3C4]"
+              />
+            </div>
+            {error.length > 0 && (
+              <p className="text-red-700 mt-1 text-[14px]">{error}</p>
+            )}
+          </label>
+
           <label htmlFor="email">
             Email Address
             <input
               type="email"
               id="email"
               className="w-full border border-[#E0E4EA] rounded-[16px] text-[16px] mt-1 text-[#15181E] px-4 py-3 focus:outline-none focus:ring"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
+              onChange={(e) => {
+                const value = e.target.value;
+                const emailRegex =
+                  /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                if (!emailRegex.test(value)) {
+                  setEmail(t('Email noto‘g‘ri kiritilgan'));
+                } else {
+                  setEmail('');
+                }
+              }}
             />
+            {email.length > 0 && (
+              <p className="text-red-700 mt-1 text-[14px]">{email}</p>
+            )}
           </label>
           <textarea
             placeholder="Enter Your Review"
             maxLength={100}
             rows={3}
             className="w-full border border-[#E0E4EA] rounded-[16px] text-[16px] mt-1 text-[#15181E] px-4 py-3 focus:outline-none focus:ring resize-none"
-            value={review}
-            onChange={(e) => setReview(e.target.value)}
+            // value={review}
             disabled={review == 100}
-            required
+            onChange={(e) => {
+              setReviewCount(e.target.value.length);
+              const value = e.target.value;
+              if (value.length < 10) {
+                setReview("Xabar kamida 10ta belgidan iborat bo'lishi kerak");
+              } else {
+                setReview('');
+              }
+            }}
           />
+          {review.length > 0 && (
+              <p className="text-red-700 mt-1 text-[14px]">{review}</p>
+            )}
           <div className="text-right text-sm text-gray-400">
-            {review.length}/100
+            {reviewCount}/100
           </div>
 
           <button className="w-full pl-[24px] p-[3px] flex items-center justify-between gap-6 bg-[#15181E] rounded-[48px] text-[16px] text-[#ffffff] leading-[150%] cursor-pointer">

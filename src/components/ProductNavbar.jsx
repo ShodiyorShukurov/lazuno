@@ -4,8 +4,6 @@ import logo from '../assets/logo/product-logo.svg';
 import mobileLogo from '../assets/logo/product-mobile.svg';
 import chevron from '../assets/logo/Chevron down.svg';
 import usa from '../assets/logo/USA.svg';
-import burgerMenuIcon from '../assets/logo/burger-menu.svg';
-import close from '../assets/logo/close.svg';
 import uzb from '../assets/logo/Uzbekistan.svg';
 import rus from '../assets/logo/Russia.svg';
 import { useTranslation } from 'react-i18next';
@@ -96,7 +94,7 @@ const ProductNavbar = ({ setOpenSidebar }) => {
                     className={({ isActive }) =>
                       `${isActive ? 'border-b-[2px]' : ''} py-[12px]`
                     }
-                    to="/product"
+                    to="/category"
                   >
                     {t('navbar.product')}
                   </NavLink>
@@ -181,7 +179,7 @@ const ProductNavbar = ({ setOpenSidebar }) => {
 
               <button
                 className="block lg:hidden cursor-pointer"
-                onClick={() => setBurgerMenu(!burgerMenu)}
+                onClick={() => {setBurgerMenu(!burgerMenu); setIsOpen(false);}}
               >
                 {burgerMenu ? (
                   <svg
@@ -277,7 +275,7 @@ const ProductNavbar = ({ setOpenSidebar }) => {
       {isOpen && (
         <div
           style={{ backdropFilter: 'blur(56px)' }}
-          className="fixed top-120 md:top-[calc(50%+15px)] lg:top-19 lang-right w-fit mt-2  min-w-[150px] bg-[#00000029]  border-[#FFFFFF4D] border-x-2 border-b-2 overflow-hidden rounded-[24px] px-[12px] py-[16px] z-50"
+          className="fixed top-120 md:top-122 lg:top-19 lang-right w-fit mt-2  min-w-[150px] bg-[#00000029]  border-[#FFFFFF4D] border-x-2 border-b-2 overflow-hidden rounded-[24px] px-[12px] py-[16px] z-50"
         >
           {languages.map((lang) =>
             lang.code == selectedLangObj.code ? (

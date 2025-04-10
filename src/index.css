@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @font-face {
   font-family: 'ClashDisplay-Extralight';
@@ -116,46 +116,48 @@ img {
 }
 
 @media screen and (max-width: 1440px) {
-  .container{
+  .container {
     padding-left: 40px;
     padding-right: 40px;
     max-width: 100%;
   }
 }
 
-
 @media screen and (max-width: 768px) {
-  .container{
+  .container {
     padding: 0 20px;
     max-width: 100%;
   }
 }
 
-.lang-right{
+.lang-right {
   right: calc(6% - 9px) !important;
 }
 
 @media screen and (max-width: 1440px) {
-  .lang-right{
+  .lang-right {
     right: calc(1% - 0px) !important;
   }
 }
 
 @media screen and (max-width: 1024px) {
-  .lang-right{
+  .lang-right {
     right: calc(5% - 0px) !important;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .lang-right{
+  .lang-right {
     right: calc(5% + 20px) !important;
   }
 }
 
 @media screen and (max-width: 640px) {
-  .modal{
+  .modal {
     bottom: 0;
   }
 }
 
+main {
+  flex: 1 !important;
+}
