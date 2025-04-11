@@ -7,6 +7,8 @@ import eye from '../assets/logo/eye.svg';
 import minus from '../assets/logo/minus.svg';
 import plus from '../assets/logo/plus.svg';
 import right from '../assets/logo/direction-right 2.svg';
+import BuyModal from './BuyModal';
+import BuySuccessModal from './BuySuccessModal';
 
 const Star = () => (
   <svg
@@ -25,6 +27,8 @@ const Star = () => (
 
 const ProductDetail = () => {
   const [count, setCount] = React.useState(1);
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
+  const [successBuy, setSuccessBuy] = React.useState(false);
 
   const saveItem = (item) => {
     const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
@@ -37,7 +41,7 @@ const ProductDetail = () => {
     }
 
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
-  }
+  };
 
   return (
     <section className="pt-[120px]">
@@ -121,7 +125,17 @@ const ProductDetail = () => {
                   </button>
                 </div>
 
-                <button className="w-full pl-[24px] p-[3px] flex items-center justify-between bg-[#037C6A] rounded-[48px] text-[16px] text-[#ffffff] leading-[150%] font-[ClashDisplay-Regular] text-center cursor-pointer" onClick={() => saveItem({ id: 2, name: 'Yellow Leather Sofa Chair', price: 299, quantity: count })}>
+                <button
+                  className="w-full pl-[24px] p-[3px] flex items-center justify-between bg-[#037C6A] rounded-[48px] text-[16px] text-[#ffffff] leading-[150%] font-[ClashDisplay-Regular] text-center cursor-pointer"
+                  onClick={() =>
+                    saveItem({
+                      id: 2,
+                      name: 'Yellow Leather Sofa Chair',
+                      price: 299,
+                      quantity: count,
+                    })
+                  }
+                >
                   <span className="mx-auto">Add to Cart</span>
                   <span className="bg-[#FFFFFF] w-[48px] h-[48px] flex justify-center items-center rounded-full">
                     <svg
@@ -143,7 +157,10 @@ const ProductDetail = () => {
                 </button>
               </div>
 
-              <button className="w-full pl-[24px] p-[3px] flex items-center justify-between bg-transparent border border-[#E0E4EA] rounded-[48px] text-[16px] text-[#15181E] leading-[150%] font-[ClashDisplay-Regular] text-center cursor-pointer mt-[16px]">
+              <button
+                className="w-full pl-[24px] p-[3px] flex items-center justify-between bg-transparent border border-[#E0E4EA] rounded-[48px] text-[16px] text-[#15181E] leading-[150%] font-[ClashDisplay-Regular] text-center cursor-pointer mt-[16px]"
+                onClick={() => setIsModalOpen(true)}
+              >
                 <span className="mx-auto">Buy Now</span>
                 <span className="bg-[#037C6A] w-[48px] h-[48px] flex justify-center items-center rounded-full">
                   <svg
@@ -167,6 +184,8 @@ const ProductDetail = () => {
           </div>
         </div>
       </div>
+      <BuyModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} setSuccessBuy={setSuccessBuy} />
+      <BuySuccessModal successBuy={successBuy}  onClose={() => setSuccessBuy(false)}/>
     </section>
   );
 };

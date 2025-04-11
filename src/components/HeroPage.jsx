@@ -6,6 +6,7 @@ import arrowVideo from '../assets/logo/arrow-right-video.svg';
 import pauseIcon from '../assets/logo/pause_icon.svg';
 import playIcon from '../assets/logo/play_icon.svg';
 import { useTranslation } from 'react-i18next';
+import { NavLink } from 'react-router-dom';
 
 const HeroPage = () => {
   const videos = [video1, video2];
@@ -74,7 +75,7 @@ const HeroPage = () => {
         <p className="text-white text-[16px] md:text-[18px] font-medium text-left w-full md:max-w-[660px] leading-[26px] mt-[12px] md:mt-[24px] font-[ClashDisplay-Medium]">
         {t('hero.subtitle')}
         </p>
-        <button
+        <NavLink to='/category'
           style={{ fontFamily: 'ClashDisplay-Semibold' }}
           className="w-fit pl-[20px] p-[3px] flex items-center gap-6 bg-[#037C6A] rounded-[48px] text-[14px] text-[#ffffff] leading-[150%] cursor-pointer mt-[24px] md:mt-[40px]"
         >
@@ -82,7 +83,7 @@ const HeroPage = () => {
           <span className="bg-[#FFFFFF] w-[40px] h-[40px] flex justify-center rounded-full">
             <img src={arrow} alt="arrow-right" className="w-[24px] h-[24px]" />
           </span>
-        </button>
+        </NavLink>
 
         <div className="flex items-center gap-4 justify-center md:justify-end mt-[78px] md:mt-6 mb-[36px] md:mb-0">
           <button

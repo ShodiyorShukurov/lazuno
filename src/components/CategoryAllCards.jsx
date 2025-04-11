@@ -29,7 +29,7 @@ const CategoryAllCards = ({setOpen}) => {
         </h5>
         <CategoryComponents setOpen={setOpen}/>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-[17px] mt-[48px]">
+        <div className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-[17px] mt-[48px]">
           {items.map((item) => (
             <div
               key={item.id}

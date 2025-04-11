@@ -276,7 +276,7 @@ const Footer = () => {
                 <NavLink to="/about-us">{t('footer.about')}</NavLink>
               </li>
               <li>
-                <NavLink to="/product">{t('footer.product')}</NavLink>
+                <NavLink to="/category">{t('footer.product')}</NavLink>
               </li>
               <li>
                 <NavLink to="/contact">{t('footer.contact')}</NavLink>

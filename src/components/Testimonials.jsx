@@ -2,6 +2,7 @@ import React from 'react';
 import testBg from '../assets/test-bg.png';
 import test1 from '../assets/test1.png';
 import star from '../assets/logo/star.svg';
+import { useTranslation } from 'react-i18next';
 
 const testArr = [
   {
@@ -9,29 +10,34 @@ const testArr = [
     title: '“Great Delivery Service, I love It.”',
     subtitle:
       'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.',
+    name: 'Cameron Williamson',
   },
   {
     id: 2,
     title: '“Quality of The Sofa is Truly Amazing”',
     subtitle:
       'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.',
+    name: 'Cameron Williamson',
   },
   {
     id: 3,
     title: '“Quality of The Sofa is Truly Amazing”',
     subtitle:
       'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.',
+    name: 'Cameron Williamson',
   },
 ];
 
 const Testimonials = () => {
+  const { t } = useTranslation();
+
   return (
     <section className="pt-[64px] md:pt-[82px]">
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-[32px]">
           <div>
             <h2 className="text-[#15181E] text-[32px] sm:text-[48px] leading-[126%]">
-              Testimonials
+              {t('testimonials.title')}
             </h2>
             <ul className="mt-[32px] flex flex-col gap-4">
               {testArr.slice(0, 2).map((item) => (
@@ -43,11 +49,14 @@ const Testimonials = () => {
                   <p className="text-[16px] leading-[150%] text-[#384252] mt-[16px] font-[ClashDisplay-Regular] w-full max-w-[580px]">
                     {item.subtitle}
                   </p>
+                  <p className='text-[18px] leading-[150%] text-[#15181E] mt-[16px]'>
+                    {item.name}
+                  </p>
                 </li>
               ))}
             </ul>
             <button className="w-fit pl-[24px] p-[3px] flex items-center gap-6 bg-[#037C6A] rounded-[48px] text-[16px] text-[#ffffff] leading-[150%] cursor-pointer mt-[32px]">
-              View All Reviews
+              {t('testimonials.button_text')}
               <span className="bg-[#FFFFFF] w-[40px] h-[40px] flex justify-center items-center rounded-full">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -85,6 +94,9 @@ const Testimonials = () => {
                   </h4>
                   <p className="text-[16px] leading-[150%] text-[#384252] mt-[16px] font-[ClashDisplay-Regular] w-full max-w-[580px]">
                     {item.subtitle}
+                  </p>
+                  <p className='text-[18px] leading-[150%] text-[#15181E] mt-[16px]'>
+                    {item.name}
                   </p>
                 </li>
               ))}

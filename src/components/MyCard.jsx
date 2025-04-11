@@ -1,5 +1,10 @@
 import { useEffect, useState } from 'react';
 import trash from '../assets/logo/trash.svg';
+import BuyModal from './BuyModal';
+import BuySuccessModal from './BuySuccessModal';
+import card1 from '../assets/card/card1.png';
+import card2 from '../assets/card/card2.png';
+import card3 from '../assets/card/card3.png';
 
 const cartItems = [
   {
@@ -9,7 +14,7 @@ const cartItems = [
     oldPrice: 680,
     color: 'Brown',
     quantity: 2,
-    image: '/images/yellow-sofa.png',
+    image: card1,
   },
   {
     id: 2,
@@ -18,7 +23,7 @@ const cartItems = [
     oldPrice: 900,
     color: 'Green',
     quantity: 1,
-    image: '/images/green-sofa.png',
+    image: card2,
   },
   {
     id: 3,
@@ -27,13 +32,15 @@ const cartItems = [
     oldPrice: 340,
     color: 'White',
     quantity: 2,
-    image: '/images/white-sofa.png',
+    image: card3,
   },
 ];
 
 export default function MyCard() {
   const [items, setItems] = useState(cartItems);
   const [id, setId] = useState();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [successBuy, setSuccessBuy] = useState(false);
 
   useEffect(() => {
     if (id !== null) {
@@ -42,15 +49,44 @@ export default function MyCard() {
     }
   }, [id]);
 
+  const clearCart = () => {
+    setItems([]); // cartni bo'shatamiz
+  };
 
   return (
-    <section className="pt-[120px]">
+    <section className="pt-[120px] pb-[70px]">
       <div className="container">
         <h2 className="text-[30px] leading-[120%] text-[#15181E]">My Cart</h2>
 
-        <div className="flex justify-end items-center mt-8 mb-6">
-          <button className="w-[56px] h-[56px] bg-[#FEF2F2] rounded-full p-4 cursor-pointer">
+        <div className="flex justify-between items-center  mt-8 mb-6">
+          <button
+            className="w-[56px] h-[56px] bg-[#FEF2F2] rounded-full p-4 cursor-pointer"
+            onClick={clearCart}
+          >
             <img src={trash} alt="" />
+          </button>
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="w-fit pl-[24px] p-[3px] flex items-center gap-6 bg-[#037C6A] rounded-[48px] text-[16px] text-[#ffffff] leading-[150%] cursor-pointer"
+          >
+            Checkout
+            <span className="bg-[#FFFFFF] w-[40px] h-[40px] flex justify-center items-center rounded-full">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 22 22"
+                fill="none"
+              >
+                <path
+                  d="M12.714 7.57141L16.1426 11M16.1426 11L12.714 14.4286M16.1426 11L5.85686 11"
+                  stroke="#000000"
+                  strokeWidth="0.857143"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </span>
           </button>
         </div>
 
@@ -62,7 +98,7 @@ export default function MyCard() {
             <img
               src={item.image}
               alt={item.name}
-              className="w-32 h-32 object-cover rounded-lg"
+              className="w-32 h-32 object-cover rounded-[16px]"
             />
 
             <div className="flex-1">
@@ -89,6 +125,16 @@ export default function MyCard() {
           </div>
         ))}
       </div>
+
+      <BuyModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        setSuccessBuy={setSuccessBuy}
+      />
+      <BuySuccessModal
+        successBuy={successBuy}
+        onClose={() => setSuccessBuy(false)}
+      />
     </section>
   );
 }

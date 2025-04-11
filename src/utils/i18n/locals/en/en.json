@@ -20,6 +20,20 @@
         "card3_title": "A decade of expertise in furniture design and innovation.",
         "card3_subtitle": "7 + Years"
     },
+    "latest_collection": {
+        "title": "Latest Collections",
+        "button_text": "Buy Now",
+        "button_text2": "View All"
+    },
+    "testimonials": {
+        "title": "Testimonials",
+        "button_text": "View All Reviews"
+    },
+    "sidebar":{
+        "text":"You have 3 items in your cart",
+        "button_text":"View Cart",
+        "button_text2": "Checkout"
+    },
     "about-us": {
         "card1_title": "Lazuno Uz: Crafting Comfort & Style Since 2016",
         "card1_text": "For nearly a decade, <strong>Lazuno</strong> has been redefining furniture craftsmanship in Uzbekistan. With <strong>over 1,500 unique designs</strong>, we offer a diverse selection that blends aesthetics with durability. Our commitment to innovation and quality ensures that every piece we create is not just furniture but a statement of style and functionality.  Each product is meticulously handcrafted by skilled artisans using premium materials, combining traditional weaving techniques with modern technology. Based in Tashkent, we take pride in producing furniture that enhances spaces and enriches lifestyles—whether it’s a cozy garden retreat or a stylish indoor setup.  At <strong>Lazuno</strong>  we don’t just make furniture—we create experiences.",
@@ -48,7 +62,14 @@
         "label2": "Phone Number",
         "label3": "Message",
         "placeholder3": "Please enter your messege here...",
-        "button_text": "Submit your contacts!"
+        "button_text": "Submit your contacts!",
+        "name_error": "Please enter your name.",
+        "name_error2": "Name must contain only letters",
+        "name_error3": "Name must be at least 5 characters long",
+        "name_error4": "Name must contain at least one uppercase or lowercase letter",
+        "message_error": "Please enter a message.",
+        "message_error2": "Message must be at least 10 characters long",
+        "message_error3": "Message must contain at least one uppercase or lowercase letter"
     },
     "category": {
         "title": "Shop By Category",
@@ -70,8 +91,8 @@
         "link1": "Terms & Conditions",
         "link2": "Privacy Policy",
         "all": "© Lazuno Co. 2025. All Rights Reserved.",
-        "error1":"Please enter a phone number.",
-        "error2":"Please enter a valid Uzbekistan phone number.",
-        "error3":"Please enter a valid Russia phone number."
+        "error1": "Please enter a phone number.",
+        "error2": "Please enter a valid Uzbekistan phone number.",
+        "error3": "Please enter a valid Russia phone number."
     }
 }

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const Pagination = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = 4;
+  const totalPages = 10;
 
   const handlePrevious = () => {
     if (currentPage > 1) {
@@ -21,7 +21,7 @@ const Pagination = () => {
   };
 
   return (
-    <div className="flex items-center justify-center flex-wrap space-x-4 space-y-4 pt-[48px] pb-[80px]">
+    <div className="flex items-center justify-center flex-wrap space-x-4 pt-[48px] pb-[80px]">
       {/* Previous Button */}
       {/* cursor-not-allowed */}
 
@@ -60,6 +60,29 @@ const Pagination = () => {
 
       {[...Array(totalPages)].map((_, index) => {
         const page = index + 1;
+
+        const shouldShowPage =
+          page === 1 ||
+          page === totalPages ||
+          Math.abs(page - currentPage) <= 1;
+
+        const isStartDots = page === 2 && currentPage > 3;
+        const isEndDots =
+          page === totalPages - 1 && currentPage < totalPages - 2;
+
+        if (isStartDots || isEndDots) {
+          return (
+            <span
+              key={page}
+              className="w-[56px] h-[56px] flex justify-center items-center"
+            >
+              ...
+            </span>
+          );
+        }
+
+        if (!shouldShowPage) return null;
+
         return (
           <button
             key={page}
@@ -70,7 +93,7 @@ const Pagination = () => {
                 : 'bg-white text-gray-700 border border-gray-300 hover:bg-gray-100'
             }`}
           >
-            0{page}
+            {page >= 10 ? page : `0${page}`}
           </button>
         );
       })}

@@ -4,7 +4,7 @@ import Footer from '../../components/footer';
 import ProductAllCards from '../../components/ProductAllCard';
 import { useLocation } from 'react-router-dom';
 
-const ProductPage = () => {
+const ProductPage = ({setOpenSidebar, setOpen}) => {
   const location = useLocation()
   useEffect(()=>{
     scrollTo(0, 0)
@@ -12,9 +12,9 @@ const ProductPage = () => {
 
   return (
     <>
-      <ProductNavbar />
+      <ProductNavbar  setOpenSidebar={setOpenSidebar}/>
       <main>
-        <ProductAllCards />
+        <ProductAllCards  setOpen={setOpen} />
       </main>
       <Footer />
     </>

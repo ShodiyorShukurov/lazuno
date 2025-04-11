@@ -1,6 +1,7 @@
 import React from 'react';
 import card1 from '../assets/card/card1.png';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const cartItems = [
   {
@@ -24,13 +25,16 @@ const cartItems = [
 ];
 
 const CartSidebar = ({ openSidebar, setOpenSidebar }) => {
-  // if (!openSidebar) return null;
-
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   return (
     // Overlay
-    <div className={`fixed inset-0 z-50 transition-all duration-1000 ${!openSidebar ? 'hidden' : ''}`}>
+    <div
+      className={`fixed inset-0 z-50 transition-all duration-1000 ${
+        !openSidebar ? 'hidden' : ''
+      }`}
+    >
       <div
         onClick={() => setOpenSidebar(false)}
         className="absolute inset-0 bg-[#0000003D] backdrop-blur-[24px]"
@@ -38,11 +42,24 @@ const CartSidebar = ({ openSidebar, setOpenSidebar }) => {
 
       <div className="absolute right-0 bottom-0 sm:top-0 h-full max-h-[630px] sm:max-h-full w-full sm:max-w-md bg-white rounded-tr-[32px] sm:rounded-tr-none sm:rounded-bl-[32px] rounded-tl-[32px] p-6 overflow-y-auto">
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-[18px] leading-[150%]">
-            You have{' '}
-            <span className="text-[#037C6A]">{cartItems.length} items</span> in
-            your cart
-          </h2>
+          {localStorage.getItem('lng') == 'en' ? (
+            <h2 className="text-[18px] leading-[150%]">
+              You have{' '}
+              <span className="text-[#037C6A]">{cartItems.length} items</span>{' '}
+              in your cart
+            </h2>
+          ) : localStorage.getItem('lng') == 'uz' ? (
+            <h2 className="text-[18px] leading-[150%]">
+              Savatingizda{' '}
+              <span className="text-[#037C6A]">{cartItems.length} dona</span>{' '}
+              mahsulot bor
+            </h2>
+          ) : (
+            <h2 className="text-[18px] leading-[150%]">
+              У вас в корзине{' '}
+              <span className="text-[#037C6A]">{cartItems.length} товара</span>{' '}
+              </h2>
+          )}
           <button
             onClick={() => setOpenSidebar(false)}
             className="cursor-pointer"
@@ -96,7 +113,7 @@ const CartSidebar = ({ openSidebar, setOpenSidebar }) => {
                 navigate('/my-card');
               }}
             >
-              View Cart
+              {t('sidebar.button_text')}
               <span className="bg-[#037C6A] w-[40px] h-[40px] flex justify-center items-center rounded-full">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -116,7 +133,7 @@ const CartSidebar = ({ openSidebar, setOpenSidebar }) => {
               </span>
             </button>
             <button className="w-full pl-[24px] p-[3px] flex items-center justify-between gap-6 bg-[#037C6A] rounded-[48px] text-[16px] text-[#ffffff] leading-[150%] cursor-pointer border">
-              Checkout
+              {t('sidebar.button_text2')}
               <span className="bg-[#FFFFFF] w-[40px] h-[40px] flex justify-center items-center rounded-full">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

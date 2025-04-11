@@ -11,6 +11,7 @@ import useFilter from './hooks/useFilter';
 import useSidebar from './hooks/useSidebar';
 import ProductPage from './pages/Product/ProductPage';
 import MyCardPage from './pages/MyCard/MyCardPage';
+import FilterProductSidebar from './components/FilterProductSidebar';
 
 const App = () => {
   const { openSidebar, setOpenSidebar } = useSidebar();
@@ -41,6 +42,7 @@ const App = () => {
 
       <CartSidebar openSidebar={openSidebar} setOpenSidebar={setOpenSidebar} />
       <FilterCategorySidebar open={open} setOpen={setOpen}/>
+      <FilterProductSidebar open={open} setOpen={setOpen}/>
     </div>
   );
 };

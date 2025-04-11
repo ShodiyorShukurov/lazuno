@@ -5,13 +5,13 @@ import Footer from '../../components/footer';
 
 const MyCardPage = () => {
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <ProductNavbar />
-      <main>
+      <main className="flex-1">
         <MyCard />
       </main>
       <Footer />
-    </>
+    </div>
   );
 };
 

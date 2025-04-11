@@ -1,6 +1,6 @@
 import React from 'react';
 
-const FilterCategorySidebar = ({ open, setOpen }) => {
+const FilterProductSidebar = ({ open, setOpen }) => {
   const [openCategories, setOpenCategories] = React.useState(false);
   const [openColor, setOpenColor] = React.useState(false);
 
@@ -68,7 +68,7 @@ const FilterCategorySidebar = ({ open, setOpen }) => {
               className="flex items-center justify-between w-full cursor-pointer"
               onClick={() => setOpenCategories(!openCategories)}
             >
-              <h3 className="text-[20px]">Categories</h3>
+              <h3 className="text-[20px]">Product</h3>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className={`transition-all w-[24px] h-[24px] duration-300 ${
@@ -191,4 +191,4 @@ const FilterCategorySidebar = ({ open, setOpen }) => {
   );
 };
 
-export default FilterCategorySidebar;
+export default FilterProductSidebar;

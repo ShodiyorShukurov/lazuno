@@ -59,14 +59,17 @@ const ContactUs = () => {
     const name = e.target.name.value;
     const message = e.target.message.value;
 
+    if (errorName || errorMessage || error) {
+      return;
+    }
     if (!phoneNumber && !name && !message) {
-      setErrorName('Ismingizni kiriting.');
-      setErrorMessage('Xabarni kiriting.');
+      setErrorName(t('contact-us.name_error'));
+      setErrorMessage(t('contact-us.message_error'));
       setError(t('footer.error1'));
       return;
     }
 
-    console.log('Phone number submitted:', phoneNumber, name);
+    console.log('Phone number submitted:', phoneNumber, name, message);
   };
 
   return (
@@ -110,15 +113,11 @@ const ContactUs = () => {
                     const hasLower = /[a-z]/.test(value);
 
                     if (!isOnlyLetters) {
-                      setErrorName(t("Faqat harflardan iborat bo'lishi kerak"));
+                      setErrorName(t('contact-us.name_error2'));
                     } else if (!isLongEnough) {
-                      setErrorName(
-                        t("Kamida 5ta harfdan iborat bo'lishi kerak")
-                      );
+                      setErrorName(t('contact-us.name_error3'));
                     } else if (!hasUpper && !hasLower) {
-                      setErrorName(
-                        t("Kamida bitta katta yoki kichik harf bo'lishi kerak")
-                      );
+                      setErrorName(t('contact-us.name_error4'));
                     } else {
                       setErrorName('');
                     }
@@ -215,7 +214,7 @@ const ContactUs = () => {
                 )}
               </label>
             </div>
-            
+
             <label
               htmlFor="message"
               className="text-[20px] leading-[150%] text-[#15181E] "
@@ -231,13 +230,11 @@ const ContactUs = () => {
                   const isLongEnough = value.length >= 10;
                   const hasUpper = /[A-Z]/.test(value);
                   const hasLower = /[a-z]/.test(value);
-                  if(!isLongEnough) {
-                    setErrorMessage(t('Xabar kamida 10 ta belgidan iborat bo\'lishi kerak'));
-                  }
-                  else if (!hasUpper && !hasLower) {
-                    setErrorMessage(t('Xabarda kamida bitta katta yoki kichik harf bo\'lishi kerak'));
-                  }
-                  else {
+                  if (!isLongEnough) {
+                    setErrorMessage(t('contact-us.message_error2'));
+                  } else if (!hasUpper && !hasLower) {
+                    setErrorMessage(t('contact-us.message_error3'));
+                  } else {
                     setErrorMessage('');
                   }
                 }}
@@ -248,7 +245,7 @@ const ContactUs = () => {
             </label>
 
             <div className="flex flex-col sm:flex-row justify-between items-center">
-              <button className="w-full pl-[24px] p-[3px] flex items-center justify-between sm:gap-6 bg-[#037C6A] rounded-[48px] text-[16px] text-[#ffffff] leading-[150%] cursor-pointer">
+              <button className="w-full sm:w-fit pl-[24px] p-[3px] flex items-center justify-between sm:gap-6 bg-[#037C6A] rounded-[48px] text-[16px] text-[#ffffff] leading-[150%] cursor-pointer">
                 {t('contact-us.button_text')}
                 <span className="bg-[#FFFFFF] w-[40px] h-[40px] flex justify-center items-center rounded-full">
                   <svg

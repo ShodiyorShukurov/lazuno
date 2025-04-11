@@ -15,13 +15,10 @@ const options = {
   },
 };
 
-const ReviewModal = ({ isOpen, onClose, setSuccessReview }) => {
+const BuyModal = ({ isOpen, onClose, setSuccessBuy }) => {
   if (!isOpen) return null;
 
   const { t } = useTranslation();
-
-  const [rating, setRating] = useState(1);
-  const [hover, setHover] = useState(1);
 
   const phoneArr = [
     {
@@ -49,34 +46,24 @@ const ReviewModal = ({ isOpen, onClose, setSuccessReview }) => {
   const inputRef = useMask(options[selectPhone.country]);
   let defaultValue = format('', options[selectPhone.country]);
 
-  const handleClick = (value) => {
-    setRating(value);
-  };
   const [nameError, setErrorName] = useState('');
-  const [email, setEmail] = useState('');
-  const [review, setReview] = useState('');
-  const [reviewCount, setReviewCount] = useState(0);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
     const phoneNumber = e.target.phone.value;
-    const email = e.target.email.value;
-    const review = e.target.review.value;
-
-    if(!name && !phoneNumber && !email && !review) {
-      setErrorName("Ismingizni kiriting");
+    if (nameError || error) {
+      return;
+    }
+    if (!name && !phoneNumber) {
+      setErrorName('Ismingizni kiriting');
       setError(t('footer.error1'));
-      setEmail("Emailingizni kiriting");
-      setReview("Xabar kamida 10ta belgidan iborat bo'lishi kerak");
-      return
-    }   
-    setSuccessReview(true);
+      return;
+    }
+    console.log('Name:', name);
+    setSuccessBuy(true);
     onClose();
-    setRating('');
-    setName('');
-    setEmail('');
-    setReview('');
+    // setName('');
   };
 
   return (
@@ -105,38 +92,12 @@ const ReviewModal = ({ isOpen, onClose, setSuccessReview }) => {
           </svg>
         </button>
         <h2 className="text-[24px] sm:text-[30px] leading-[120%] text-[#15181E] mb-4">
-          Write A Review
+          Buy
         </h2>
-        {/* Star Rating */}
-        <div className="flex gap-1 mb-4 pt-6 border-t border-[#E0E4EA]">
-          {[...Array(5)].map((_, index) => {
-            const starValue = index + 1;
-            const isFilled = starValue <= (hover || rating);
 
-            return (
-              <svg
-                key={index}
-                onClick={() => handleClick(starValue)}
-                onMouseEnter={() => setHover(starValue)}
-                onMouseLeave={() => setHover(0)}
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                className="cursor-pointer transition-transform hover:scale-110"
-              >
-                <path
-                  d="M12 2L14.2451 8.90983H21.5106L15.6327 13.1803L17.8779 20.0902L12 15.8197L6.12215 20.0902L8.36729 13.1803L2.48944 8.90983H9.75486L12 2Z"
-                  fill={isFilled ? '#037C6A' : '#e5e7eb'}
-                />
-              </svg>
-            );
-          })}
-        </div>
         {/* Form */}
         <form
-          onSubmit={(e)=>handleSubmit(e)}
+          onSubmit={(e) => handleSubmit(e)}
           className="flex flex-col gap-4 text-[14px] leading-[140%] text-[#8292AA] font-[ClashDisplay-Regular]"
         >
           <label htmlFor="name">
@@ -254,52 +215,7 @@ const ReviewModal = ({ isOpen, onClose, setSuccessReview }) => {
             )}
           </label>
 
-          <label htmlFor="email">
-            Email Address
-            <input
-              type="email"
-              id="email"
-              className="w-full border border-[#E0E4EA] rounded-[16px] text-[16px] mt-1 text-[#15181E] px-4 py-3 focus:outline-none focus:ring"
-              onChange={(e) => {
-                const value = e.target.value;
-                const emailRegex =
-                  /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-                if (!emailRegex.test(value)) {
-                  setEmail(t('Email noto‘g‘ri kiritilgan'));
-                } else {
-                  setEmail('');
-                }
-              }}
-            />
-            {email.length > 0 && (
-              <p className="text-red-700 mt-1 text-[14px]">{email}</p>
-            )}
-          </label>
-          <textarea
-            placeholder="Enter Your Review"
-            maxLength={100}
-            rows={3}
-            className="w-full border border-[#E0E4EA] rounded-[16px] text-[16px] mt-1 text-[#15181E] px-4 py-3 focus:outline-none focus:ring resize-none"
-            id='review'
-            disabled={review == 100}
-            onChange={(e) => {
-              setReviewCount(e.target.value.length);
-              const value = e.target.value;
-              if (value.length < 10) {
-                setReview("Xabar kamida 10ta belgidan iborat bo'lishi kerak");
-              } else {
-                setReview('');
-              }
-            }}
-          />
-          {review.length > 0 && (
-              <p className="text-red-700 mt-1 text-[14px]">{review}</p>
-            )}
-          <div className="text-right text-sm text-gray-400">
-            {reviewCount}/100
-          </div>
-
-          <button className="w-full pl-[24px] p-[3px] flex items-center justify-between gap-6 bg-[#15181E] rounded-[48px] text-[16px] text-[#ffffff] leading-[150%] cursor-pointer">
+          <button className="w-full pl-[24px] p-[3px] flex items-center justify-between gap-6 bg-[#037C6A] rounded-[48px] text-[16px] text-[#ffffff] leading-[150%] cursor-pointer">
             <span className="mx-auto">Submit</span>
             <span className="bg-[#FFFFFF] w-[40px] h-[40px] flex justify-center items-center rounded-full">
               <svg
@@ -325,4 +241,4 @@ const ReviewModal = ({ isOpen, onClose, setSuccessReview }) => {
   );
 };
 
-export default ReviewModal;
+export default BuyModal;

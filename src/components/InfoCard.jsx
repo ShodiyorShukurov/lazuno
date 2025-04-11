@@ -27,7 +27,7 @@ const InfoCard = () => {
     {
       id: 3,
       title: t("info_card.card3_title"),
-      subtitle: t("info_card.card_text"),
+      subtitle: t("info_card.card3_text"),
       icon: icon3,
     },
     {

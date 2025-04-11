@@ -3,6 +3,8 @@ import card1 from '../assets/card/card1.png';
 import card2 from '../assets/card/card2.png';
 import card3 from '../assets/card/card3.png';
 import card4 from '../assets/card/card4.png';
+import { useTranslation } from 'react-i18next';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 
 const cardArr = [
@@ -51,12 +53,14 @@ const cardArr = [
 const ProductCard = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [id, setId] = useState('');
+  const {t} =useTranslation()
+  const navigate = useNavigate()
 
   return (
     <section className="pt-[80px]">
       <div className="container">
         <h2 className="text-[32px] sm:text-[48px] leading-[126%] mb-[36px] md:mb-[48px]">
-          Latest Collections
+          {t('latest_collection.title')}
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
           {cardArr?.map((item) => (
@@ -71,6 +75,7 @@ const ProductCard = () => {
                 setId('');
                 setIsHovered(false);
               }}
+              onClick={()=>navigate('/product/1')}
             >
               <img
                 src={item.img}
@@ -85,7 +90,7 @@ const ProductCard = () => {
                     : 'opacity-0 translate-y-4'
                 }`}
               >
-                Buy Now
+                {t('latest_collection.button_text')}
               </button>
               <div className="mt-[8px]">
                 <h3 className="text-[16px] text-[#15181E] leading-[150%] pl-0.5">
@@ -95,8 +100,8 @@ const ProductCard = () => {
             </div>
           ))}
         </div>
-        <button className="w-fit pl-[24px] p-[3px] flex items-center gap-6 bg-[#037C6A] rounded-[48px] text-[16px] text-[#ffffff] leading-[150%] mx-auto cursor-pointer mt-[24px] md:my-[48px]">
-          View All
+        <NavLink to={'/category/all'} className="w-fit pl-[24px] p-[3px] flex items-center gap-6 bg-[#037C6A] rounded-[48px] text-[16px] text-[#ffffff] leading-[150%] mx-auto cursor-pointer mt-[24px] md:my-[48px]">
+        {t('latest_collection.button_text2')}
           <span className="bg-[#FFFFFF] w-[40px] h-[40px] flex justify-center items-center rounded-full">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -114,7 +119,7 @@ const ProductCard = () => {
               />
             </svg>
           </span>
-        </button>
+        </NavLink>
       </div>
     </section>
   );
