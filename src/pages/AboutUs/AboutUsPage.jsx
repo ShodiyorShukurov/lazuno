@@ -15,7 +15,7 @@ const AboutUs = ({ setOpenSidebar }) => {
   }, [location]);
 
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <Navbar setOpenSidebar={setOpenSidebar} />
       <HeroPage />
       <main>
@@ -25,7 +25,7 @@ const AboutUs = ({ setOpenSidebar }) => {
         <About />
       </main>
       <Footer />
-    </>
+    </div>
   );
 };
 

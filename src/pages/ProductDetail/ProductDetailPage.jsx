@@ -16,7 +16,7 @@ const ProductDetailPage = ({ setOpenSidebar }) => {
   }, [location]);
 
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <ProductNavbar setOpenSidebar={setOpenSidebar} />
       <main>
         <ProductDetail />
@@ -26,7 +26,7 @@ const ProductDetailPage = ({ setOpenSidebar }) => {
         <About />
       </main>
       <Footer />
-    </>
+    </div>
   );
 };
 

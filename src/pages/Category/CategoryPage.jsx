@@ -12,13 +12,13 @@ const CategoryPage = ({ setOpenSidebar, setOpen }) => {
   }, [location]);
 
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <ProductNavbar setOpenSidebar={setOpenSidebar} />
       <main>
         <CategoryAllCards setOpen={setOpen} />
       </main>
       <Footer />
-    </>
+    </div>
   );
 };
 

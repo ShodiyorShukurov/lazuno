@@ -11,13 +11,13 @@ const ProductPage = ({setOpenSidebar, setOpen}) => {
   },[location])
 
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <ProductNavbar  setOpenSidebar={setOpenSidebar}/>
       <main>
         <ProductAllCards  setOpen={setOpen} />
       </main>
       <Footer />
-    </>
+    </div>
   );
 };
 

@@ -9,7 +9,7 @@ import ContactUs from '../../components/Contact-us';
 
 const ContactPage = ({setOpenSidebar}) => {
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <Navbar setOpenSidebar={setOpenSidebar} />
       <HeroPage />
       <main>
@@ -17,7 +17,7 @@ const ContactPage = ({setOpenSidebar}) => {
         <About/>
       </main>
       <Footer/>
-    </>
+    </div>
   );
 };
 
