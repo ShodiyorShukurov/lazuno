@@ -74,7 +74,10 @@
     "category": {
         "title": "Shop By Category",
         "button_text": "View All",
-        "all": "All Category"
+        "all": "All Category",
+        "page_title":"Home",
+        "page_title2":"Shop",
+        "button_text2":"Filter"
     },
     "accardion": {
         "descriptions": "Descriptions",
@@ -120,6 +123,11 @@
         "message_error1": "Message must be at least 10 characters long",
         "message_error2": "Please enter your message",
         "submit": "Submit"
+    },
+    "buy_modal":{
+        "title":"Buy",
+        "title2":"Buy Successfully",
+        "text":"Back to Home"
     },
     "footer": {
         "phone_number": "Phone Number",

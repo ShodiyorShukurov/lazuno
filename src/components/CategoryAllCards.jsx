@@ -1,22 +1,10 @@
 import React from 'react';
 import right from '../assets/logo/direction-right 2.svg';
 import CategoryComponents from './CategoryComponents';
-import item1 from '../assets/carousel/item1.png';
-import item2 from '../assets/carousel/item2.png';
-import item3 from '../assets/carousel/item3.png';
-import item4 from '../assets/carousel/item3.png';
 import { useTranslation } from 'react-i18next';
 import PagniationCategory from './PagniationCategory';
 import { useNavigate } from 'react-router-dom';
 
-const items = [
-  { id: 1, name: 'Isabella Chair', img: item1 },
-  { id: 2, name: 'Palma', img: item2 },
-  { id: 3, name: 'Berry', img: item3 },
-  { id: 4, name: 'Luxury Sofa', img: item4 },
-  { id: 5, name: 'Luxury Sofa', img: item1 },
-  { id: 6, name: 'Luxury Sofa', img: item3 },
-];
 const CategoryAllCards = ({ setOpen, categoryData }) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -25,7 +13,7 @@ const CategoryAllCards = ({ setOpen, categoryData }) => {
     <section className="pt-[120px]">
       <div className="container">
         <h5 className="hidden sm:flex  text-[14px] leading-[140%] text-[#15181E] font-[ClashDisplay-Regular]">
-          Home <img src={right} alt="right" /> Shop
+          {t('category.page_title')} <img src={right} alt="right" /> {t('category.page_title2')}
         </h5>
         <CategoryComponents setOpen={setOpen} data={categoryData} />
 

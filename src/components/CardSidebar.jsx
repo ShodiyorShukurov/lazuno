@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 const CartSidebar = ({ openSidebar, setOpenSidebar, addProduct }) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  console.log(addProduct);
+
   const [cartItems, setCartItems] = React.useState([]);
 
   React.useEffect(() => {
@@ -34,17 +34,17 @@ const CartSidebar = ({ openSidebar, setOpenSidebar, addProduct }) => {
               <span className="text-[#037C6A]">{cartItems.length} items</span>{' '}
               in your cart
             </h2>
-          ) : localStorage.getItem('lng') == 'uz' ? (
+          ) : localStorage.getItem('lng') == 'ру' ? (
             <h2 className="text-[18px] leading-[150%]">
-              Savatingizda{' '}
-              <span className="text-[#037C6A]">{cartItems.length} dona</span>{' '}
-              mahsulot bor
-            </h2>
+            У вас в корзине{' '}
+            <span className="text-[#037C6A]">{cartItems.length} товара</span>{' '}
+          </h2>
           ) : (
-            <h2 className="text-[18px] leading-[150%]">
-              У вас в корзине{' '}
-              <span className="text-[#037C6A]">{cartItems.length} товара</span>{' '}
-            </h2>
+             <h2 className="text-[18px] leading-[150%]">
+             Savatingizda{' '}
+             <span className="text-[#037C6A]">{cartItems.length} dona</span>{' '}
+             mahsulot bor
+           </h2>
           )}
           <button
             onClick={() => setOpenSidebar(false)}

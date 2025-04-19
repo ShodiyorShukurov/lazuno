@@ -36,21 +36,31 @@ const cartItems = [
   },
 ];
 
-export default function MyCard() {
-  const [items, setItems] = useState(cartItems);
+export default function MyCard({ setAddProduct }) {
+  const [items, setItems] = useState([]);
   const [id, setId] = useState();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [successBuy, setSuccessBuy] = useState(false);
 
   useEffect(() => {
-    if (id !== null) {
+    const storedItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    setItems(storedItems);
+    setAddProduct(storedItems);
+  }, [successBuy]);
+
+  useEffect(() => {
+    if (id !== null && id !== undefined) {
       const filtered = items.filter((item) => item.id !== id);
       setItems(filtered);
+      localStorage.setItem('cartItems', JSON.stringify(filtered));
+      setAddProduct(filtered);
     }
   }, [id]);
 
   const clearCart = () => {
-    setItems([]); // cartni bo'shatamiz
+    setItems([]);
+    localStorage.removeItem('cartItems');
+    setAddProduct([]);
   };
 
   return (
@@ -66,6 +76,7 @@ export default function MyCard() {
             <img src={trash} alt="" />
           </button>
           <button
+            disabled={items?.length > 0 ? false : true}
             onClick={() => setIsModalOpen(true)}
             className="w-fit pl-[24px] p-[3px] flex items-center gap-6 bg-[#037C6A] rounded-[48px] text-[16px] text-[#ffffff] leading-[150%] cursor-pointer"
           >
@@ -96,8 +107,8 @@ export default function MyCard() {
             className="flex items-start gap-4 border border-[#E0E4EA] rounded-[24px] p-4 mb-4"
           >
             <img
-              src={item.image}
-              alt={item.name}
+              src={item?.img}
+              alt={item?.name}
               className="w-32 h-32 object-cover rounded-[16px]"
             />
 
@@ -105,21 +116,21 @@ export default function MyCard() {
               <div className="flex justify-between items-start">
                 <div>
                   <h2 className="text-[18px] leading-[150%] text-[#15181E]">
-                    {item.name}
+                    {item?.name}
                   </h2>
                   <p className="text-[14px] leading-[140%] text-[#8292AA] mt-1">
-                    Color: {item.color}
+                    Color: {item?.color}
                   </p>
                 </div>
                 <button
-                  onClick={() => setId(item.id)}
+                  onClick={() => setId(item?.id)}
                   className="text-gray-500 hover:text-red-600 cursor-pointer"
                 >
                   ✕
                 </button>
               </div>
               <p className="text-[14px] leading-[140%] text-[#8292AA] mt-3">
-                Quantity: <span>2</span>
+                Quantity: <span>{item.quantity}</span>
               </p>
             </div>
           </div>

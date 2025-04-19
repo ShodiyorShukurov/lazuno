@@ -224,10 +224,7 @@ const Footer = () => {
                 <img src={instagram} alt="instagram" width={24} height={24} />
               </a>
               <a href="#" className="hover:text-gray-400">
-                <img src={facebook} alt="facebook" width={24} height={24} />
-              </a>
-              <a href="#" className="hover:text-gray-400">
-                <img src={youtube} alt="youtube" width={24} height={24} />
+                <img src={youtube} alt="whatsap" width={24} height={24} />
               </a>
             </div>
           </div>

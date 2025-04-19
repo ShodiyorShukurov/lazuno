@@ -72,9 +72,12 @@
         "message_error3": "Kamida bitta katta yoki kichik harf bo'lishi kerak"
     },
     "category": {
-        "title": "Kategoriya bo‘yicha xarid qilish",
+        "title": "Kategoriyalar bo‘yicha xarid qiling",
         "button_text": "Hammasini ko‘rish",
-        "all": "Barcha toifalar"
+        "all": "Barcha Kategoriyalar",
+        "page_title": "Bosh sahifa",
+        "page_title2": "Do‘kon",
+        "button_text2": "Filterlash"
     },
     "accardion": {
         "descriptions": "Tavsiflar",
@@ -120,6 +123,11 @@
         "message_error1": "Xabar kamida 10 ta belgidan iborat bo'lishi kerak",
         "message_error2": "Iltimos, xabaringizni kiriting",
         "submit": "Yuborish"
+    },
+    "buy_modal": {
+        "title": "Sotib olish",
+        "title2": "Muvaffaqiyatli sotib olindi",
+        "text": "Bosh sahifaga qaytish"
     },
     "footer": {
         "phone_number": "Telefon raqami",

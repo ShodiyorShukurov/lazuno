@@ -1,8 +1,4 @@
-import React, { useEffect } from 'react';
-import card1 from '../assets/product-img1.png';
-import card2 from '../assets/product-img2.png';
-import card3 from '../assets/product-img3.png';
-import card4 from '../assets/product-img4.png';
+import React from 'react';
 import eye from '../assets/logo/eye.svg';
 import minus from '../assets/logo/minus.svg';
 import plus from '../assets/logo/plus.svg';
@@ -59,12 +55,13 @@ const ProductDetail = ({ productDetailData, setAddProduct }) => {
 
     if (existingItem) {
       existingItem.quantity += item.quantity;
-      setAddProduct(item.quantity);
     } else {
       cartItems.push(item);
     }
-
+    
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    setAddProduct(cartItems);
+    setCount(0)
     checkCart();
   };
 

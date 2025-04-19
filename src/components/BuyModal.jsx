@@ -3,6 +3,7 @@ import uzb from '../assets/logo/Uzbekistan.svg';
 import rus from '../assets/logo/Russia.svg';
 import { format, useMask } from '@react-input/mask';
 import { useTranslation } from 'react-i18next';
+import { BOT_TOKEN, CHAT_ID, TELEGRAM_LINK } from '../utils/constants';
 
 const options = {
   UZB: {
@@ -48,7 +49,7 @@ const BuyModal = ({ isOpen, onClose, setSuccessBuy }) => {
 
   const [nameError, setErrorName] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const name = e.target.name.value;
     const phoneNumber = e.target.phone.value;
@@ -56,14 +57,45 @@ const BuyModal = ({ isOpen, onClose, setSuccessBuy }) => {
       return;
     }
     if (!name && !phoneNumber) {
-      setErrorName('Ismingizni kiriting');
+      setErrorName(t('review_modal.name_error4'));
       setError(t('footer.error1'));
       return;
     }
-    console.log('Name:', name);
-    setSuccessBuy(true);
-    onClose();
-    // setName('');
+
+    const localStorageData = localStorage.getItem('cartItems');
+    const cartItems = localStorageData ? JSON.parse(localStorageData) : [];
+
+    let productList = cartItems
+      .map((item, index) => {
+        return `\n${index + 1}) Product Title: ${item.name}\n- Soni: ${
+          item.quantity
+        }\n- Link: <a href="${item.url}">${item.url}</a>`;
+      })
+      .join('\n\n');
+
+    try {
+      const phone =
+        selectPhone.country === 'UZB'
+          ? `+998${phoneNumber}`
+          : `+7${phoneNumber}`;
+      const my_text = `🚚 Buyurtma xabari:\n- Ism: ${name}\n- Telefon raqam: <a href="tel:${phone}">${phone}</a>\n- Mahsulotlar:\n${productList}`;
+      const res = await fetch(
+        `${TELEGRAM_LINK}${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${encodeURIComponent(
+          my_text
+        )}&parse_mode=HTML`
+      );
+
+      const data = await res.json();
+      if (data) {
+        localStorage.clear('cartItems');
+        setSuccessBuy(true);
+        onClose();
+        setErrorName('');
+        setError('');
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -92,7 +124,7 @@ const BuyModal = ({ isOpen, onClose, setSuccessBuy }) => {
           </svg>
         </button>
         <h2 className="text-[24px] sm:text-[30px] leading-[120%] text-[#15181E] mb-4">
-          Buy
+          {t('buy_modal.title')}
         </h2>
 
         {/* Form */}
@@ -101,7 +133,7 @@ const BuyModal = ({ isOpen, onClose, setSuccessBuy }) => {
           className="flex flex-col gap-4 text-[14px] leading-[140%] text-[#8292AA] font-[ClashDisplay-Regular]"
         >
           <label htmlFor="name">
-            Name
+            {t('review_modal.name')}
             <input
               type="text"
               id="name"
@@ -116,13 +148,11 @@ const BuyModal = ({ isOpen, onClose, setSuccessBuy }) => {
                 const hasLower = /[a-z]/.test(value);
 
                 if (!isOnlyLetters) {
-                  setErrorName(t("Faqat harflardan iborat bo'lishi kerak"));
+                  setErrorName(t('review_modal.name_error1'));
                 } else if (!isLongEnough) {
-                  setErrorName(t("Kamida 5ta harfdan iborat bo'lishi kerak"));
+                  setErrorName(t('review_modal.name_error2'));
                 } else if (!hasUpper && !hasLower) {
-                  setErrorName(
-                    t("Kamida bitta katta yoki kichik harf bo'lishi kerak")
-                  );
+                  setErrorName(t('review_modal.name_error3'));
                 } else {
                   setErrorName('');
                 }
@@ -146,7 +176,7 @@ const BuyModal = ({ isOpen, onClose, setSuccessBuy }) => {
                 <img
                   src={selectPhone.img}
                   alt={selectPhone.country}
-                  className="w-[32px] h-[32px] mr-2 object-cover"
+                  className="w-[26px] h-[20px] mr-2 object-cover rounded-[4px]"
                 />
                 <span className="text-[#15181E] text-[16px] pr-2 leading-[150%] border-r-2 border-[#15181E] ">
                   {selectPhone.code}

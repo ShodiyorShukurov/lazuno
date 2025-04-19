@@ -117,8 +117,6 @@ img {
 
 @media screen and (max-width: 1440px) {
   .container {
-    padding-left: 40px;
-    padding-right: 40px;
     max-width: 100%;
   }
 }
@@ -131,7 +129,7 @@ img {
 }
 
 .lang-right {
-  right: calc(6% - 9px) !important;
+  right: calc(3% - 9px) !important;
 }
 
 @media screen and (max-width: 1440px) {

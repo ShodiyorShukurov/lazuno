@@ -49,7 +49,7 @@ const Navbar = ({ setOpenSidebar }) => {
   };
 
   return (
-    <div className="relative">
+    <div className="relative container">
       <header className="fixed top-0 left-0 z-50 bg-[#0000001F] py-[20px] backdrop-blur-[24px] border-b-[3px] border-[#FFFFFF33] w-full">
         <div className="container">
           <div className="flex items-center justify-between w-full">
@@ -227,7 +227,7 @@ const Navbar = ({ setOpenSidebar }) => {
       {isOpen && (
         <div
           style={{ backdropFilter: 'blur(56px)' }}
-          className="fixed top-120 md:top-122 lg:top-19 lang-right w-fit mt-2  min-w-[150px] bg-[#00000029]  border-[#FFFFFF4D] border-x-2 border-b-2 overflow-hidden rounded-[24px] px-[12px] py-[16px] z-50"
+          className="top-120 md:top-122 lg:top-19 absolute right-0  w-fit mt-2  min-w-[150px] bg-[#00000029]  border-[#FFFFFF4D] border-x-2 border-b-2 overflow-hidden rounded-[24px] px-[12px] py-[16px] z-50"
         >
           {languages.map((lang) =>
             lang.code == selectedLangObj.code ? (

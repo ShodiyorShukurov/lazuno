@@ -52,7 +52,7 @@ const App = () => {
           path="/product/:id"
           element={<ProductDetailPage setOpenSidebar={setOpenSidebar} setAddProduct={setAddProduct} />}
         />
-        <Route path="/my-card" element={<MyCardPage />} />
+        <Route path="/my-card" element={<MyCardPage setOpenSidebar={setOpenSidebar} setAddProduct={setAddProduct}/>} />
       </Routes>
 
       <CartSidebar openSidebar={openSidebar} setOpenSidebar={setOpenSidebar} addProduct={addProduct}/>

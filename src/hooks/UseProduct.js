@@ -6,6 +6,8 @@ const UseProduct = (id) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const getProduct = async () => {
+    if(!id) return
+    
     const res = await Api.get(
       `/products?take=12&page=${currentPage}&categoryId=${id}`
     );
