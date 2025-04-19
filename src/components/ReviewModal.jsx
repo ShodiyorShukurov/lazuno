@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import uzb from '../assets/logo/Uzbekistan.svg';
-import rus from '../assets/logo/Russia.svg';
-import { format, useMask } from '@react-input/mask';
 import { useTranslation } from 'react-i18next';
+import { API_PATH } from '../utils/constants';
 
 const options = {
   UZB: {
@@ -15,7 +13,12 @@ const options = {
   },
 };
 
-const ReviewModal = ({ isOpen, onClose, setSuccessReview }) => {
+const ReviewModal = ({
+  isOpen,
+  onClose,
+  setSuccessReview,
+  productDetailData,
+}) => {
   if (!isOpen) return null;
 
   const { t } = useTranslation();
@@ -23,60 +26,58 @@ const ReviewModal = ({ isOpen, onClose, setSuccessReview }) => {
   const [rating, setRating] = useState(1);
   const [hover, setHover] = useState(1);
 
-  const phoneArr = [
-    {
-      id: 1,
-      code: '+998',
-      country: 'UZB',
-      img: uzb,
-      exaple: '77 777 77 77',
-      mask: '+998 __ ___ __ __',
-    },
-    {
-      id: 2,
-      code: '+7',
-      country: 'RUS',
-      img: rus,
-      exaple: '777 777 77 77',
-      mask: '+7 ___ ___ __ __',
-    },
-  ];
-
-  const [isOpenPhone, setIsOpenPhone] = React.useState(false);
-  const [selectPhone, setSelectPhone] = React.useState(phoneArr[0]);
-  const [error, setError] = React.useState('');
-
-  const inputRef = useMask(options[selectPhone.country]);
-  let defaultValue = format('', options[selectPhone.country]);
-
   const handleClick = (value) => {
     setRating(value);
   };
   const [nameError, setErrorName] = useState('');
   const [email, setEmail] = useState('');
+  const [title, setTitle] = useState('');
   const [review, setReview] = useState('');
   const [reviewCount, setReviewCount] = useState(0);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const name = e.target.name.value;
-    const phoneNumber = e.target.phone.value;
+    const nameText = e.target.name.value;
     const email = e.target.email.value;
     const review = e.target.review.value;
+    const titleText = e.target.titleText.value;
 
-    if(!name && !phoneNumber && !email && !review) {
-      setErrorName("Ismingizni kiriting");
-      setError(t('footer.error1'));
-      setEmail("Emailingizni kiriting");
-      setReview("Xabar kamida 10ta belgidan iborat bo'lishi kerak");
-      return
-    }   
-    setSuccessReview(true);
-    onClose();
-    setRating('');
-    setName('');
-    setEmail('');
-    setReview('');
+    if (!nameText && !title && !email && !review) {
+      setErrorName(t('review_modal.name_error4'));
+      setTitle(t('review_modal.form_title_error3'));
+      setEmail(t('review_modal.email_error2'));
+      setReview(t('review_modal.message_error2'));
+      return;
+    }
+    try {
+      const res = await fetch(API_PATH + '/reviews', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: nameText,
+          email: email,
+          title: titleText,
+          text: review,
+          stars: rating,
+          product_id: productDetailData?.data?.id,
+        }),
+      });
+      const data = res.json();
+
+      if (data) {
+        setSuccessReview(true);
+        onClose();
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setRating('');
+      setErrorName('');
+      setEmail('');
+      setReview('');
+    }
   };
 
   return (
@@ -105,7 +106,7 @@ const ReviewModal = ({ isOpen, onClose, setSuccessReview }) => {
           </svg>
         </button>
         <h2 className="text-[24px] sm:text-[30px] leading-[120%] text-[#15181E] mb-4">
-          Write A Review
+          {t('review_modal.title')}
         </h2>
         {/* Star Rating */}
         <div className="flex gap-1 mb-4 pt-6 border-t border-[#E0E4EA]">
@@ -136,11 +137,11 @@ const ReviewModal = ({ isOpen, onClose, setSuccessReview }) => {
         </div>
         {/* Form */}
         <form
-          onSubmit={(e)=>handleSubmit(e)}
+          onSubmit={(e) => handleSubmit(e)}
           className="flex flex-col gap-4 text-[14px] leading-[140%] text-[#8292AA] font-[ClashDisplay-Regular]"
         >
           <label htmlFor="name">
-            Name
+            {t('review_modal.name')}
             <input
               type="text"
               id="name"
@@ -155,13 +156,11 @@ const ReviewModal = ({ isOpen, onClose, setSuccessReview }) => {
                 const hasLower = /[a-z]/.test(value);
 
                 if (!isOnlyLetters) {
-                  setErrorName(t("Faqat harflardan iborat bo'lishi kerak"));
+                  setErrorName(t('review_modal.name_error1'));
                 } else if (!isLongEnough) {
-                  setErrorName(t("Kamida 5ta harfdan iborat bo'lishi kerak"));
+                  setErrorName(t('review_modal.name_error2'));
                 } else if (!hasUpper && !hasLower) {
-                  setErrorName(
-                    t("Kamida bitta katta yoki kichik harf bo'lishi kerak")
-                  );
+                  setErrorName(t('review_modal.name_error3'));
                 } else {
                   setErrorName('');
                 }
@@ -172,90 +171,8 @@ const ReviewModal = ({ isOpen, onClose, setSuccessReview }) => {
             )}
           </label>
 
-          <label htmlFor="phone" className=" flex flex-col w-full">
-            {t('contact-us.label2')}
-            <div className="mt-3 flex items-center justify-center rounded-[24px] w-full border border-[#E0E4EA]  gap-4 relative">
-              <div
-                className="flex items-center pl-3 py-[12px]"
-                onClick={() => {
-                  setIsOpenPhone(!isOpenPhone);
-                  defaultValue = format('', options[selectPhone.country]);
-                }}
-              >
-                <img
-                  src={selectPhone.img}
-                  alt={selectPhone.country}
-                  className="w-[32px] h-[32px] mr-2 object-cover"
-                />
-                <span className="text-[#15181E] text-[16px] pr-2 leading-[150%] border-r-2 border-[#15181E] ">
-                  {selectPhone.code}
-                </span>
-                {isOpenPhone && (
-                  <div className="absolute top-15 w-[100px] border border-[#E0E4EA] rounded-[16px] bg-[#fff] p-3 left-0">
-                    {phoneArr.map(
-                      (item) =>
-                        selectPhone.id !== item.id && (
-                          <div
-                            className="flex"
-                            key={item.id}
-                            onClick={() => {
-                              setSelectPhone(item);
-                              setIsOpenPhone(false);
-                            }}
-                          >
-                            <img
-                              src={item.img}
-                              alt={item.country}
-                              className="w-[26px] h-[20px] mr-2"
-                            />{' '}
-                            <span className="text-[#15181E] text-[16px] leading-[150%]">
-                              {item.code}
-                            </span>
-                          </div>
-                        )
-                    )}
-                  </div>
-                )}
-              </div>
-              <input
-                id="phone"
-                type="tel"
-                placeholder={selectPhone.exaple}
-                ref={inputRef}
-                defaultValue={defaultValue}
-                onChange={(evt) => {
-                  const value = evt.target.value;
-                  const regexUZB = /^\+998\s\(\d{2}\)\s\d{3}-\d{2}-\d{2}$/;
-                  const regexRUS = /^\+7\s\(\d{3}\)\s\d{3}-\d{2}-\d{2}$/;
-                  if (!value) {
-                    if (!phoneNumber) {
-                      setError(t('footer.error1'));
-                      return;
-                    }
-                  } else if (
-                    selectPhone.country === 'UZB' &&
-                    !regexUZB.test('+998 ' + value)
-                  ) {
-                    setError(t('footer.error2'));
-                  } else if (
-                    selectPhone.country === 'RUS' &&
-                    !regexRUS.test('+7 ' + value)
-                  ) {
-                    setError(t('footer.error3'));
-                  } else {
-                    setError('');
-                  }
-                }}
-                className="bg-transparent text-[#15181E] text-[16px] leading-[150%] pl-6 w-full focus:outline-none py-[12px] placeholder:text-[#A8B3C4]"
-              />
-            </div>
-            {error.length > 0 && (
-              <p className="text-red-700 mt-1 text-[14px]">{error}</p>
-            )}
-          </label>
-
           <label htmlFor="email">
-            Email Address
+            {t('review_modal.email')}
             <input
               type="email"
               id="email"
@@ -265,7 +182,7 @@ const ReviewModal = ({ isOpen, onClose, setSuccessReview }) => {
                 const emailRegex =
                   /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
                 if (!emailRegex.test(value)) {
-                  setEmail(t('Email noto‘g‘ri kiritilgan'));
+                  setEmail(t('review_modal.email_error1'));
                 } else {
                   setEmail('');
                 }
@@ -275,32 +192,60 @@ const ReviewModal = ({ isOpen, onClose, setSuccessReview }) => {
               <p className="text-red-700 mt-1 text-[14px]">{email}</p>
             )}
           </label>
+
+          <label htmlFor="titleText" className=" flex flex-col w-full">
+            {t('review_modal.form_title')}
+            <input
+              type="titleText"
+              id="titleText"
+              className="w-full border border-[#E0E4EA] rounded-[16px] text-[16px] mt-1 text-[#15181E] px-4 py-3 focus:outline-none focus:ring"
+              onChange={(e) => {
+                const value = e.target.value;
+
+                const isLongEnough = value.length >= 5;
+                const hasUpper = /[A-Z]/.test(value);
+                const hasLower = /[a-z]/.test(value);
+
+                if (!isLongEnough) {
+                  setTitle(t('review_modal.form_title_error1'));
+                } else if (!hasUpper && !hasLower) {
+                  setTitle(t('review_modal.form_title_error2'));
+                } else {
+                  setTitle('');
+                }
+              }}
+            />
+            {title.length > 0 && (
+              <p className="text-red-700 mt-1 text-[14px]">{title}</p>
+            )}
+          </label>
+
           <textarea
-            placeholder="Enter Your Review"
+            placeholder={t('review_modal.message')}
             maxLength={100}
             rows={3}
             className="w-full border border-[#E0E4EA] rounded-[16px] text-[16px] mt-1 text-[#15181E] px-4 py-3 focus:outline-none focus:ring resize-none"
-            id='review'
+            id="review"
             disabled={review == 100}
             onChange={(e) => {
               setReviewCount(e.target.value.length);
               const value = e.target.value;
               if (value.length < 10) {
-                setReview("Xabar kamida 10ta belgidan iborat bo'lishi kerak");
+                setReview(t('review_modal.message_error1'));
               } else {
                 setReview('');
               }
             }}
           />
           {review.length > 0 && (
-              <p className="text-red-700 mt-1 text-[14px]">{review}</p>
-            )}
+            <p className="text-red-700 mt-1 text-[14px]">{review}</p>
+          )}
           <div className="text-right text-sm text-gray-400">
             {reviewCount}/100
           </div>
 
           <button className="w-full pl-[24px] p-[3px] flex items-center justify-between gap-6 bg-[#15181E] rounded-[48px] text-[16px] text-[#ffffff] leading-[150%] cursor-pointer">
-            <span className="mx-auto">Submit</span>
+            <span className="mx-auto">{t('review_modal.submit')}</span>
             <span className="bg-[#FFFFFF] w-[40px] h-[40px] flex justify-center items-center rounded-full">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

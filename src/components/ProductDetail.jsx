@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import card1 from '../assets/product-img1.png';
 import card2 from '../assets/product-img2.png';
 import card3 from '../assets/product-img3.png';
@@ -29,10 +29,8 @@ const Star = () => (
   </svg>
 );
 
-
 const ProductDetail = ({ productDetailData, setAddProduct }) => {
   const { t } = useTranslation();
-
 
   const items = [
     { id: 1, title: t('product_detail.free'), img: fast },
@@ -43,6 +41,17 @@ const ProductDetail = ({ productDetailData, setAddProduct }) => {
   const [count, setCount] = React.useState(0);
   const [isModalOpen, setIsModalOpen] = React.useState(false);
   const [successBuy, setSuccessBuy] = React.useState(false);
+  const [isCartEmpty, setIsCartEmpty] = React.useState(
+    !(
+      localStorage.getItem('cartItems') &&
+      JSON.parse(localStorage.getItem('cartItems')).length > 0
+    )
+  );
+
+  const checkCart = () => {
+    const items = JSON.parse(localStorage.getItem('cartItems')) || [];
+    setIsCartEmpty(items.length === 0);
+  };
 
   const saveItem = (item) => {
     const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
@@ -56,6 +65,7 @@ const ProductDetail = ({ productDetailData, setAddProduct }) => {
     }
 
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    checkCart();
   };
 
   return (
@@ -89,7 +99,7 @@ const ProductDetail = ({ productDetailData, setAddProduct }) => {
           </div>
 
           {/* Right side - details */}
-          <div className="flex flex-col justify-between w-full max-w-[560px]  ">
+          <div className="flex flex-col justify-between w-full md:max-w-[560px]">
             <div>
               <div className="flex items-center gap-[2px]">
                 <span className="flex items-center gap-[2px]">
@@ -139,6 +149,7 @@ const ProductDetail = ({ productDetailData, setAddProduct }) => {
                 </div>
 
                 <button
+                  disabled={count > 0 ? false : true}
                   className="w-full pl-[24px] p-[3px] flex items-center justify-between bg-[#037C6A] rounded-[48px] text-[16px] text-[#ffffff] leading-[150%] font-[ClashDisplay-Regular] text-center cursor-pointer"
                   onClick={() =>
                     saveItem({
@@ -176,6 +187,7 @@ const ProductDetail = ({ productDetailData, setAddProduct }) => {
               </div>
 
               <button
+                disabled={isCartEmpty}
                 className="w-full pl-[24px] p-[3px] flex items-center justify-between bg-transparent border border-[#E0E4EA] rounded-[48px] text-[16px] text-[#15181E] leading-[150%] font-[ClashDisplay-Regular] text-center cursor-pointer mt-[16px]"
                 onClick={() => setIsModalOpen(true)}
               >
@@ -199,12 +211,14 @@ const ProductDetail = ({ productDetailData, setAddProduct }) => {
                 </span>
               </button>
 
-              <ul className="mt-[32px] flex items-center justify-between gap-6 ">
+              <ul className="mt-[32px] flex items-center justify-center sm:justify-start gap-6 flex-col sm:flex-row md:flex-wrap lg:flex-nowrap">
                 {items.map((item) => (
                   <li
                     key={item.id}
-                    className={`p-4 ${
-                      item.id == 2 ? 'border-x border-[#E0E4EA]' : ''
+                    className={`p-4 w-full sm:w-auto flex justify-center flex-col  items-center sm:items-baseline ${
+                      item.id == 2
+                        ? 'border-y sm:border-y-0 sm:border-x border-[#E0E4EA] '
+                        : ''
                     }`}
                   >
                     <img

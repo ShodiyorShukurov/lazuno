@@ -18,10 +18,22 @@ const Star = () => (
   </svg>
 );
 
-const Review = ({productDetailData}) => {
-  const {t} = useTranslation()
+const Review = ({ productDetailData }) => {
+  const { t } = useTranslation();
   const [isModalOpen, setIsModalOpen] = React.useState(false);
-  const [successReview, setSuccessReview]= React.useState(false)
+  const [successReview, setSuccessReview] = React.useState(false);
+
+  const formatUzDate = (dateStr) => {
+    const date = new Date(dateStr);
+    const day = date.getDate();
+    const year = date.getFullYear();
+    const monthNames = [
+      "yanvar", "fevral", "mart", "aprel", "may", "iyun",
+      "iyul", "avgust", "sentabr", "oktabr", "noyabr", "dekabr"
+    ];
+    const month = monthNames[date.getMonth()];
+    return `${day} ${month} ${year}`;
+  };
 
   const ratingChanged = (newRating) => {
     console.log(newRating);
@@ -31,7 +43,9 @@ const Review = ({productDetailData}) => {
     <section className="pt-[48px]">
       <div className="container">
         <div className="flex justify-between items-center flex-wrap gap-4">
-          <h2 className="text-[48px] leading-[150%]">{t('product_detail.review')}</h2>
+          <h2 className="text-[48px] leading-[150%]">
+            {t('product_detail.review')}
+          </h2>
           <button
             className="w-fit pl-[24px] p-[3px] flex items-center gap-6 bg-[#037C6A] rounded-[48px] text-[16px] text-[#ffffff] leading-[150%] cursor-pointer"
             onClick={() => setIsModalOpen(true)}
@@ -57,61 +71,76 @@ const Review = ({productDetailData}) => {
           </button>
         </div>
         <ul className="flex flex-col gap-6 pt-[32px]">
-          <li className="pb-4 border-b border-[#E6E9F2]">
-            <h4 className="text-[16px] leading-[150%] text-[#15181E]">
-              Jacob Jones
-            </h4>
-            <span className="flex items-center gap-[2px] mt-1">
-              {[...Array(0)].map((_, index) => (
-                <Star key={index} />
-              ))}
-            </span>
+          {productDetailData?.data?.reviews?.map((item) => (
+            <li key={item.id} className="pb-4 border-b border-[#E6E9F2]">
+              <h4 className="text-[16px] leading-[150%] text-[#15181E]">
+                {item.name}
+              </h4>
+              <span className="flex items-center gap-[2px] mt-1">
+                {[...Array(item.stars)].map((_, index) => (
+                  <Star key={index} />
+                ))}
+              </span>
 
-            <h3 className="text-[24px] leading-[140%] text-[#15181E] mt-4">
-              “Quality of The Sofa is Truly Amazing”
-            </h3>
-            <p className="text-[16px] leading-[150%] text-[#384252] font-[ClashDisplay-Regular] mt-2">
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout. The
-              point of using Lorem Ipsum is that it has a more-or-less normal
-              distribution of letters, as opposed to using 'Content here,
-              content here', making it look like readable English.
-            </p>
-            <p className="text-[14px] leading-[140%] text-[#8292AA] font-[ClashDisplay-Regular] mt-3">
-              Review by <span className="text-[#15181E]">Melta</span> Posted on{' '}
-              <span className="text-[#15181E]">Nov 20, 2024</span>{' '}
-            </p>
-          </li>
-          <li className="pb-4 border-b border-[#E6E9F2]">
-            <h4 className="text-[16px] leading-[150%] text-[#15181E]">
-              Jacob Jones
-            </h4>
-            <span className="flex items-center gap-[2px] mt-1">
-              {[...Array(4)].map((_, index) => (
-                <Star key={index} />
-              ))}
-            </span>
-
-            <h3 className="text-[24px] leading-[140%] text-[#15181E] mt-4">
-              “Quality of The Sofa is Truly Amazing”
-            </h3>
-            <p className="text-[16px] leading-[150%] text-[#384252] font-[ClashDisplay-Regular] mt-2">
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout. The
-              point of using Lorem Ipsum is that it has a more-or-less normal
-              distribution of letters, as opposed to using 'Content here,
-              content here', making it look like readable English.
-            </p>
-            <p className="text-[14px] leading-[140%] text-[#8292AA] font-[ClashDisplay-Regular] mt-3">
-              Review by <span className="text-[#15181E]">Melta</span> Posted on{' '}
-              <span className="text-[#15181E]">Nov 20, 2024</span>{' '}
-            </p>
-          </li>
+              <h3 className="text-[24px] leading-[140%] text-[#15181E] mt-4">
+                {item.title}
+              </h3>
+              <p className="text-[16px] leading-[150%] text-[#384252] font-[ClashDisplay-Regular] mt-2">
+                {item.text}
+              </p>
+              <p className="text-[14px] leading-[140%] text-[#8292AA] font-[ClashDisplay-Regular] mt-3">
+                {localStorage.getItem('lng') === 'uz' ? (
+                  <>
+                    Yozilgan sana:{' '}
+                    <span className="text-[#15181E]">
+                    {formatUzDate(item.create_post_at)}
+                    </span>
+                  </>
+                ) : localStorage.getItem('lng') === 'ру' ? (
+                  <>
+                    Опубликовано:{' '}
+                    <span className="text-[#15181E]">
+                      {new Date(item.create_post_at).toLocaleDateString(
+                        'ru-RU',
+                        {
+                          year: 'numeric',
+                          month: 'short',
+                          day: 'numeric',
+                        }
+                      )}
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    Posted on{' '}
+                    <span className="text-[#15181E]">
+                      {new Date(item.create_post_at).toLocaleDateString(
+                        'en-US',
+                        {
+                          year: 'numeric',
+                          month: 'short',
+                          day: 'numeric',
+                        }
+                      )}
+                    </span>
+                  </>
+                )}
+              </p>
+            </li>
+          ))}
         </ul>
       </div>
 
-      <ReviewModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} setSuccessReview={setSuccessReview}/>
-       <ReviewSuccessModal successReview={successReview} onClose={()=>setSuccessReview(false)}/>
+      <ReviewModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        setSuccessReview={setSuccessReview}
+        productDetailData={productDetailData}
+      />
+      <ReviewSuccessModal
+        successReview={successReview}
+        onClose={() => setSuccessReview(false)}
+      />
     </section>
   );
 };

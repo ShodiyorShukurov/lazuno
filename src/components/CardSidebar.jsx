@@ -3,12 +3,10 @@ import card1 from '../assets/card/card1.png';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-
-
 const CartSidebar = ({ openSidebar, setOpenSidebar, addProduct }) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  console.log(addProduct)
+  console.log(addProduct);
   const [cartItems, setCartItems] = React.useState([]);
 
   React.useEffect(() => {
@@ -46,7 +44,7 @@ const CartSidebar = ({ openSidebar, setOpenSidebar, addProduct }) => {
             <h2 className="text-[18px] leading-[150%]">
               У вас в корзине{' '}
               <span className="text-[#037C6A]">{cartItems.length} товара</span>{' '}
-              </h2>
+            </h2>
           )}
           <button
             onClick={() => setOpenSidebar(false)}
@@ -95,14 +93,16 @@ const CartSidebar = ({ openSidebar, setOpenSidebar, addProduct }) => {
         <div className="fixed bottom-0 right-0 w-full sm:max-w-md bg-white p-4 z-50 border-t border-[#E0E4EA]">
           <div className="flex flex-col sm:flex-row gap-2 justify-center">
             <button
-              className="w-full pl-[24px] p-[3px] flex items-center justify-between gap-6 bg-white rounded-[48px] text-[16px] text-[#15181E] leading-[150%] cursor-pointer border border-[#E0E4EA]"
+              className={`w-full ${
+                localStorage.getItem('lng') == 'ру' ? 'pl-0' : 'pl-[24px]'
+              }  p-[3px] flex items-center justify-between gap-6 bg-white rounded-[48px] text-[16px] text-[#15181E] leading-[150%] cursor-pointer border border-[#E0E4EA]`}
               onClick={() => {
                 setOpenSidebar(false);
                 navigate('/my-card');
               }}
             >
               {t('sidebar.button_text')}
-              <span className="bg-[#037C6A] w-[40px] h-[40px] flex justify-center items-center rounded-full">
+              <span className="bg-[#037C6A] w-[48px] h-[48px] flex justify-center items-center rounded-full">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -122,7 +122,7 @@ const CartSidebar = ({ openSidebar, setOpenSidebar, addProduct }) => {
             </button>
             <button className="w-full pl-[24px] p-[3px] flex items-center justify-between gap-6 bg-[#037C6A] rounded-[48px] text-[16px] text-[#ffffff] leading-[150%] cursor-pointer border">
               {t('sidebar.button_text2')}
-              <span className="bg-[#FFFFFF] w-[40px] h-[40px] flex justify-center items-center rounded-full">
+              <span className="bg-[#FFFFFF] w-[48px] h-[48px] flex justify-center items-center rounded-full">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"

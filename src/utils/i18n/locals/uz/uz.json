@@ -102,6 +102,25 @@
         "lifetime": "Umrbod almashtirish kafolati",
         "review_button": "Sharh yozish"
     },
+    "review_modal": {
+        "title": "Fikr yozish",
+        "name": "Ism",
+        "name_error1": "Faqat harflardan iborat bo'lishi kerak",
+        "name_error2": "Kamida 5 ta harfdan iborat bo'lishi kerak",
+        "name_error3": "Kamida bitta katta yoki kichik harf bo'lishi kerak",
+        "name_error4": "Iltimos, ismingizni kiriting",
+        "email": "Elektron pochta manzili",
+        "email_error1": "Elektron pochta noto‘g‘ri kiritilgan",
+        "email_error2": "Iltimos, elektron pochtangizni kiriting",
+        "form_title": "Sarlavha",
+        "form_title_error1": "Kamida 5 ta belgidan iborat bo'lishi kerak",
+        "form_title_error2": "Kamida bitta katta yoki kichik harf bo'lishi kerak",
+        "form_title_error3": "Iltimos, sarlavhani kiriting",
+        "message": "Fikringizni kiriting",
+        "message_error1": "Xabar kamida 10 ta belgidan iborat bo'lishi kerak",
+        "message_error2": "Iltimos, xabaringizni kiriting",
+        "submit": "Yuborish"
+    },
     "footer": {
         "phone_number": "Telefon raqami",
         "location_text": "Ofis manzili",

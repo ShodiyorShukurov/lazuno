@@ -80,7 +80,7 @@ const HeroPage = () => {
           className="w-fit pl-[20px] p-[3px] flex items-center gap-6 bg-[#037C6A] rounded-[48px] text-[14px] text-[#ffffff] leading-[150%] cursor-pointer mt-[24px] md:mt-[40px]"
         >
           {t('hero.button')}
-          <span className="bg-[#FFFFFF] w-[48px] h-[48px] flex justify-center rounded-full">
+          <span className="bg-[#FFFFFF] w-[48px] h-[48px] flex items-center justify-center rounded-full">
             <img src={arrow} alt="arrow-right" className="w-[24px] h-[24px]" />
           </span>
         </NavLink>

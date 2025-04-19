@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 // import { FaStar } from 'react-icons/fa';
 
-const ReviewSuccessModal = ({ successReview, onClose }) => {
+const ReviewSuccessModal = ({ successReview, onClose, }) => {
     if (!successReview) return null;
 
   return (
