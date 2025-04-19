@@ -6,7 +6,6 @@ import card4 from '../assets/card/card4.png';
 import { useTranslation } from 'react-i18next';
 import { NavLink, useNavigate } from 'react-router-dom';
 
-
 const cardArr = [
   {
     id: 1,
@@ -53,8 +52,8 @@ const cardArr = [
 const ProductCard = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [id, setId] = useState('');
-  const {t} =useTranslation()
-  const navigate = useNavigate()
+  const { t } = useTranslation();
+  const navigate = useNavigate();
 
   return (
     <section className="pt-[80px]">
@@ -66,7 +65,7 @@ const ProductCard = () => {
           {cardArr?.map((item) => (
             <div
               key={item.id}
-              className="relative rounded-[16px]  overflow-hidden hover:scale-[0.97] transition-transform duration-300 ease-in-out cursor-pointer"
+              className="relative rounded-[16px] overflow-hidden hover:scale-[0.97] transition-transform duration-300 ease-in-out cursor-pointer"
               onMouseEnter={() => {
                 setId(item.id);
                 setIsHovered(true);
@@ -75,14 +74,18 @@ const ProductCard = () => {
                 setId('');
                 setIsHovered(false);
               }}
-              onClick={()=>navigate('/product/1')}
+              onClick={() => navigate('/product/1')}
             >
-              <img
-                src={item.img}
-                alt={item.title}
-                className="w-full max-w-[300px] h-full max-h-[370px] rounded-[20px]"
-                width={300}
-              />
+              <div className="relative">
+                <img
+                  src={item.img}
+                  alt={item.title}
+                  className="w-full max-w-[300px] h-full max-h-[370px] rounded-[20px]"
+                  width={300}
+                />
+                {/* Overlay faqat rasmga ta’sir qiladi */}
+                <div className="absolute inset-0 bg-[#0000000A] z-0 rounded-[20px]" />
+              </div>
               <button
                 className={`absolute bottom-8 left-1/2 transform -translate-x-1/2 bg-[#037C6A] text-white text-[16px] leading-[150%] py-[16px] transition-all duration-500 ease-in-out w-full rounded-[16px] cursor-pointer ${
                   isHovered && id === item.id
@@ -92,7 +95,7 @@ const ProductCard = () => {
               >
                 {t('latest_collection.button_text')}
               </button>
-              <div className="mt-[8px]">
+              <div className="mt-[8px] z-40">
                 <h3 className="text-[16px] text-[#15181E] leading-[150%] pl-0.5">
                   {item.title}
                 </h3>
@@ -100,9 +103,12 @@ const ProductCard = () => {
             </div>
           ))}
         </div>
-        <NavLink to={'/category/all'} className="w-fit pl-[24px] p-[3px] flex items-center gap-6 bg-[#037C6A] rounded-[48px] text-[16px] text-[#ffffff] leading-[150%] mx-auto cursor-pointer mt-[24px] md:my-[48px]">
-        {t('latest_collection.button_text2')}
-          <span className="bg-[#FFFFFF] w-[40px] h-[40px] flex justify-center items-center rounded-full">
+        <NavLink
+          to={'/category/all'}
+          className="w-fit pl-[24px] p-[3px] flex items-center gap-6 bg-[#037C6A] rounded-[48px] text-[16px] text-[#ffffff] leading-[150%] mx-auto cursor-pointer mt-[24px] md:my-[48px]"
+        >
+          {t('latest_collection.button_text2')}
+          <span className="bg-[#FFFFFF] w-[48px] h-[48px] flex justify-center items-center rounded-full">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"

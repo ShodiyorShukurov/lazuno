@@ -9,7 +9,7 @@ const AboutUsComponent = () => {
   return (
     <section className="pt-[128px]">
       <div className="container">
-        <ul className='flex flex-col gap-[64px]'>
+        <ul className='flex flex-col gap-[128px]'>
           <li className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-[56px] items-center">
             <img src={aboutImg1} alt="img" className='h-full max-h-[460px] w-full lg:min-h-[460px] object-cover rounded-4xl'/>
             <div>

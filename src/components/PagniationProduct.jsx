@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
-const Pagination = () => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = 10;
+const PagniationProduct = ({ productData, setCurrentPage, currentPage }) => {
+  const { t } = useTranslation();
+
+  const totalPages =
+    Math.round(productData?.total / 12) == 0
+      ? 1
+      : Math.round(productData?.total / 12) || 1;
 
   const handlePrevious = () => {
     if (currentPage > 1) {
@@ -37,7 +42,7 @@ const Pagination = () => {
         <span
           className={`${
             currentPage === 1 ? 'bg-[#037C6A]' : 'bg-[#FFFFFF] '
-          } w-[40px] h-[40px] flex justify-center items-center rounded-full rotate-180`}
+          } w-[48px] h-[48px] flex justify-center items-center rounded-full rotate-180`}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -55,7 +60,7 @@ const Pagination = () => {
             />
           </svg>
         </span>
-        Previous
+        {t('pagniation.previous')}
       </button>
 
       {[...Array(totalPages)].map((_, index) => {
@@ -109,11 +114,11 @@ const Pagination = () => {
             : 'bg-[#037C6A] text-[#ffffff] cursor-pointer'
         }  rounded-[48px] text-[16px]  leading-[150%]`}
       >
-        Next
+        {t('pagniation.next')}
         <span
           className={`${
             currentPage === totalPages ? 'bg-[#037C6A]' : 'bg-[#FFFFFF] '
-          } w-[40px] h-[40px] flex justify-center items-center rounded-full`}
+          } w-[48px] h-[48px] flex justify-center items-center rounded-full`}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -136,4 +141,4 @@ const Pagination = () => {
   );
 };
 
-export default Pagination;
+export default PagniationProduct;

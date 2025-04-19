@@ -9,6 +9,10 @@ import plus from '../assets/logo/plus.svg';
 import right from '../assets/logo/direction-right 2.svg';
 import BuyModal from './BuyModal';
 import BuySuccessModal from './BuySuccessModal';
+import fast from '../assets/logo/fast delivery.svg';
+import medal from '../assets/logo/medal.svg';
+import reload from '../assets/logo/reload.svg';
+import { useTranslation } from 'react-i18next';
 
 const Star = () => (
   <svg
@@ -25,8 +29,18 @@ const Star = () => (
   </svg>
 );
 
-const ProductDetail = () => {
-  const [count, setCount] = React.useState(1);
+
+const ProductDetail = ({ productDetailData, setAddProduct }) => {
+  const { t } = useTranslation();
+
+
+  const items = [
+    { id: 1, title: t('product_detail.free'), img: fast },
+    { id: 2, title: t('product_detail.certified'), img: medal },
+    { id: 3, title: t('product_detail.lifetime'), img: reload },
+  ];
+
+  const [count, setCount] = React.useState(0);
   const [isModalOpen, setIsModalOpen] = React.useState(false);
   const [successBuy, setSuccessBuy] = React.useState(false);
 
@@ -36,6 +50,7 @@ const ProductDetail = () => {
 
     if (existingItem) {
       existingItem.quantity += item.quantity;
+      setAddProduct(item.quantity);
     } else {
       cartItems.push(item);
     }
@@ -47,63 +62,61 @@ const ProductDetail = () => {
     <section className="pt-[120px]">
       <div className="container">
         <h5 className="flex  text-[14px] leading-[140%] text-[#15181E] font-[ClashDisplay-Regular]">
-          Home <img src={right} alt="right" /> Product{' '}
-          <img src={right} alt="right" /> Yellow Leather Sofa Chair
+          {t('product_detail.home')} <img src={right} alt="right" />{' '}
+          {t('product_detail.product')} <img src={right} alt="right" />{' '}
+          {productDetailData?.data?.title}
         </h5>
-        <div className="grid md:grid-cols-2 gap-10 pt-6">
+        <div className="grid md:grid-cols-2 gap-[64px] pt-6">
           <div>
-            <div className="rounded-[16px] md:rounded-[32px] overflow-hidden">
+            <div className="relative rounded-[16px] md:rounded-[32px] overflow-hidden">
+              <div className="absolute inset-0 bg-[#F1F3F6] z-[1]"></div>
               <img
-                src={card1}
-                alt="Main Product"
-                className="w-full h-auto max-h-[500px] object-cover"
+                src={productDetailData?.data?.image_url[0]}
+                alt={productDetailData?.data?.image_name[0]}
+                className="w-full h-[350px] md:h-[500px] object-cover z-[2] relative "
               />
             </div>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">
-              <img
-                src={card2}
-                alt="thumb1"
-                className="w-full rounded-[16px] md:rounded-[32px] object-cover"
-              />
-              <img
-                src={card3}
-                alt="thumb2"
-                className="w-full rounded-[16px] md:rounded-[32px] object-cover"
-              />
-              <img
-                src={card4}
-                alt="thumb3"
-                className="w-0 md:w-full rounded-[32px] object-cover"
-              />
+              {productDetailData?.data?.image_url?.slice(1).map((item) => (
+                <img
+                  key={item}
+                  src={item}
+                  alt={item}
+                  className="w-full rounded-[16px] md:rounded-[32px] object-cover h-[160px] sm:h-[215px]"
+                />
+              ))}
             </div>
           </div>
 
           {/* Right side - details */}
-          <div className="flex flex-col justify-between">
+          <div className="flex flex-col justify-between w-full max-w-[560px]  ">
             <div>
-              <div className="flex items-center gap-2 text-green-600 text-sm">
+              <div className="flex items-center gap-[2px]">
                 <span className="flex items-center gap-[2px]">
-                  {[...Array(4)].map((_, index) => (
-                    <Star key={index} />
-                  ))}
+                  {[...Array(productDetailData?.data?.averageRating)].map(
+                    (_, index) => (
+                      <Star key={index} />
+                    )
+                  )}
                 </span>
                 <span className="text-[16px] leading-[150%] text-[#15181E] font-[ClashDisplay-Regular]">
-                  5.0 (2.5K Reviews)
+                  {productDetailData?.data?.averageRating} (
+                  {productDetailData?.data?.reviews_count}{' '}
+                  {t('product_detail.review')})
                 </span>
               </div>
               <h1 className="text-[36px] md:text-[48px] leading-[126%] text-[#15181E] mt-4 pb-4 border-b border-[#E0E4EA]">
-                Yellow Leather Sofa Chair
+                {productDetailData?.data?.title}
               </h1>
 
               <div className="pt-6 flex items-center gap-2">
                 <img src={eye} alt="eye" width={24} height={24} />
                 <p className="text-[16px] leading-[150%] text-[#15181E] ">
-                  83 People are viewing this right now
+                  {productDetailData?.data?.views} {t('product_detail.see')}
                 </p>
               </div>
               <p className="text-[#384252] text-[14px] leading-[140%] mt-4">
-                It is a long established fact that a reader will be distracted
-                by the readable content of a page when looking at its layout.
+                {t('product_detail.text')}
               </p>
 
               <div className="flex items-center gap-4 mt-4">
@@ -129,14 +142,19 @@ const ProductDetail = () => {
                   className="w-full pl-[24px] p-[3px] flex items-center justify-between bg-[#037C6A] rounded-[48px] text-[16px] text-[#ffffff] leading-[150%] font-[ClashDisplay-Regular] text-center cursor-pointer"
                   onClick={() =>
                     saveItem({
-                      id: 2,
-                      name: 'Yellow Leather Sofa Chair',
-                      price: 299,
+                      id: productDetailData?.data?.id,
+                      name: productDetailData?.data?.title,
+                      color: productDetailData?.data?.color,
+                      url:
+                        window.origin +
+                        '/product/' +
+                        productDetailData?.data?.id,
+                      img: productDetailData?.data?.image_url[0],
                       quantity: count,
                     })
                   }
                 >
-                  <span className="mx-auto">Add to Cart</span>
+                  <span className="mx-auto">{t('product_detail.add')}</span>
                   <span className="bg-[#FFFFFF] w-[48px] h-[48px] flex justify-center items-center rounded-full">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -161,7 +179,7 @@ const ProductDetail = () => {
                 className="w-full pl-[24px] p-[3px] flex items-center justify-between bg-transparent border border-[#E0E4EA] rounded-[48px] text-[16px] text-[#15181E] leading-[150%] font-[ClashDisplay-Regular] text-center cursor-pointer mt-[16px]"
                 onClick={() => setIsModalOpen(true)}
               >
-                <span className="mx-auto">Buy Now</span>
+                <span className="mx-auto">{t('product_detail.buy')}</span>
                 <span className="bg-[#037C6A] w-[48px] h-[48px] flex justify-center items-center rounded-full">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -180,12 +198,39 @@ const ProductDetail = () => {
                   </svg>
                 </span>
               </button>
+
+              <ul className="mt-[32px] flex items-center justify-between gap-6 ">
+                {items.map((item) => (
+                  <li
+                    key={item.id}
+                    className={`p-4 ${
+                      item.id == 2 ? 'border-x border-[#E0E4EA]' : ''
+                    }`}
+                  >
+                    <img
+                      src={item.img}
+                      alt="fast"
+                      className="w-[32px] h-[32px]"
+                    />
+                    <p className="text-[#15181E] text-[16px] leading-[150%] font-[ClashDisplay-Regular] mt-[16px]">
+                      {item.title}
+                    </p>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
       </div>
-      <BuyModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} setSuccessBuy={setSuccessBuy} />
-      <BuySuccessModal successBuy={successBuy}  onClose={() => setSuccessBuy(false)}/>
+      <BuyModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        setSuccessBuy={setSuccessBuy}
+      />
+      <BuySuccessModal
+        successBuy={successBuy}
+        onClose={() => setSuccessBuy(false)}
+      />
     </section>
   );
 };

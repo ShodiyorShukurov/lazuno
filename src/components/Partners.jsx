@@ -16,6 +16,9 @@ import partner10 from '../assets/partners/partner10.png';
 import partner11 from '../assets/partners/partner11.png';
 import partner12 from '../assets/partners/partner12.png';
 import { useTranslation } from 'react-i18next';
+import img1 from '../assets/img-1.png';
+import img2 from '../assets/img-2.png';
+import img3 from '../assets/img-3.png';
 
 const partnersArr = [
   {
@@ -180,7 +183,80 @@ const Partners = () => {
           ''
         ) : (
           <p className="hidden md:block text-[56px] leading-[140%] mt-[64px] text-[#15181E]">
-            {t('partner.text')}
+            {localStorage.getItem('lng') == 'uz' ? (
+              <>
+                Lazuno Uz faqat mebel yaratmaydi—biz{' '}
+                <img
+                  src={img1}
+                  alt=""
+                  className="w-[83px] h-[83px] inline object-cover rounded-[9px] rotate-[-10deg] transition-transform duration-500 hover:rotate-0"
+                />
+                hissiyotlarni shakllantiramiz. Har bir buyum o‘z hikoyasiga ega{' '}
+                <img
+                  src={img2}
+                  alt=""
+                  className="w-[83px] h-[83px] inline object-cover rounded-[9px] rotate-[10deg] transition-transform duration-500 hover:rotate-0"
+                />{' '}
+                bo‘lib, har qanday makonni iliq xotiralarga boyitadi. 1 500+
+                dizayn bilan uslub, qulaylik va mustahkamlikni taqdim etamiz.
+                Sizning{' '}
+                <img
+                  src={img3}
+                  alt=""
+                  className="w-[83px] h-[83px] inline object-cover rounded-[9px] rotate-[0deg] transition-transform duration-500 hover:rotate-[-10deg]"
+                />{' '}
+                orzuingizdagi makon shu yerdan boshlanadi.
+              </>
+            ) : localStorage.getItem('lng') == 'en' ? (
+              <>
+                At Lazuno Uz, we don’t just make furniture—we{' '}
+                <img
+                  src={img1}
+                  alt=""
+                  className="w-[83px] h-[83px] inline object-cover rounded-[9px] rotate-[-10deg] transition-transform duration-500 hover:rotate-0"
+                />{' '}
+                craft experiences. Every piece tells a story, turning spaces
+                into places{' '}
+                <img
+                  src={img2}
+                  alt=""
+                  className="w-[83px] h-[83px] inline object-cover rounded-[9px] rotate-[10deg] transition-transform duration-500 hover:rotate-0"
+                />{' '}
+                where memories are made. With 1,500+ designs, we bring style,
+                comfort, and durability to every home. Your{' '}
+                <img
+                  src={img3}
+                  alt=""
+                  className="w-[83px] h-[83px] inline object-cover rounded-[9px] rotate-[0deg] transition-transform duration-500 hover:rotate-[-10deg]"
+                />{' '}
+                dream space starts here.
+              </>
+            ) : (
+              <>
+                В Lazuno Uz мы создаем не просто мебель — мы{' '}
+                <img
+                  src={img1}
+                  alt=""
+                  className="w-[83px] h-[83px] inline object-cover rounded-[9px] rotate-[-10deg] transition-transform duration-500 hover:rotate-0"
+                />{' '}
+                создаем атмосферу. Каждое изделие рассказывает свою историю,
+                превращая{' '}
+                <img
+                  src={img2}
+                  alt=""
+                  className="w-[83px] h-[83px] inline object-cover rounded-[9px] rotate-[10deg] transition-transform duration-500 hover:rotate-0"
+                />{' '}
+                пространство в уютный уголок для воспоминаний. Более 1 500
+                дизайнов, чтобы наполнить ваш дом стилем, комфортом и
+                надежностью. Ваш{' '}
+                <img
+                  src={img3}
+                  alt=""
+                  className="w-[83px] h-[83px] inline object-cover rounded-[9px] rotate-[0deg] transition-transform duration-500 hover:rotate-[-10deg]"
+                />{' '}
+                идеальный интерьер начинается здесь.
+              </>
+            )}
           </p>
         )}
       </div>

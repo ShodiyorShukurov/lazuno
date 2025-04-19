@@ -6,9 +6,12 @@ import About from '../../components/About';
 import Accordion from '../../components/AccardionPage';
 import Review from '../../components/Review';
 import Similar from '../../components/Similar';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
+import UseProductDetail from '../../hooks/UseProductDetail';
 
-const ProductDetailPage = ({ setOpenSidebar }) => {
+const ProductDetailPage = ({ setOpenSidebar, setAddProduct }) => {
+  const { id } = useParams();
+  const { productDetailData, prroductDetailLoading, } = UseProductDetail(id);
   const location = useLocation();
 
   useEffect(() => {
@@ -19,9 +22,9 @@ const ProductDetailPage = ({ setOpenSidebar }) => {
     <div className="flex flex-col min-h-screen">
       <ProductNavbar setOpenSidebar={setOpenSidebar} />
       <main>
-        <ProductDetail />
-        <Accordion />
-        <Review />
+        <ProductDetail productDetailData={productDetailData} setAddProduct={setAddProduct}  />
+        <Accordion productDetailData={productDetailData}/>
+        <Review productDetailData={productDetailData}/>
         <Similar />
         <About />
       </main>

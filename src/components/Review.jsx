@@ -1,6 +1,7 @@
 import React from 'react';
 import ReviewModal from './ReviewModal';
 import ReviewSuccessModal from './ReviewSuccessModal';
+import { useTranslation } from 'react-i18next';
 
 const Star = () => (
   <svg
@@ -17,7 +18,8 @@ const Star = () => (
   </svg>
 );
 
-const Review = () => {
+const Review = ({productDetailData}) => {
+  const {t} = useTranslation()
   const [isModalOpen, setIsModalOpen] = React.useState(false);
   const [successReview, setSuccessReview]= React.useState(false)
 
@@ -29,12 +31,12 @@ const Review = () => {
     <section className="pt-[48px]">
       <div className="container">
         <div className="flex justify-between items-center flex-wrap gap-4">
-          <h2 className="text-[48px] leading-[150%]">Reviews</h2>
+          <h2 className="text-[48px] leading-[150%]">{t('product_detail.review')}</h2>
           <button
             className="w-fit pl-[24px] p-[3px] flex items-center gap-6 bg-[#037C6A] rounded-[48px] text-[16px] text-[#ffffff] leading-[150%] cursor-pointer"
             onClick={() => setIsModalOpen(true)}
           >
-            Write a Review
+            {t('product_detail.review_button')}
             <span className="bg-[#FFFFFF] w-[40px] h-[40px] flex justify-center items-center rounded-full">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -60,7 +62,7 @@ const Review = () => {
               Jacob Jones
             </h4>
             <span className="flex items-center gap-[2px] mt-1">
-              {[...Array(4)].map((_, index) => (
+              {[...Array(0)].map((_, index) => (
                 <Star key={index} />
               ))}
             </span>

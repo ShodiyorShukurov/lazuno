@@ -1,22 +1,11 @@
 import React from 'react';
 
-const FilterCategorySidebar = ({ open, setOpen }) => {
+const FilterCategorySidebar = ({ open, setOpen, popularData }) => {
   const [openCategories, setOpenCategories] = React.useState(false);
-  const [openColor, setOpenColor] = React.useState(false);
+
 
   const [selectedCategories, setSelectedCategories] = React.useState([]);
-  const [selectedColors, setSelectedColors] = React.useState([]);
 
-  const categoryList = ['Sofa', 'Bed', 'Side Table', 'Coffee Table', 'Chair'];
-  const colorList = [
-    'Green',
-    'Black',
-    'White',
-    'Red',
-    'Orange',
-    'Brown',
-    'Gray',
-  ];
 
   if (!open) return null;
 
@@ -28,17 +17,8 @@ const FilterCategorySidebar = ({ open, setOpen }) => {
     );
   };
 
-  const handleColorChange = (value) => {
-    setSelectedColors((prev) =>
-      prev.includes(value)
-        ? prev.filter((item) => item !== value)
-        : [...prev, value]
-    );
-  };
-
   const resetFilters = () => {
     setSelectedCategories([]);
-    setSelectedColors([]);
   };
 
   const isChecked = (value, list) => list.includes(value);
@@ -88,8 +68,8 @@ const FilterCategorySidebar = ({ open, setOpen }) => {
             </button>
             {openCategories && (
               <ul className="space-y-1 mt-4">
-                {categoryList.map((item) => (
-                  <li key={item}>
+                {popularData?.map((item) => (
+                  <li key={item.id}>
                     <label className="flex items-center justify-between gap-2 text-[16px]">
                       <div className="flex items-center gap-2">
                         <input
@@ -98,9 +78,9 @@ const FilterCategorySidebar = ({ open, setOpen }) => {
                           onChange={() => handleCheckboxChange(item)}
                           className="border border-[#E0E4EA]"
                         />
-                        {item}
+                        {item.title}
                       </div>
-                      <span className="text-[#8292AA]">(240)</span>
+                      <span className="text-[#8292AA]">({item.product_count})</span>
                     </label>
                   </li>
                 ))}
@@ -108,51 +88,6 @@ const FilterCategorySidebar = ({ open, setOpen }) => {
             )}
           </div>
 
-          {/* Colors */}
-          <div>
-            <button
-              className="flex items-center justify-between w-full cursor-pointer"
-              onClick={() => setOpenColor(!openColor)}
-            >
-              <h3 className="text-[20px]">Filter by Color</h3>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className={`transition-all w-[24px] h-[24px] duration-300 ${
-                  openColor ? 'rotate-180' : 'rotate-0'
-                }`}
-                viewBox="0 0 25 24"
-                fill="none"
-              >
-                <path
-                  d="M6.42822 9L12.4282 15L18.4282 9"
-                  stroke="#15181E"
-                  strokeWidth="1"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </button>
-            {openColor && (
-              <ul className="space-y-1 mt-4">
-                {colorList.map((color) => (
-                  <li key={color}>
-                    <label className="flex items-center justify-between gap-2 text-[16px]">
-                      <div className="flex items-center gap-2">
-                        <input
-                          type="checkbox"
-                          checked={isChecked(color, selectedColors)}
-                          onChange={() => handleColorChange(color)}
-                          className="border border-[#E0E4EA]"
-                        />
-                        {color}
-                      </div>
-                      <span className="text-[#8292AA]">(240)</span>
-                    </label>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
         </div>
 
         {/* Bottom buttons */}

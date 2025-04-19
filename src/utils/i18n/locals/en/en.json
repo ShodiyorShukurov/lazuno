@@ -29,9 +29,9 @@
         "title": "Testimonials",
         "button_text": "View All Reviews"
     },
-    "sidebar":{
-        "text":"You have 3 items in your cart",
-        "button_text":"View Cart",
+    "sidebar": {
+        "text": "You have 3 items in your cart",
+        "button_text": "View Cart",
         "button_text2": "Checkout"
     },
     "about-us": {
@@ -73,7 +73,34 @@
     },
     "category": {
         "title": "Shop By Category",
-        "button_text": "View All"
+        "button_text": "View All",
+        "all": "All Category"
+    },
+    "accardion": {
+        "descriptions": "Descriptions",
+        "shipping_title": "Shipping",
+        "shipping": "At Lazuno, we make sure your furniture arrives <strong>safely, quickly, and hassle-free</strong>. We deliver across Uzbekistan with trusted logistics partners who handle every item with care. Once your order is confirmed, we’ll contact you to schedule delivery at your convenience. From factory to your front door — we take care of everything.",
+        "packaging_title": "Packaging",
+        "packaging": "Your furniture isn’t just wrapped — it’s protected like royalty. Every item is <strong>carefully packed using shock-absorbing materials</strong> to prevent scratches, dents, or damage. Whether it’s a compact coffee table or a full-sized wardrobe, we make sure it travels safely. Unboxing Lazuno furniture should feel just as premium as using it.",
+        "return_title": "Return & Cancellation",
+        "return": "We don’t offer returns — because we <strong>prioritize precision</strong> from day one. Each piece is crafted to match your exact preferences and approved before delivery. However, every product comes with a strong>3-year guarantee</strong> to ensure your peace of mind. If there’s any issue caused by manufacturing defects, we’ll repair or replace it — no stress, no extra cost."
+    },
+    "pagniation": {
+        "next": "Next",
+        "previous": " Previous"
+    },
+    "product_detail": {
+        "home": "Home",
+        "product": "Product",
+        "review": "Reviews",
+        "see":"People are viewing this right now",
+        "text":"It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+        "add":"Add to Cart",
+        "buy":"Buy Now",
+        "free":"Free Shipping",
+        "certified":"Certified Product",
+        "lifetime":"Lifetime Exchange",
+        "review_button":"Write a Review"
     },
     "footer": {
         "phone_number": "Phone Number",

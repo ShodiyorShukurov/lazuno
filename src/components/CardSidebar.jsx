@@ -3,30 +3,18 @@ import card1 from '../assets/card/card1.png';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-const cartItems = [
-  {
-    id: 1,
-    name: 'Yellow Leather Sofa Chair',
-    quantity: 1,
-    image: card1,
-  },
-  {
-    id: 2,
-    name: 'Green Leather 3-Seater Sofa',
-    quantity: 1,
-    image: card1,
-  },
-  {
-    id: 3,
-    name: 'Round Crystal Lotus Sofa Chair',
-    quantity: 1,
-    image: card1,
-  },
-];
 
-const CartSidebar = ({ openSidebar, setOpenSidebar }) => {
+
+const CartSidebar = ({ openSidebar, setOpenSidebar, addProduct }) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  console.log(addProduct)
+  const [cartItems, setCartItems] = React.useState([]);
+
+  React.useEffect(() => {
+    const storedItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    setCartItems(storedItems);
+  }, [addProduct]);
 
   return (
     // Overlay
@@ -88,9 +76,9 @@ const CartSidebar = ({ openSidebar, setOpenSidebar }) => {
               className="flex gap-2 border-b border-[#E0E4EA] first:border-t first:pt-6 pb-4"
             >
               <img
-                src={item.image}
+                src={item.img}
                 alt={item.name}
-                className="w-[80px] max-h-[80px] object-cover rounded-[12px]"
+                className="w-[80px] h-[80px] object-cover rounded-[12px]"
               />
               <div className="flex-1">
                 <h3 className="text-[16px] leading-[150%] text-[#15181E]">

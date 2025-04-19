@@ -30,10 +30,10 @@
         "button_text": "Barcha sharhlarni ko‘rish"
     },
     "sidebar": {
-    "text": "Savatingizda 3 dona mahsulot bor",
-    "button_text": "Korzinka",
-    "button_text2": "To'lov"
-  },
+        "text": "Savatingizda 3 dona mahsulot bor",
+        "button_text": "Korzinka",
+        "button_text2": "To'lov"
+    },
     "about-us": {
         "card1_title": "Lazuno : 2016-yildan beri qulaylik va uslub yaratamiz",
         "card1_text": "<strong>Lazuno</strong>  deyarli o‘n yildirki, O‘zbekistonda mebel ishlab chiqarishda yangi standartlarni belgilamoqda. <strong>1 500 dan ortiq turli xil dizaynlar</strong> bilan biz nafislik va mustahkamlikni uyg‘unlashtirgan keng assortimentni taklif qilamiz. Innovatsiya va sifatga bo‘lgan sadoqatimiz har bir mahsulotimizni shunchaki mebel emas, balki uslub va qulaylik ramziga aylantiradi.     Har bir mahsulotimiz tajribali hunarmandlar tomonidan puxta qo‘l mehnati bilan tayyorlanadi. Biz an’anaviy to‘qimachilik texnikalarini zamonaviy texnologiyalar bilan birlashtirib, eng yuqori sifatli materiallardan foydalanamiz. Toshkentda joylashgan <strong>Lazuno</strong>  sizning uyingiz yoki bog‘ingiz uchun nafis va qulay muhit yaratishga yordam beradi.    <strong>Lazuno</strong>  – biz shunchaki mebel emas, tajriba yaratamiz.",
@@ -64,16 +64,43 @@
         "placeholder3": "Iltimos, xabaringizni shu yerga kiriting...",
         "button_text": "Kontaktlaringizni yuboring!",
         "name_error": "Iltimos, ismingizni kiriting.",
-        "name_error2":"Faqat harflardan iborat bo'lishi kerak",
-        "name_error3":"Kamida 5ta harfdan iborat bo'lishi kerak",
-        "name_error4":"Kamida bitta katta yoki kichik harf bo'lishi kerak",
+        "name_error2": "Faqat harflardan iborat bo'lishi kerak",
+        "name_error3": "Kamida 5ta harfdan iborat bo'lishi kerak",
+        "name_error4": "Kamida bitta katta yoki kichik harf bo'lishi kerak",
         "message_error": "Iltimos, xabarni kiriting.",
-        "message_error2":"Kamida 10ta harfdan iborat bo'lishi kerak",
-        "message_error3":"Kamida bitta katta yoki kichik harf bo'lishi kerak"
+        "message_error2": "Kamida 10ta harfdan iborat bo'lishi kerak",
+        "message_error3": "Kamida bitta katta yoki kichik harf bo'lishi kerak"
     },
     "category": {
         "title": "Kategoriya bo‘yicha xarid qilish",
-        "button_text": "Hammasini ko‘rish"
+        "button_text": "Hammasini ko‘rish",
+        "all": "Barcha toifalar"
+    },
+    "accardion": {
+        "descriptions": "Tavsiflar",
+        "shipping": "Lazunoda biz mebelingiz <strong>tez, xavfsiz va ortiqcha tashvishlarsiz</strong> yetib borishini ta'minlaymiz. O‘zbekiston bo‘ylab ishonchli logistika hamkorlarimiz orqali yetkazib beramiz va har bir buyumni ehtiyotkorlik bilan yetkazamiz. Buyurtmangiz tasdiqlangandan so‘ng, biz siz bilan bog‘lanamiz va sizga qulay vaqtda yetkazib berishni rejalashtiramiz. Zavoddan to eshigingizgacha — hammasini biz hal qilamiz.",
+        "packaging": "Mebelingiz shunchaki o‘ralmaydi — u go‘yoki qirollarga munosib tarzda himoyalanadi. Har bir buyum <strong>zarbalarga chidamli materiallar bilan ehtiyotkorlik bilan qadoqlanadi</strong>, bu esa tirnalishlar, ezilishlar yoki shikastlanishlarning oldini oladi. Kichik qahva stolidan tortib to to‘liq shkafgacha — har bir buyum xavfsiz yetib borishi kafolatlanadi. Lazuno mebellarini ochish — xuddi ularni ishlatish kabi, yuqori darajadagi zavq bo‘lishi kerak.",
+        "return": "Biz qaytarib olishni taklif qilmaymiz — chunki biz <strong>boshlanishidanoq aniqlikka e’tibor beramiz</strong>. Har bir mebel buyurtmangizga moslab tayyorlanadi va yetkazib berishdan oldin tasdiqlanadi. Shunga qaramay, har bir mahsulotga <strong>3 yillik kafolat</strong> beriladi. Agar ishlab chiqarishdagi nosozlik bo‘lsa — biz uni bepul ta’mirlaymiz yoki almashtiramiz. Hech qanday stress, hech qanday qo‘shimcha xarajat yo‘q.",
+        "return_title": "Qaytarish va Bekor qilish",
+        "packaging_title": "Qadoqlash",
+        "shipping_title": "Yetkazib berish"
+    },
+    "pagniation": {
+        "next": "Keyingi",
+        "previous": " Oldingi"
+    },
+    "product_detail": {
+        "home": "Bosh sahifa",
+        "product": "Mahsulot",
+        "review": "Sharhlar",
+        "see": "Hozirda odamlar buni ko‘rishmoqda",
+        "text": "Sahifaning tuzilmasiga qarab o‘quvchini chalg‘ituvchi matn borligi uzoq vaqtdan beri ma'lum haqiqatdir.",
+        "add": "Korzinkaga qo‘shish",
+        "buy": "Hozir xarid qilish",
+        "free": "Bepul yetkazib berish",
+        "certified": "Sertifikatlangan mahsulot",
+        "lifetime": "Umrbod almashtirish kafolati",
+        "review_button": "Sharh yozish"
     },
     "footer": {
         "phone_number": "Telefon raqami",

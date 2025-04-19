@@ -6,7 +6,7 @@ import item2 from '../assets/carousel/item2.png';
 import item3 from '../assets/carousel/item3.png';
 import item4 from '../assets/carousel/item3.png';
 import { useTranslation } from 'react-i18next';
-import Pagination from './Pagniation';
+import PagniationCategory from './PagniationCategory';
 import { useNavigate } from 'react-router-dom';
 
 const items = [
@@ -17,9 +17,9 @@ const items = [
   { id: 5, name: 'Luxury Sofa', img: item1 },
   { id: 6, name: 'Luxury Sofa', img: item3 },
 ];
-const CategoryAllCards = ({setOpen}) => {
+const CategoryAllCards = ({ setOpen, categoryData }) => {
   const { t } = useTranslation();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <section className="pt-[120px]">
@@ -27,18 +27,18 @@ const CategoryAllCards = ({setOpen}) => {
         <h5 className="hidden sm:flex  text-[14px] leading-[140%] text-[#15181E] font-[ClashDisplay-Regular]">
           Home <img src={right} alt="right" /> Shop
         </h5>
-        <CategoryComponents setOpen={setOpen}/>
+        <CategoryComponents setOpen={setOpen} data={categoryData} />
 
         <div className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-[17px] mt-[48px]">
-          {items.map((item) => (
+          {categoryData?.data?.map((item) => (
             <div
               key={item.id}
               className="relative bg-cover bg-center bg-no-repeat max-h-[450px] rounded-[32px] overflow-hidden sm:h-auto project-card cursor-pointer hover:scale-[0.97] transition-transform duration-300 ease-in-out"
               style={{
-                backgroundImage: `url(${item.img})`,
+                backgroundImage: `url(${item.image_url})`,
                 height: '450px',
               }}
-              onClick={()=>navigate('/category/1')}
+              onClick={() => navigate('/category/' + item.id)}
             >
               <div
                 style={{
@@ -48,13 +48,13 @@ const CategoryAllCards = ({setOpen}) => {
                 className="absolute inset-0 z-0"
               ></div>
               <div className="absolute flex bottom-0 left-0 right-0 h-auto pl-[24px] pb-[24px] text-white text-[24px] leading-[140%]">
-                Modern Sofa Set
+                {item.title}
               </div>
             </div>
           ))}
         </div>
 
-        <Pagination/>
+        <PagniationCategory categoryData={categoryData} />
       </div>
     </section>
   );

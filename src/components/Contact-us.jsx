@@ -247,7 +247,7 @@ const ContactUs = () => {
             <div className="flex flex-col sm:flex-row justify-between items-center">
               <button className="w-full sm:w-fit pl-[24px] p-[3px] flex items-center justify-between sm:gap-6 bg-[#037C6A] rounded-[48px] text-[16px] text-[#ffffff] leading-[150%] cursor-pointer">
                 {t('contact-us.button_text')}
-                <span className="bg-[#FFFFFF] w-[40px] h-[40px] flex justify-center items-center rounded-full">
+                <span className="bg-[#FFFFFF] w-[48px] h-[48px] flex justify-center items-center rounded-full">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
