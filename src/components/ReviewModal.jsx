@@ -1,17 +1,7 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { API_PATH } from '../utils/constants';
-
-const options = {
-  UZB: {
-    mask: '(__) ___-__-__',
-    replacement: { _: /\d/ },
-  },
-  RUS: {
-    mask: '(___) ___-__-__',
-    replacement: { _: /\d/ },
-  },
-};
+import { useQueryClient  } from '@tanstack/react-query';
 
 const ReviewModal = ({
   isOpen,
@@ -20,6 +10,7 @@ const ReviewModal = ({
   productDetailData,
 }) => {
   if (!isOpen) return null;
+  const queryClient = useQueryClient ();
 
   const { t } = useTranslation();
 
@@ -67,6 +58,7 @@ const ReviewModal = ({
       const data = res.json();
 
       if (data) {
+        queryClient.invalidateQueries({ queryClient: ['productDetailData  '] });
         setSuccessReview(true);
         onClose();
       }

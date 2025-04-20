@@ -5,7 +5,10 @@ const PagniationCategory = ({ categoryData }) => {
   const { t } = useTranslation();
 
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = categoryData?.total;
+  const totalPages =
+    Math.round(categoryData?.total / 12) == 0
+      ? 1
+      : Math.ceil(categoryData?.total / 12) || 1;
 
   const handlePrevious = () => {
     if (currentPage > 1) {

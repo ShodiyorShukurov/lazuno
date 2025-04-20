@@ -5,6 +5,7 @@ import card3 from '../assets/card/card3.png';
 import card4 from '../assets/card/card4.png';
 import { useTranslation } from 'react-i18next';
 import { NavLink, useNavigate } from 'react-router-dom';
+import UseProduct from '../hooks/UseProduct';
 
 const cardArr = [
   {
@@ -54,6 +55,7 @@ const ProductCard = () => {
   const [id, setId] = useState('');
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const { productData } = UseProduct();
 
   return (
     <section className="pt-[80px]">
@@ -62,7 +64,7 @@ const ProductCard = () => {
           {t('latest_collection.title')}
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
-          {cardArr?.map((item) => (
+          {productData?.data?.slice(0, 8)?.map((item) => (
             <div
               key={item.id}
               className="relative rounded-[16px] overflow-hidden hover:scale-[0.97] transition-transform duration-300 ease-in-out cursor-pointer"
@@ -74,16 +76,15 @@ const ProductCard = () => {
                 setId('');
                 setIsHovered(false);
               }}
-              onClick={() => navigate('/product/1')}
+              onClick={() => navigate('/product/' + item.id)}
             >
-              <div className="relative">
+              <div className="relative overflow-hidden">
                 <img
-                  src={item.img}
+                  src={item?.image_url[0]}
                   alt={item.title}
-                  className="w-full max-w-[300px] h-full max-h-[370px] rounded-[20px]"
-                  width={300}
+                  className="w-full max-w-[300px] h-[370px]"
+                  width={370}
                 />
-                {/* Overlay faqat rasmga ta’sir qiladi */}
                 <div className="absolute inset-0 bg-[#0000000A] z-0 rounded-[20px]" />
               </div>
               <button

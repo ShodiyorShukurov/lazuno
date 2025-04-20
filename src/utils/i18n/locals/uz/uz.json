@@ -23,7 +23,9 @@
     "latest_collection": {
         "title": "So‘nggi kolleksiyalar",
         "button_text": "Hozir xarid qilish",
-        "button_text2": "Barchasini ko‘rish"
+        "button_text2": "Barchasini ko‘rish",
+        "all": "Barcha mahsulotlar",
+        "title2":"Mahsulotlar"
     },
     "testimonials": {
         "title": "Fikrlar",
@@ -122,12 +124,29 @@
         "message": "Fikringizni kiriting",
         "message_error1": "Xabar kamida 10 ta belgidan iborat bo'lishi kerak",
         "message_error2": "Iltimos, xabaringizni kiriting",
-        "submit": "Yuborish"
+        "submit": "Yuborish",
+        "success_title": "Sharh muvaffaqiyatli yuborildi"
     },
     "buy_modal": {
         "title": "Sotib olish",
         "title2": "Muvaffaqiyatli sotib olindi",
         "text": "Bosh sahifaga qaytish"
+    },
+    "similar": {
+        "title": "O‘xshash mahsulotlar"
+    },
+    "mycard": {
+        "title": "Savatcham",
+        "button_text": "Buyurtma berish",
+        "card_text1": "Rang",
+        "card_text2": "Miqdor"
+    },
+    "filter": {
+        "title": "Filtr",
+        "button_text1": "Kategoriyalar",
+        "button_text2": "Rang",
+        "button_text3": "Tozalash",
+        "button_text4": "Qo‘llash"
     },
     "footer": {
         "phone_number": "Telefon raqami",

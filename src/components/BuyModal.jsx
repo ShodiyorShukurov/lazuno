@@ -246,7 +246,7 @@ const BuyModal = ({ isOpen, onClose, setSuccessBuy }) => {
           </label>
 
           <button className="w-full pl-[24px] p-[3px] flex items-center justify-between gap-6 bg-[#037C6A] rounded-[48px] text-[16px] text-[#ffffff] leading-[150%] cursor-pointer">
-            <span className="mx-auto">Submit</span>
+            <span className="mx-auto">{t('review_modal.submit')}</span>
             <span className="bg-[#FFFFFF] w-[40px] h-[40px] flex justify-center items-center rounded-full">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

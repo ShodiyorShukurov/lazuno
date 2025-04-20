@@ -12,9 +12,9 @@ const UseProductDetail = (id) => {
   };
 
   const { data: productDetailData, isLoading: prroductDetailLoading } = useQuery({
-    queryKey: ['productDetailData', id], // id ni queryKey ga qo‘shish ham cache uchun foydali
+    queryKey: ['productDetailData', id], 
     queryFn: getProductDetail,
-    enabled: !!id, // ✅ id mavjud bo‘lsa query ishlaydi
+    enabled: !!id, 
   });
 
   return { productDetailData, prroductDetailLoading, addProduct, setAddProduct };

@@ -1,14 +1,20 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import ProductNavbar from '../../components/ProductNavbar';
 import Footer from '../../components/footer';
 import ProductAllCards from '../../components/ProductAllCard';
 import { useLocation, useParams } from 'react-router-dom';
 import UseProduct from '../../hooks/UseProduct';
+import FilterCategorySidebar from '../../components/FilterCategorySidebar';
+import UseCategory from '../../hooks/UseCategory';
 
-const ProductPage = ({ setOpenSidebar, setOpen }) => {
+const ProductPage = ({ setOpenSidebar }) => {
+  const [selectedCategories, setSelectedCategories] = useState([]);
+  const [selectedColors, setSelectedColors] = useState([]);
   const { id } = useParams();
 
-  const { productData, currentPage, setCurrentPage } = UseProduct(id);
+  const { popularData, productColorData } = UseCategory();
+  const { productData, currentPage, setCurrentPage, open, setOpen } =
+    UseProduct(id, selectedCategories, selectedColors);
 
   const location = useLocation();
   useEffect(() => {
@@ -26,6 +32,16 @@ const ProductPage = ({ setOpenSidebar, setOpen }) => {
           setCurrentPage={setCurrentPage}
         />
       </main>
+      <FilterCategorySidebar
+        open={open}
+        setOpen={setOpen}
+        popularData={popularData}
+        productColorData={productColorData}
+        selectedCategories={selectedCategories}
+        setSelectedCategories={setSelectedCategories}
+        selectedColors={selectedColors}
+        setSelectedColors={setSelectedColors}
+      />
       <Footer />
     </div>
   );

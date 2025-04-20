@@ -10,6 +10,7 @@ import uzb from '../assets/logo/Uzbekistan.svg';
 import rus from '../assets/logo/Russia.svg';
 import { useTranslation } from 'react-i18next';
 import { format, useMask } from '@react-input/mask';
+import { BOT_TOKEN, CHAT_ID, TELEGRAM_LINK } from '../utils/constants';
 
 const options = {
   UZB: {
@@ -51,7 +52,7 @@ const Footer = () => {
   const inputRef = useMask(options[selectPhone.country]);
   let defaultValue = format('', options[selectPhone.country]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const phoneNumber = inputRef.current.value;
     if (!phoneNumber) {
@@ -59,7 +60,27 @@ const Footer = () => {
       return;
     }
 
-    console.log('Phone number submitted:', inputRef.current.value);
+    try {
+      const phone =
+        selectPhone.country === 'UZB'
+          ? `+998${phoneNumber}`
+          : `+7${phoneNumber}`;
+      const my_text = `☎️ Aloqaga chiqish xabari:\n- Telefon raqam: <a href="tel:${phone}">${phone}</a>`;
+
+      const res = await fetch(
+        `${TELEGRAM_LINK}${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${encodeURIComponent(
+          my_text
+        )}&parse_mode=HTML`
+      );
+
+      const data = await res.json();
+      if (data) {
+        inputRef.current.value = '';
+        setError('');
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <footer className="bg-[#191D24] text-white pt-[48px]">

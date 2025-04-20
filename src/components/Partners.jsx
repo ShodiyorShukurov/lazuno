@@ -183,29 +183,30 @@ const Partners = () => {
           ''
         ) : (
           <p className="hidden md:block text-[56px] leading-[140%] mt-[64px] text-[#15181E]">
-            {localStorage.getItem('lng') == 'uz' ? (
+            {localStorage.getItem('lng') == 'ру' ? (
               <>
-                Lazuno Uz faqat mebel yaratmaydi—biz{' '}
+                В Lazuno Uz мы создаем не просто мебель — мы{' '}
                 <img
                   src={img1}
                   alt=""
                   className="w-[83px] h-[83px] inline object-cover rounded-[9px] rotate-[-10deg] transition-transform duration-500 hover:rotate-0"
-                />
-                hissiyotlarni shakllantiramiz. Har bir buyum o‘z hikoyasiga ega{' '}
+                />{' '}
+                создаем атмосферу. Каждое изделие рассказывает свою историю,
+                превращая{' '}
                 <img
                   src={img2}
                   alt=""
                   className="w-[83px] h-[83px] inline object-cover rounded-[9px] rotate-[10deg] transition-transform duration-500 hover:rotate-0"
                 />{' '}
-                bo‘lib, har qanday makonni iliq xotiralarga boyitadi. 1 500+
-                dizayn bilan uslub, qulaylik va mustahkamlikni taqdim etamiz.
-                Sizning{' '}
+                пространство в уютный уголок для воспоминаний. Более 1 500
+                дизайнов, чтобы наполнить ваш дом стилем, комфортом и
+                надежностью. Ваш{' '}
                 <img
                   src={img3}
                   alt=""
                   className="w-[83px] h-[83px] inline object-cover rounded-[9px] rotate-[0deg] transition-transform duration-500 hover:rotate-[-10deg]"
                 />{' '}
-                orzuingizdagi makon shu yerdan boshlanadi.
+                идеальный интерьер начинается здесь.
               </>
             ) : localStorage.getItem('lng') == 'en' ? (
               <>
@@ -233,28 +234,27 @@ const Partners = () => {
               </>
             ) : (
               <>
-                В Lazuno Uz мы создаем не просто мебель — мы{' '}
+                Lazuno Uz faqat mebel yaratmaydi—biz{' '}
                 <img
                   src={img1}
                   alt=""
                   className="w-[83px] h-[83px] inline object-cover rounded-[9px] rotate-[-10deg] transition-transform duration-500 hover:rotate-0"
-                />{' '}
-                создаем атмосферу. Каждое изделие рассказывает свою историю,
-                превращая{' '}
+                />
+                hissiyotlarni shakllantiramiz. Har bir buyum o‘z hikoyasiga ega{' '}
                 <img
                   src={img2}
                   alt=""
                   className="w-[83px] h-[83px] inline object-cover rounded-[9px] rotate-[10deg] transition-transform duration-500 hover:rotate-0"
                 />{' '}
-                пространство в уютный уголок для воспоминаний. Более 1 500
-                дизайнов, чтобы наполнить ваш дом стилем, комфортом и
-                надежностью. Ваш{' '}
+                bo‘lib, har qanday makonni iliq xotiralarga boyitadi. 1 500+
+                dizayn bilan uslub, qulaylik va mustahkamlikni taqdim etamiz.
+                Sizning{' '}
                 <img
                   src={img3}
                   alt=""
                   className="w-[83px] h-[83px] inline object-cover rounded-[9px] rotate-[0deg] transition-transform duration-500 hover:rotate-[-10deg]"
                 />{' '}
-                идеальный интерьер начинается здесь.
+                orzuingizdagi makon shu yerdan boshlanadi.
               </>
             )}
           </p>

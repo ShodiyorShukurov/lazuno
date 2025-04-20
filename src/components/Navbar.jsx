@@ -154,6 +154,32 @@ const Navbar = ({ setOpenSidebar }) => {
                     alt="chevron"
                   />
                 </button>
+
+                {isOpen && (
+                  <div
+                    style={{ backdropFilter: 'blur(56px)' }}
+                    className="top-120 md:top-122 lg:top-15 absolute right-[-15px]  w-fit mt-2  min-w-[150px] bg-[#00000029]  border-[#FFFFFF4D] border-x-2 border-b-2 overflow-hidden rounded-[24px] px-[12px] py-[16px] z-50 dropdown"
+                  >
+                    {languages.map((lang) =>
+                      lang.code == selectedLangObj.code ? (
+                        ''
+                      ) : (
+                        <button
+                          key={lang.code}
+                          onClick={() => changeValues(lang)}
+                          className="flex items-center gap-2 w-full px-[20px] py-[12px] bg-[#0000003D] text-white transition capitalize mb-2 rounded-2xl border-2 border-[#FFFFFF33] cursor-pointer"
+                        >
+                          <img
+                            src={lang.flag}
+                            alt={lang.name}
+                            className="w-[25px] h-[20px] object-cover"
+                          />
+                          {lang.name}
+                        </button>
+                      )
+                    )}
+                  </div>
+                )}
               </div>
 
               <button
@@ -222,32 +248,6 @@ const Navbar = ({ setOpenSidebar }) => {
             </button>
           </div>
         </nav>
-      )}
-
-      {isOpen && (
-        <div
-          style={{ backdropFilter: 'blur(56px)' }}
-          className="top-120 md:top-122 lg:top-19 absolute right-0  w-fit mt-2  min-w-[150px] bg-[#00000029]  border-[#FFFFFF4D] border-x-2 border-b-2 overflow-hidden rounded-[24px] px-[12px] py-[16px] z-50"
-        >
-          {languages.map((lang) =>
-            lang.code == selectedLangObj.code ? (
-              ''
-            ) : (
-              <button
-                key={lang.code}
-                onClick={() => changeValues(lang)}
-                className="flex items-center gap-2 w-full px-[20px] py-[12px] bg-[#0000003D] text-white transition capitalize mb-2 rounded-2xl border-2 border-[#FFFFFF33] cursor-pointer"
-              >
-                <img
-                  src={lang.flag}
-                  alt={lang.name}
-                  className="w-[25px] h-[20px] object-cover"
-                />
-                {lang.name}
-              </button>
-            )
-          )}
-        </div>
       )}
     </div>
   );

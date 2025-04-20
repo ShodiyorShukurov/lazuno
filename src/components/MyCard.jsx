@@ -5,6 +5,7 @@ import BuySuccessModal from './BuySuccessModal';
 import card1 from '../assets/card/card1.png';
 import card2 from '../assets/card/card2.png';
 import card3 from '../assets/card/card3.png';
+import { useTranslation } from 'react-i18next';
 
 const cartItems = [
   {
@@ -37,6 +38,7 @@ const cartItems = [
 ];
 
 export default function MyCard({ setAddProduct }) {
+  const { t } = useTranslation();
   const [items, setItems] = useState([]);
   const [id, setId] = useState();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -66,7 +68,9 @@ export default function MyCard({ setAddProduct }) {
   return (
     <section className="pt-[120px] pb-[70px]">
       <div className="container">
-        <h2 className="text-[30px] leading-[120%] text-[#15181E]">My Cart</h2>
+        <h2 className="text-[30px] leading-[120%] text-[#15181E]">
+          {t('mycard.title')}
+        </h2>
 
         <div className="flex justify-between items-center  mt-8 mb-6">
           <button
@@ -80,7 +84,7 @@ export default function MyCard({ setAddProduct }) {
             onClick={() => setIsModalOpen(true)}
             className="w-fit pl-[24px] p-[3px] flex items-center gap-6 bg-[#037C6A] rounded-[48px] text-[16px] text-[#ffffff] leading-[150%] cursor-pointer"
           >
-            Checkout
+            {t('mycard.button_text')}
             <span className="bg-[#FFFFFF] w-[40px] h-[40px] flex justify-center items-center rounded-full">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -119,7 +123,7 @@ export default function MyCard({ setAddProduct }) {
                     {item?.name}
                   </h2>
                   <p className="text-[14px] leading-[140%] text-[#8292AA] mt-1">
-                    Color: {item?.color}
+                  {t('mycard.card_text1')}: {item?.color}
                   </p>
                 </div>
                 <button
@@ -130,7 +134,7 @@ export default function MyCard({ setAddProduct }) {
                 </button>
               </div>
               <p className="text-[14px] leading-[140%] text-[#8292AA] mt-3">
-                Quantity: <span>{item.quantity}</span>
+              {t('mycard.card_text2')}: <span>{item.quantity}</span>
               </p>
             </div>
           </div>

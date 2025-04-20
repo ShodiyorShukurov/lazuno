@@ -1,7 +1,8 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import 'swiper/css/effect-coverflow';
+import 'swiper/css/navigation';
+import { Navigation } from 'swiper/modules';
 import item1 from '../assets/carousel/item1.png';
 import item2 from '../assets/carousel/item2.png';
 import item3 from '../assets/carousel/item3.png';
@@ -9,10 +10,12 @@ import item4 from '../assets/carousel/item3.png';
 import { useTranslation } from 'react-i18next';
 import { Autoplay } from 'swiper/modules';
 import { useNavigate } from 'react-router-dom';
+import { useKeenSlider } from 'keen-slider/react';
+import 'keen-slider/keen-slider.min.css';
 
 const items = [
-  { id: 2, name: 'Palma', img: item2 },
   { id: 1, name: 'Isabella Chair', img: item1 },
+  { id: 2, name: 'Palma', img: item2 },
   { id: 3, name: 'Berry', img: item3 },
   { id: 4, name: 'Luxury Sofa', img: item4 },
   { id: 5, name: 'Luxury Sofa', img: item1 },
@@ -22,25 +25,16 @@ const items = [
 const Collection = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const [currentIndex, setCurrentIndex] = React.useState(0);
+  const totalItems = items.length;
 
-  const swiperRef = React.useRef(null);
-
-
-  const handleSlideChange = (swiper) => {
-    if (!swiper || !swiper.slidesEl) return;
-
-    const slides = swiper.slidesEl.children;
-    for (let i = 0; i < slides.length; i++) {
-      slides[i].classList.remove('larger-slide', 'normal-slide');
-      if (slides[i].classList.contains('swiper-slide-active')) {
-        slides[i].classList.add('larger-slide');
-      } else {
-        slides[i].classList.add('normal-slide');
-      }
-    }
+  const nextSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % totalItems);
   };
+
   React.useEffect(() => {
-    handleSlideChange();
+    const interval = setInterval(nextSlide, 3000); 
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -139,7 +133,7 @@ const Collection = () => {
           </Swiper>
         </div> */}
 
-        <div className="flex flex-col gap-6 sm:hidden">
+        {/* <div className="flex flex-col gap-6 sm:hidden">
           {items.slice(0, 3).map((item) => (
             <div
               key={item.id}
@@ -175,60 +169,103 @@ const Collection = () => {
               </div>
             </div>
           ))}
-        </div>
+        </div> */}
       </div>
 
-      <div className="hidden sm:block">
-        <Swiper
-         onSwiper={(swiper) => {
-          swiperRef.current = swiper;
-          setTimeout(() => handleSlideChange(swiper), 0); 
+      {/* <div className="hidden sm:block">
+      <Swiper
+        ref={swiperRef} // ref ni Swiper komponentiga to'g'ridan-to'g'ri bog'lash mumkin (lekin onSwiper yetarli)
+        modules={[Autoplay]} // Kerakli modullarni import qiling
+        // Swiper ishga tushganda birinchi marta chaqiriladi
+        onSwiper={(swiper) => {
+          swiperRef.current = swiper; // Ref ni saqlab qo'yamiz (agar kerak bo'lsa)
+          handleSlideChange(swiper); // Boshlang'ich klasslarni o'rnatish
         }}
+        // Har bir slayd almashinuvi tugagandan so'ng chaqiriladi
         onSlideChange={(swiper) => {
-          setTimeout(() => handleSlideChange(swiper), 0);
-        }} 
-          centeredSlides={true}
-          slidesPerView={4}
-          spaceBetween={20}
-          loop={true}
-          autoplay={{
-            delay: 3000,
-            disableOnInteraction: true,
-          }}
-          modules={[Autoplay]}
-          breakpoints={{
-            480: { slidesPerView: 1 },
-            640: { slidesPerView: 2 },
-            768: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 },
-            1280: { slidesPerView: 4 },
-          }}
-          className="w-full"
+          handleSlideChange(swiper); // Klasslarni yangilash
+        }}
+        centeredSlides={true}
+        slidesPerView={4} // Asosiy qiymat (katta ekranlar uchun)
+        spaceBetween={20}
+        loop={true}
+        autoplay={{
+          delay: 3000,
+          disableOnInteraction: true,
+        }}
+        breakpoints={{
+          // Breakpointlar kichikdan kattaga qarab yozilgani yaxshi
+          480: { slidesPerView: 1, spaceBetween: 10 }, // Kichikroq oraliq kerak bo'lishi mumkin
+          640: { slidesPerView: 2, spaceBetween: 15 },
+          768: { slidesPerView: 2, spaceBetween: 20 },
+          1024: { slidesPerView: 3, spaceBetween: 20 },
+          1280: { slidesPerView: 4, spaceBetween: 20 },
+        }}
+        className="w-full"
+      >
+        {items.map((item) => (
+          <SwiperSlide
+            key={item.id}
+            
+            className="flex flex-col items-center bg-white rounded-[32px] overflow-hidden transition-transform duration-300 ease-in-out" // Animatsiya uchun transition qo'shildi
+         
+          >
+           
+            <div
+              className="relative bg-cover bg-center rounded-[16px] overflow-hidden w-full h-[495px] project-card cursor-pointer" // Balandlikni moslashtiring, w-full qo'shildi
+              style={{
+                backgroundImage: `url(${item.img})`,
+                
+              }}
+               onClick={() => navigate('/category')} // Clickni shu yerga qo'yish mantiqliroq
+            >
+              <div className="absolute inset-0 bg-[#0000000A] z-0"></div>
+              <div className="absolute flex bottom-0 left-0 right-0 h-auto pl-[24px] pb-[24px] text-white z-10"> 
+                <button className="w-fit pl-[24px] p-[3px] flex items-center gap-6 bg-white rounded-[48px] text-[16px] text-[#15181E] leading-[150%] cursor-pointer mt-[24px]">
+                  {item.name}
+                  <span className="bg-[#037C6A] w-[40px] h-[40px] flex justify-center items-center rounded-full">
+                    
+                    <svg width="24" height="24" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.714 7.57141L16.1426 11M16.1426 11L12.714 14.4286M16.1426 11L5.85686 11" stroke="#ffffff" strokeWidth="0.857143" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </span>
+                </button>
+              </div>
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div> */}
+      <div className="w-full overflow-hidden relative">
+        <div
+          className="flex transition-transform duration-500 ease-in-out"
+          style={{ transform: `translateX(-${currentIndex * 300}px)` }}
         >
-          {items.map((item) => (
-            <SwiperSlide
-              key={item.id}
-              className="h-[550px] flex flex-col items-center bg-white rounded-[32px] overflow-hidden"
-              onClick={() => navigate('/category')}
+          {[...items].map((item, index) => (
+            <div
+              key={index}
+              className={`flex-shrink-0 transition-all duration-500 mr-[32px] ${
+                index % totalItems === currentIndex ? 'w-[700px]' : 'w-[300px]'
+              } text-center`}
             >
               <div
-                className="relative bg-cover bg-center rounded-[16px] overflow-hidden sm:h-auto project-card cursor-pointer"
+                className="relative bg-cover bg-center rounded-[16px] overflow-hidden w-full h-[495px] project-card cursor-pointer" // Balandlikni moslashtiring, w-full qo'shildi
                 style={{
                   backgroundImage: `url(${item.img})`,
-                  height: '495px',
                 }}
+                onClick={() => navigate('/category')} // Clickni shu yerga qo'yish mantiqliroq
               >
                 <div className="absolute inset-0 bg-[#0000000A] z-0"></div>
-                <div className="absolute flex bottom-0 left-0 right-0 h-auto pl-[24px] pb-[24px] text-white">
+                <div className="absolute flex bottom-0 left-0 right-0 h-auto pl-[24px] pb-[24px] text-white z-10">
                   <button className="w-fit pl-[24px] p-[3px] flex items-center gap-6 bg-white rounded-[48px] text-[16px] text-[#15181E] leading-[150%] cursor-pointer mt-[24px]">
                     {item.name}
                     <span className="bg-[#037C6A] w-[40px] h-[40px] flex justify-center items-center rounded-full">
                       <svg
-                        xmlns="http://www.w3.org/2000/svg"
                         width="24"
                         height="24"
                         viewBox="0 0 22 22"
                         fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
                       >
                         <path
                           d="M12.714 7.57141L16.1426 11M16.1426 11L12.714 14.4286M16.1426 11L5.85686 11"
@@ -242,9 +279,9 @@ const Collection = () => {
                   </button>
                 </div>
               </div>
-            </SwiperSlide>
+            </div>
           ))}
-        </Swiper>
+        </div>
       </div>
     </section>
   );

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import success from '../assets/success.svg';
 import { NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
-// import { FaStar } from 'react-icons/fa';
-
-const ReviewSuccessModal = ({ successReview, onClose, }) => {
-    if (!successReview) return null;
+const ReviewSuccessModal = ({ successReview, onClose }) => {
+  if (!successReview) return null;
+  const { t } = useTranslation();
 
   return (
     <div className="fixed inset-0 z-50 w-full h-full p-[20px]">
@@ -22,12 +22,15 @@ const ReviewSuccessModal = ({ successReview, onClose, }) => {
           height={100}
         />
         <h2 className="text-[24px] sm:text-[30px] leading-[120%] text-[#15181E] text-center">
-          Review Submitted Successfully
+          {t('review_modal.success_title')}
         </h2>
         {/* Star Rating */}
         {/* Form */}
-        <NavLink to='/' className="w-full pl-[24px] p-[3px] flex items-center justify-between gap-6 bg-[#037C6A] rounded-[48px] text-[16px] text-[#ffffff] leading-[150%] cursor-pointer">
-          <span className="mx-auto">Back to Home</span>
+        <NavLink
+          to="/"
+          className="w-full pl-[24px] p-[3px] flex items-center justify-between gap-6 bg-[#037C6A] rounded-[48px] text-[16px] text-[#ffffff] leading-[150%] cursor-pointer"
+        >
+          <span className="mx-auto"> {t('buy_modal.text')}</span>
           <span className="bg-[#FFFFFF] w-[40px] h-[40px] flex justify-center items-center rounded-full">
             <svg
               xmlns="http://www.w3.org/2000/svg"

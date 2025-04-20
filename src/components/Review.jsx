@@ -28,8 +28,18 @@ const Review = ({ productDetailData }) => {
     const day = date.getDate();
     const year = date.getFullYear();
     const monthNames = [
-      "yanvar", "fevral", "mart", "aprel", "may", "iyun",
-      "iyul", "avgust", "sentabr", "oktabr", "noyabr", "dekabr"
+      'yanvar',
+      'fevral',
+      'mart',
+      'aprel',
+      'may',
+      'iyun',
+      'iyul',
+      'avgust',
+      'sentabr',
+      'oktabr',
+      'noyabr',
+      'dekabr',
     ];
     const month = monthNames[date.getMonth()];
     return `${day} ${month} ${year}`;
@@ -89,11 +99,18 @@ const Review = ({ productDetailData }) => {
                 {item.text}
               </p>
               <p className="text-[14px] leading-[140%] text-[#8292AA] font-[ClashDisplay-Regular] mt-3">
-                {localStorage.getItem('lng') === 'uz' ? (
+                {localStorage.getItem('lng') === 'en' ? (
                   <>
-                    Yozilgan sana:{' '}
+                    Posted on{' '}
                     <span className="text-[#15181E]">
-                    {formatUzDate(item.create_post_at)}
+                      {new Date(item.create_post_at).toLocaleDateString(
+                        'en-US',
+                        {
+                          year: 'numeric',
+                          month: 'short',
+                          day: 'numeric',
+                        }
+                      )}
                     </span>
                   </>
                 ) : localStorage.getItem('lng') === 'ру' ? (
@@ -112,16 +129,9 @@ const Review = ({ productDetailData }) => {
                   </>
                 ) : (
                   <>
-                    Posted on{' '}
+                    Yozilgan sana:{' '}
                     <span className="text-[#15181E]">
-                      {new Date(item.create_post_at).toLocaleDateString(
-                        'en-US',
-                        {
-                          year: 'numeric',
-                          month: 'short',
-                          day: 'numeric',
-                        }
-                      )}
+                      {formatUzDate(item.create_post_at)}
                     </span>
                   </>
                 )}

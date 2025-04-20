@@ -23,7 +23,9 @@
     "latest_collection": {
         "title": "Latest Collections",
         "button_text": "Buy Now",
-        "button_text2": "View All"
+        "button_text2": "View All",
+        "all":"All Products",
+        "title2":"Product"
     },
     "testimonials": {
         "title": "Testimonials",
@@ -75,9 +77,9 @@
         "title": "Shop By Category",
         "button_text": "View All",
         "all": "All Category",
-        "page_title":"Home",
-        "page_title2":"Shop",
-        "button_text2":"Filter"
+        "page_title": "Home",
+        "page_title2": "Shop",
+        "button_text2": "Filter"
     },
     "accardion": {
         "descriptions": "Descriptions",
@@ -122,12 +124,29 @@
         "message": "Enter Your Review",
         "message_error1": "Message must be at least 10 characters long",
         "message_error2": "Please enter your message",
-        "submit": "Submit"
+        "submit": "Submit",
+        "success_title": "Review Submitted Successfully"
     },
-    "buy_modal":{
-        "title":"Buy",
-        "title2":"Buy Successfully",
-        "text":"Back to Home"
+    "buy_modal": {
+        "title": "Buy",
+        "title2": "Buy Successfully",
+        "text": "Back to Home"
+    },
+    "similar": {
+        "title": "Similar Products"
+    },
+    "mycard": {
+        "title": "My Cart",
+        "button_text": "Checkout",
+        "card_text1": "Color",
+        "card_text2": "Quantity"
+    },
+    "filter": {
+        "title": "Filter",
+        "button_text1": "Categories",
+        "button_text2": "Color",
+        "button_text3": "Reset",
+        "button_text4": "Apply"
     },
     "footer": {
         "phone_number": "Phone Number",

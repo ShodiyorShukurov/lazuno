@@ -1,9 +1,5 @@
 import React from 'react';
 import right from '../assets/logo/direction-right 2.svg';
-import card1 from '../assets/card/card1.png';
-import card2 from '../assets/card/card2.png';
-import card3 from '../assets/card/card3.png';
-import card4 from '../assets/card/card4.png';
 import { useTranslation } from 'react-i18next';
 import PagniationProduct from './PagniationProduct';
 import ProductComponents from './ProductComponents';
@@ -24,7 +20,8 @@ const ProductAllCards = ({
     <section className="pt-[120px]">
       <div className="container">
         <h5 className="hidden sm:flex  text-[14px] leading-[140%] text-[#15181E] font-[ClashDisplay-Regular]">
-          Home <img src={right} alt="right" /> Product
+          {t('category.page_title')} <img src={right} alt="right" />{' '}
+          {t('latest_collection.title2')}
         </h5>
         <ProductComponents setOpen={setOpen} productData={productData} />
 
@@ -46,7 +43,7 @@ const ProductAllCards = ({
               <img
                 src={item?.image_url[0]}
                 alt={item.title}
-                className="w-full max-w-[300px] min-h-[370px] max-h-[370px] h-[370px] rounded-[20px]"
+                className="w-full max-w-[300px] h-[370px] rounded-[20px]"
                 width={300}
               />
               <button

@@ -13,7 +13,8 @@ const CategoryAllCards = ({ setOpen, categoryData }) => {
     <section className="pt-[120px]">
       <div className="container">
         <h5 className="hidden sm:flex  text-[14px] leading-[140%] text-[#15181E] font-[ClashDisplay-Regular]">
-          {t('category.page_title')} <img src={right} alt="right" /> {t('category.page_title2')}
+          {t('category.page_title')} <img src={right} alt="right" />{' '}
+          {t('category.page_title2')}
         </h5>
         <CategoryComponents setOpen={setOpen} data={categoryData} />
 
@@ -23,10 +24,20 @@ const CategoryAllCards = ({ setOpen, categoryData }) => {
               key={item.id}
               className="relative bg-cover bg-center bg-no-repeat max-h-[450px] rounded-[32px] overflow-hidden sm:h-auto project-card cursor-pointer hover:scale-[0.97] transition-transform duration-300 ease-in-out"
               style={{
-                backgroundImage: `url(${item.image_url})`,
+                backgroundImage: `url(${
+                  typeof item?.image_url == 'string'
+                    ? item?.image_url
+                    : item?.image_url[0]
+                })`,
                 height: '450px',
               }}
-              onClick={() => navigate('/category/' + item.id)}
+              onClick={() =>
+                navigate(
+                  typeof item?.image_url == 'string'
+                    ? '/category/' + item.id
+                    : '/product/' + item.id
+                )
+              }
             >
               <div
                 style={{

@@ -7,7 +7,7 @@ const PagniationProduct = ({ productData, setCurrentPage, currentPage }) => {
   const totalPages =
     Math.round(productData?.total / 12) == 0
       ? 1
-      : Math.round(productData?.total / 12) || 1;
+      : Math.ceil(productData?.total / 12) || 1;
 
   const handlePrevious = () => {
     if (currentPage > 1) {

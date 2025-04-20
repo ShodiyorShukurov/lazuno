@@ -23,7 +23,9 @@
     "latest_collection": {
         "title": "Последние коллекции",
         "button_text": "Купить сейчас",
-        "button_text2": "Смотреть все"
+        "button_text2": "Смотреть все",
+        "all": "Все продукты",
+        "title2":"Продукты"
     },
     "testimonials": {
         "title": "Отзывы",
@@ -122,12 +124,29 @@
         "message": "Введите ваш отзыв",
         "message_error1": "Сообщение должно содержать не менее 10 символов",
         "message_error2": "Пожалуйста, введите сообщение",
-        "submit": "Отправить"
+        "submit": "Отправить",
+        "success_title": "Отзыв успешно отправлен"
     },
     "buy_modal": {
         "title": "Купить",
         "title2": "Покупка прошла успешно",
         "text": "Вернуться на главную"
+    },
+    "similar": {
+        "title": "Похожие товары"
+    },
+    "mycard": {
+        "title": "Моя корзина",
+        "button_text": "Оформить заказ",
+        "card_text1": "Цвет",
+        "card_text2": "Количество"
+    },
+    "filter": {
+        "title": "Фильтр",
+        "button_text1": "Категории",
+        "button_text2": "Цвет",
+        "button_text3": "Сбросить",
+        "button_text4": "Применить"
     },
     "footer": {
         "phone_number": "Номер телефона",
