@@ -10,7 +10,7 @@ const UseCategory = () => {
     const handleStorageChange = () => {
       const newLang =
         localStorage.getItem('lng') == 'ру'
-          ? 'ру'
+          ? 'ru'
           : localStorage.getItem('lng') == 'en'
           ? 'en'
           : 'uz';

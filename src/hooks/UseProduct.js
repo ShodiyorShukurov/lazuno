@@ -1,10 +1,31 @@
 import { useQuery } from '@tanstack/react-query';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Api from '../api';
 
 const UseProduct = (id, selectedCategories, selectedColors) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [open, setOpen] = useState(false);
+  const [lang, setLang] = useState(localStorage.getItem('lng') || 'uz');
+
+  useEffect(() => {
+    const handleStorageChange = () => {
+      const newLang =
+        localStorage.getItem('lng') == 'ру'
+          ? 'ру'
+          : localStorage.getItem('lng') == 'en'
+          ? 'en'
+          : 'uz';
+      setLang(newLang);
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+    const interval = setInterval(handleStorageChange, 1000);
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+      clearInterval(interval);
+    };
+  }, []);
 
   const getPopularCategories = async () => {
     const res = await Api.get(`/categories/filter?lang`);
@@ -18,6 +39,7 @@ const UseProduct = (id, selectedCategories, selectedColors) => {
       id,
       selectedCategories,
       selectedColors,
+      lang,
     ],
     queryFn: async () => {
       if (
@@ -32,7 +54,7 @@ const UseProduct = (id, selectedCategories, selectedColors) => {
         return res.data;
       } else {
         const res = await Api.post(
-          `/products/filter?take=10&page=${currentPage}`,
+          `/products/filter?take=10&page=${currentPage}&lang=${lang}`,
           {
             color: selectedColors,
             category_id: selectedCategories,
@@ -58,10 +80,6 @@ const UseProduct = (id, selectedCategories, selectedColors) => {
     setCurrentPage,
     open,
     setOpen,
-    // selectedCategories,
-    // setSelectedCategories,
-    // selectedColors,
-    // setSelectedColors,
   };
 };
 

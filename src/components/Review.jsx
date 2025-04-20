@@ -45,9 +45,6 @@ const Review = ({ productDetailData }) => {
     return `${day} ${month} ${year}`;
   };
 
-  const ratingChanged = (newRating) => {
-    console.log(newRating);
-  };
 
   return (
     <section className="pt-[48px]">

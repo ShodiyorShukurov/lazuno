@@ -35,6 +35,7 @@ const ProductDetail = ({ productDetailData, setAddProduct }) => {
   ];
 
   const [count, setCount] = React.useState(0);
+  const [buyModalSend, setBuyModalSend] = React.useState([]);
   const [isModalOpen, setIsModalOpen] = React.useState(false);
   const [successBuy, setSuccessBuy] = React.useState(false);
   const [isCartEmpty, setIsCartEmpty] = React.useState(
@@ -58,12 +59,26 @@ const ProductDetail = ({ productDetailData, setAddProduct }) => {
     } else {
       cartItems.push(item);
     }
-    
+
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
     setAddProduct(cartItems);
-    setCount(0)
+    setCount(0);
     checkCart();
   };
+
+  const [isMobile, setIsMobile] = React.useState(window.innerWidth < 768);
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const images = productDetailData?.data?.image_url || [];
+  const displayedImages = isMobile ? images.slice(0, 2) : images;
 
   return (
     <section className="pt-[120px]">
@@ -84,7 +99,7 @@ const ProductDetail = ({ productDetailData, setAddProduct }) => {
               />
             </div>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">
-              {productDetailData?.data?.image_url?.slice(1).map((item) => (
+              {displayedImages?.map((item) => (
                 <img
                   key={item}
                   src={item}
@@ -184,9 +199,21 @@ const ProductDetail = ({ productDetailData, setAddProduct }) => {
               </div>
 
               <button
-                disabled={isCartEmpty}
+                disabled={count > 0 ? false : true}
                 className="w-full pl-[24px] p-[3px] flex items-center justify-between bg-transparent border border-[#E0E4EA] rounded-[48px] text-[16px] text-[#15181E] leading-[150%] font-[ClashDisplay-Regular] text-center cursor-pointer mt-[16px]"
-                onClick={() => setIsModalOpen(true)}
+                onClick={() => {
+                  setIsModalOpen(true);
+                  saveItem({
+                    id: productDetailData?.data?.id,
+                    name: productDetailData?.data?.title,
+                    color: productDetailData?.data?.color,
+                    url:
+                      window.origin + '/product/' + productDetailData?.data?.id,
+                    img: productDetailData?.data?.image_url[0],
+                    quantity: count,
+                  });
+                  console.log("daaa")
+                }}
               >
                 <span className="mx-auto">{t('product_detail.buy')}</span>
                 <span className="bg-[#037C6A] w-[48px] h-[48px] flex justify-center items-center rounded-full">
