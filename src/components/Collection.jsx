@@ -133,6 +133,7 @@ const Collection = () => {
           }}
           modules={[Autoplay]}
           breakpoints={{
+            0:{slidesPerView:1},
             480: { slidesPerView: 1 },
             640: { slidesPerView: 2 },
             768: { slidesPerView: 2 },

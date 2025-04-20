@@ -26,7 +26,7 @@ const PagniationProduct = ({ productData, setCurrentPage, currentPage }) => {
   };
 
   return (
-    <div className="flex items-center justify-center flex-wrap space-x-4 pt-[48px] pb-[80px]">
+    <div className="flex items-center justify-center flex-wrap gap-3 pt-[48px] pb-[80px]">
       {/* Previous Button */}
       {/* cursor-not-allowed */}
 
