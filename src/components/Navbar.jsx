@@ -158,7 +158,7 @@ const Navbar = ({ setOpenSidebar }) => {
                 {isOpen && (
                   <div
                     style={{ backdropFilter: 'blur(56px)' }}
-                    className="top-13 absolute right-[-15px]  w-fit mt-2  min-w-[150px] bg-[#00000029]  border-[#FFFFFF4D] border-x-2 border-b-2 overflow-hidden rounded-[24px] px-[12px] py-[16px] z-50 dropdown"
+                    className="top-13 absolute right-[-15px]  w-fit mt-2  min-w-[150px] bg-[#00000066]  border-[#FFFFFF4D] border-x-2 border-b-2 overflow-hidden rounded-[24px] px-[12px] py-[16px] z-50 dropdown"
                   >
                     {languages.map((lang) =>
                       lang.code == selectedLangObj.code ? (
