@@ -91,7 +91,7 @@ const ProductDetail = ({ productDetailData, setAddProduct }) => {
         <div className="grid md:grid-cols-2 gap-[64px] pt-6">
           <div>
             <div className="relative rounded-[16px] md:rounded-[32px] overflow-hidden">
-              <div className="absolute inset-0 bg-[#F1F3F6] z-[1]"></div>
+             
               <img
                 src={productDetailData?.data?.image_url[0]}
                 alt={productDetailData?.data?.image_name[0]}
@@ -138,7 +138,7 @@ const ProductDetail = ({ productDetailData, setAddProduct }) => {
                 </p>
               </div>
               <p className="text-[#384252] text-[14px] leading-[140%] mt-4">
-                {t('product_detail.text')}
+                {productDetailData?.data?.layout}
               </p>
 
               <div className="flex items-center gap-4 mt-4">
