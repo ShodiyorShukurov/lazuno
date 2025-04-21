@@ -235,16 +235,16 @@ const Footer = () => {
               {t('footer.social')}
             </h4>
             <div className="flex space-x-4">
-              <a href="#" className="hover:text-gray-400">
+              <a href="t.me/+998774122221" target='_blank' className="hover:text-gray-400">
                 <img src={telegram} alt="telegram" width={24} height={24} />
               </a>
               <a
-                href="https://www.instagram.com/lazuno.uz/"
+                href="https://www.instagram.com/lazuno.uz/" target='_blank'
                 className="hover:text-gray-400"
               >
                 <img src={instagram} alt="instagram" width={24} height={24} />
               </a>
-              <a href="#" className="hover:text-gray-400">
+              <a href="https://wa.me/+998774122221" target='_blank' className="hover:text-gray-400">
                 <img src={youtube} alt="whatsap" width={24} height={24} />
               </a>
             </div>
