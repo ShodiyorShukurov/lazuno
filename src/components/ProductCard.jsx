@@ -82,7 +82,7 @@ const ProductCard = () => {
                 <img
                   src={item?.image_url[0]}
                   alt={item.title}
-                  className="w-full max-w-[300px] h-[370px]"
+                  className="w-full max-w-[300px] h-[370px] rounded-[16px]"
                   width={370}
                 />
                 <div className="absolute inset-0 bg-[#0000000A] z-0 rounded-[20px]" />
