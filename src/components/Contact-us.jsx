@@ -296,7 +296,7 @@ const ContactUs = () => {
               </button>
 
               <div className="flex gap-3 mt-7 sm:mt-0">
-                <a className="bg-[#F1F3F6] p-4 rounded-full" href="t.me/+998774122221" target='_blank'>
+                <a className="bg-[#F1F3F6] p-4 rounded-full" href="https://t.me/lazuno_uzbekistan" target='_blank'>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -324,7 +324,7 @@ const ContactUs = () => {
                     </defs>
                   </svg>
                 </a>
-                <a className="bg-[#F1F3F6] p-4 rounded-full" href="https://www.instagram.com/lazuno.uz/" target='_blank'>
+                <a className="bg-[#F1F3F6] p-4 rounded-full" href="https://www.instagram.com/lazuno.uz?igsh=MWVoY3NybXJxNDlk" target='_blank'>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -358,7 +358,7 @@ const ContactUs = () => {
                     </defs>
                   </svg>
                 </a>
-                <a className="bg-[#F1F3F6] p-4 rounded-full" href="https://wa.me/+998774122221" target='_blank'>
+                <a className="bg-[#F1F3F6] p-4 rounded-full" href="Https://wa.me/+998884222221" target='_blank'>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"

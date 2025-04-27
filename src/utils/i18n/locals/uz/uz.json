@@ -102,9 +102,9 @@
         "text": "Sahifaning tuzilmasiga qarab o‘quvchini chalg‘ituvchi matn borligi uzoq vaqtdan beri ma'lum haqiqatdir.",
         "add": "Korzinkaga qo‘shish",
         "buy": "Hozir xarid qilish",
-        "free": "Bepul yetkazib berish",
-        "certified": "Sertifikatlangan mahsulot",
-        "lifetime": "Umrbod almashtirish kafolati",
+        "free": "Toshkent bo‘ylab bepul yetkazib berish",
+        "certified": "Sertifikatlangan sifat kafolati",
+        "lifetime": "3 yil kafolat va servis",
         "review_button": "Sharh yozish"
     },
     "review_modal": {

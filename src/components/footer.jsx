@@ -87,16 +87,39 @@ const Footer = () => {
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-4  md:gap-0">
           <div className="flex items-center flex-row md:flex-col gap-4 sm:gap-6 justify-center md:justify-baseline mb-[24px] md:mb-0">
-            <div>
+            <div className="flex flex-col justify-center items-center">
               <h4 className="text-[16px] leading-[150%] font-[ClashDisplay-Regular] mb-[8px] text-center w-full max-w-[150px]">
                 {t('footer.phone_number')}
               </h4>
-              <a
-                href="tel:+998 97 442 23 21"
+            <div className='flex gap-2 md:gap-4 items-center flex-wrap justify-center'>
+            <a
+                href="tel:+998770757775"
                 className="text-[16px] leading-[150%]"
               >
-                +998 97 442 23 21
+                +998770757775
               </a>
+              <a
+                href="tel:+998884222221"
+                className="text-[16px] leading-[150%]"
+              >
+                +998884222221
+              </a>
+            </div>
+              <div className='flex gap-2 md:gap-4 items-center flex-wrap justify-center mt-2 md:mt-4'>
+                {' '}
+                <a
+                  href="tel:+998974222221"
+                  className="text-[16px] leading-[150%]"
+                >
+                  +998974222221
+                </a>
+                <a
+                  href="tel:+998774122221"
+                  className="text-[16px] leading-[150%]"
+                >
+                  +998774122221
+                </a>
+              </div>
             </div>
             <div>
               <h4 className="text-[16px] leading-[150%] font-[ClashDisplay-Regular] mb-[8px] text-center w-full max-w-[150px]">
@@ -235,16 +258,25 @@ const Footer = () => {
               {t('footer.social')}
             </h4>
             <div className="flex space-x-4">
-              <a href="t.me/+998774122221" target='_blank' className="hover:text-gray-400">
+              <a
+                href="https://t.me/lazuno_uzbekistan"
+                target="_blank"
+                className="hover:text-gray-400"
+              >
                 <img src={telegram} alt="telegram" width={24} height={24} />
               </a>
               <a
-                href="https://www.instagram.com/lazuno.uz/" target='_blank'
+                href="https://www.instagram.com/lazuno.uz?igsh=MWVoY3NybXJxNDlk"
+                target="_blank"
                 className="hover:text-gray-400"
               >
                 <img src={instagram} alt="instagram" width={24} height={24} />
               </a>
-              <a href="https://wa.me/+998774122221" target='_blank' className="hover:text-gray-400">
+              <a
+                href="https://wa.me/+998884222221"
+                target="_blank"
+                className="hover:text-gray-400"
+              >
                 <img src={youtube} alt="whatsap" width={24} height={24} />
               </a>
             </div>
