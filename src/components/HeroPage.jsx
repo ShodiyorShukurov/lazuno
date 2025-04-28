@@ -64,8 +64,8 @@ const HeroPage = () => {
         src={videos[activeIndex]}
         autoPlay
         loop
-        muted
         playsInline
+        muted
       />
 
       <div className="container relative z-10 h-full flex flex-col justify-end pb-[60px]">
