@@ -132,12 +132,8 @@ const Navbar = ({ setOpenSidebar }) => {
                   onClick={() => {
                     setIsOpen(!isOpen);
                   }}
-                  style={{
-                    backgroundColor: 'rgba(255, 255, 255, 0.1)', // Yengil oq shaffof
-                    backdropFilter: 'blur(56px)',
-                    WebkitBackdropFilter: 'blur(56px)',
-                  }}
-                  className="flex items-center gap-2 px-[12px] py-[14px] text-white rounded-full border-[3px] border-[#FFFFFF33] transition cursor-pointer"
+                 
+                  className="flex items-center gap-2 navbar-button px-[12px] py-[14px] text-white rounded-full border-[3px] border-[#FFFFFF33] transition cursor-pointer"
                 >
                   <span className="text-[14px] leading-[150%] capitalize font-semibold">
                     {selectedLangObj.code}
