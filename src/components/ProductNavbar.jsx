@@ -147,8 +147,9 @@ const ProductNavbar = ({ setOpenSidebar }) => {
                   style={{
                     backdropFilter: 'blur(56px)',
                     WebkitBackdropFilter: 'blur(56px)',
+                    backgroundColor: 'rgba(0, 0, 0, 0.4)',
                   }}
-                  className="flex items-center gap-2 px-[12px] py-[14px] bg-[#FFFFFF1F] text-[#15181E] rounded-full border-[3px] border-[#F1F3F6] transition cursor-pointer"
+                  className="flex items-center gap-2 px-[12px] py-[14px] text-[#15181E] rounded-full border-[3px] border-[#F1F3F6] transition cursor-pointer"
                 >
                   <span className="text-[14px] leading-[150%] capitalize font-semibold">
                     {selectedLangObj.code}

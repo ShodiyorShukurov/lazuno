@@ -135,8 +135,9 @@ const Navbar = ({ setOpenSidebar }) => {
                   style={{
                     backdropFilter: 'blur(56px)',
                     WebkitBackdropFilter: 'blur(56px)',
+                    backgroundColor: 'rgba(0, 0, 0, 0.4)',
                   }}
-                  className="flex items-center gap-2 px-[12px] py-[14px] bg-[#FFFFFF1F] text-white rounded-full border-[3px] border-[#FFFFFF33] transition cursor-pointer"
+                  className="flex items-center gap-2 px-[12px] py-[14px] text-white rounded-full border-[3px] border-[#FFFFFF33] transition cursor-pointer"
                 >
                   <span className="text-[14px] leading-[150%] capitalize font-semibold">
                     {selectedLangObj.code}
