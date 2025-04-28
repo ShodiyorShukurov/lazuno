@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
-import video1 from '../assets/video/Lazuno_en_v1.mov';
-import video2 from '../assets/video/Lazuno_en_v2.mov';
+import video1 from '../assets/video/Lazuno_en_v1.mp4';
+import video2 from '../assets/video/Lazuno_en_v2.mp4';
 import arrow from '../assets/logo/arrow-right.svg';
 import arrowVideo from '../assets/logo/arrow-right-video.svg';
 import pauseIcon from '../assets/logo/pause_icon.svg';
