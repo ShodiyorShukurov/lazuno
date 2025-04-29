@@ -1,54 +1,7 @@
 import { useState } from 'react';
-import card1 from '../assets/card/card1.png';
-import card2 from '../assets/card/card2.png';
-import card3 from '../assets/card/card3.png';
-import card4 from '../assets/card/card4.png';
 import { useTranslation } from 'react-i18next';
 import { NavLink, useNavigate } from 'react-router-dom';
 import UseProduct from '../hooks/UseProduct';
-
-const cardArr = [
-  {
-    id: 1,
-    title: 'Blue Leather Sofa Chair',
-    img: card1,
-  },
-  {
-    id: 2,
-    title: 'Blue Leather Sofa Chair',
-    img: card2,
-  },
-  {
-    id: 3,
-    title: 'Blue Leather Sofa Chair',
-    img: card3,
-  },
-  {
-    id: 4,
-    title: 'Blue Leather Sofa Chair',
-    img: card4,
-  },
-  {
-    id: 5,
-    title: 'Blue Leather Sofa Chair',
-    img: card1,
-  },
-  {
-    id: 6,
-    title: 'Blue Leather Sofa Chair',
-    img: card2,
-  },
-  {
-    id: 7,
-    title: 'Blue Leather Sofa Chair',
-    img: card3,
-  },
-  {
-    id: 8,
-    title: 'Blue Leather Sofa Chair',
-    img: card4,
-  },
-];
 
 const ProductCard = () => {
   const [isHovered, setIsHovered] = useState(false);

@@ -1,33 +1,9 @@
 import React from 'react';
 import testBg from '../assets/test-bg.png';
-import star from '../assets/logo/star.svg';
 import { useTranslation } from 'react-i18next';
 import UseProduct from '../hooks/UseProduct';
 import { NavLink } from 'react-router-dom';
 
-const testArr = [
-  {
-    id: 1,
-    title: '“Great Delivery Service, I love It.”',
-    subtitle:
-      'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.',
-    name: 'Cameron Williamson',
-  },
-  {
-    id: 2,
-    title: '“Quality of The Sofa is Truly Amazing”',
-    subtitle:
-      'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.',
-    name: 'Cameron Williamson',
-  },
-  {
-    id: 3,
-    title: '“Quality of The Sofa is Truly Amazing”',
-    subtitle:
-      'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.',
-    name: 'Cameron Williamson',
-  },
-];
 
 const Star = () => (
   <svg

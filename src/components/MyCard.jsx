@@ -2,40 +2,8 @@ import { useEffect, useState } from 'react';
 import trash from '../assets/logo/trash.svg';
 import BuyModal from './BuyModal';
 import BuySuccessModal from './BuySuccessModal';
-import card1 from '../assets/card/card1.png';
-import card2 from '../assets/card/card2.png';
-import card3 from '../assets/card/card3.png';
 import { useTranslation } from 'react-i18next';
 
-const cartItems = [
-  {
-    id: 1,
-    name: 'Yellow Leather Sofa Chair',
-    price: 580,
-    oldPrice: 680,
-    color: 'Brown',
-    quantity: 2,
-    image: card1,
-  },
-  {
-    id: 2,
-    name: 'Green Leather 3 Seater Sofa',
-    price: 850,
-    oldPrice: 900,
-    color: 'Green',
-    quantity: 1,
-    image: card2,
-  },
-  {
-    id: 3,
-    name: 'Round Crystal Lotus Sofa Chair',
-    price: 300,
-    oldPrice: 340,
-    color: 'White',
-    quantity: 2,
-    image: card3,
-  },
-];
 
 export default function MyCard({ setAddProduct }) {
   const { t } = useTranslation();

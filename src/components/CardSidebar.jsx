@@ -1,5 +1,4 @@
 import React from 'react';
-import card1 from '../assets/card/card1.png';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 

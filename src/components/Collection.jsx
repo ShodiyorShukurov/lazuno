@@ -2,26 +2,10 @@ import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import { Navigation } from 'swiper/modules';
-import item1 from '../assets/carousel/item1.png';
-import item2 from '../assets/carousel/item2.png';
-import item3 from '../assets/carousel/item3.png';
-import item4 from '../assets/carousel/item3.png';
 import { useTranslation } from 'react-i18next';
 import { Autoplay } from 'swiper/modules';
 import { useNavigate } from 'react-router-dom';
-import { useKeenSlider } from 'keen-slider/react';
-import 'keen-slider/keen-slider.min.css';
 import UseCategory from '../hooks/UseCategory';
-
-const items = [
-  { id: 1, name: 'Isabella Chair', img: item1 },
-  { id: 2, name: 'Palma', img: item2 },
-  { id: 3, name: 'Berry', img: item3 },
-  { id: 4, name: 'Luxury Sofa', img: item4 },
-  { id: 5, name: 'Luxury Sofa', img: item1 },
-  { id: 6, name: 'Luxury Sofa', img: item3 },
-];
 
 const Collection = () => {
   const { categoryData } = UseCategory();
@@ -36,9 +20,10 @@ const Collection = () => {
   };
 
   React.useEffect(() => {
+    if (!totalItems || totalItems < 2) return;
     const interval = setInterval(nextSlide, 3000);
     return () => clearInterval(interval);
-  }, []);
+  }, [totalItems]);
 
   return (
     <section className="pt-[64px]">
