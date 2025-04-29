@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 
 const HeroPage = () => {
-  const videos = ['/Lazuno_en_v1.mp4', '/Lazuno_en_v2.mp4'];
+  const videos = ['https://srvr.lazuno.uz/uploads/Lazuno_en_v1.mp4', 'https://srvr.lazuno.uz/uploads/Lazuno_en_v2.mp4'];
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [isFading, setIsFading] = useState(false);
