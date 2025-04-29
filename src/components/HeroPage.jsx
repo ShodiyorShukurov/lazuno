@@ -1,6 +1,4 @@
 import React, { useRef, useState, useEffect } from 'react';
-import video1 from '../../public/Lazuno_en_v1.mp4';
-import video2 from '../../public/Lazuno_en_v2.mp4';
 import arrow from '../assets/logo/arrow-right.svg';
 import arrowVideo from '../assets/logo/arrow-right-video.svg';
 import pauseIcon from '../assets/logo/pause_icon.svg';
@@ -9,12 +7,11 @@ import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 
 const HeroPage = () => {
-  const videos = [video1, video2];
+  const videos = ['/Lazuno_en_v1.mp4', '/Lazuno_en_v2.mp4'];
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [isFading, setIsFading] = useState(false);
   const videoRef = useRef(null);
-
 
   const { t } = useTranslation();
 
@@ -70,12 +67,13 @@ const HeroPage = () => {
 
       <div className="container relative z-10 h-full flex flex-col justify-end pb-[60px]">
         <h1 className="text-white text-[36px] sm:text-[48px] md:text-[72px] font-semibold text-left w-full md:max-w-[790px] leading-[120%] font-[ClashDisplay-Semibold]">
-         {t('hero.title')}
+          {t('hero.title')}
         </h1>
         <p className="text-white text-[16px] md:text-[18px] font-medium text-left w-full md:max-w-[660px] leading-[26px] mt-[12px] md:mt-[24px] font-[ClashDisplay-Medium]">
-        {t('hero.subtitle')}
+          {t('hero.subtitle')}
         </p>
-        <NavLink to='/category'
+        <NavLink
+          to="/category"
           style={{ fontFamily: 'ClashDisplay-Semibold' }}
           className="w-fit pl-[20px] p-[3px] flex items-center gap-6 bg-[#037C6A] rounded-[48px] text-[14px] text-[#ffffff] leading-[150%] cursor-pointer mt-[24px] md:mt-[40px]"
         >
